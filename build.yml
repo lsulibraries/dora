@@ -1,0 +1,6 @@
+# build.yml
+---
+- hosts: all
+  become: yes
+  roles: 
+  - dev

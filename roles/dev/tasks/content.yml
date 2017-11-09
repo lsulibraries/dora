@@ -1,0 +1,40 @@
+# content-users.yml
+
+#########################################################################
+####  Alter content here (for example, chainsaw).                    ####
+#########################################################################
+
+
+# - name: 'make block of default collection for deleting ## 2016092614'
+#   blockinfile:
+#     create: true
+#     dest: /tmp/pid_delete.txt
+#     block: |
+#       islandora:sp_pdf_collection
+#       islandora:entity_collection
+#       islandora:newspaper_collection
+#       islandora:audio_collection
+#       islandora:bookCollection
+#       islandora:compound_collection
+#       islandora:sp_disk_image_collection
+#       islandora:sp_basic_image_collection
+#       islandora:sp_large_image_collection
+#       islandora:sp_web_archive_collection
+#       islandora:video_collection
+#       ir:citationCollection
+#
+#
+# - name: Bulk delete pids from /tmp/pid_delete.txt
+#   command: drush iChainsaw -y --user=admin --pid_file=/tmp/pid_delete.txt
+#   args:
+#     chdir: '{{ drupal_core_path  }}'
+#
+#####
+
+
+# - name: Create ip embargo list.
+#   command: drush iipeadd --low=141.164.0.0 --high=141.164.255.255 --list=loyno
+#   args:
+#     chdir: "{{ drupal_core_path }}"
+#   ignore_errors: true
+

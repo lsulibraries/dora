@@ -1,0 +1,11 @@
+---
+- include: system.yml
+- include: modules.yml
+- include: vsets.yml
+- include: roles-permissions.yml
+- include: content.yml
+- include: dev.yml
+  when: run_dev_steps
+- include: finish.yml
+- include: sample-collections.yml
+  when: ingest_sample_collections

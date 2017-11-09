@@ -1,0 +1,26 @@
+# roles-permissions.yml
+
+#########################################################################
+#### Create roles, add/remove perms to/from roles                    ####
+####                                                                 ####
+#### This play relies totally on the variables set in all.yml.       ####
+#########################################################################
+
+- name: Create roles.
+  command: "drush role-create '{{ item }}'"
+  args:
+    chdir: "{{ drupal_core_path }}"
+  with_items: "{{ drush_role_create }}"
+  ignore_errors: yes
+
+- name: Add perms.
+  command: "drush role-add-perm {{ item.role }} '{{ item.perm }}'"
+  args:
+    chdir: "{{ drupal_core_path }}"
+  with_items: "{{ drush_role_add_perm }}"
+
+- name: Remove perms.
+  command: "drush role-remove-perm {{ item.role }} '{{ item.perm }}'"
+  args:
+    chdir: '{{ drupal_core_path }}'
+  with_items: "{{ drush_role_remove_perm }}"

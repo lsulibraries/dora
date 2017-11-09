@@ -1,0 +1,11 @@
+# system.yml
+
+#########################################################################
+#### Run system-level commands here, such as : copying files around, ####
+#### setting up cron or monitoring configs, updating logging prefs.  ####
+####                                                                 ####
+#########################################################################
+
+# - name: set permissions.
+#   shell: "sh /opt/scripts/drupal-permissions/drupal-fix-permissions.sh --drupal_path={{ drupal_core_path }} --drupal_user=root --httpd_group=www-data"
+#   when: environment_type != 'dev'

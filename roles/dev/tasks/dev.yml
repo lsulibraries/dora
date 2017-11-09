@@ -1,0 +1,52 @@
+# dev.yml
+
+#########################################################################
+#### Set up features appropriate to a dev env (for example, xhprof). ####
+####                                                                 ####
+#### Be sure to set variable 'run_dev_steps' to true in all.yml.     ####
+#########################################################################
+
+- name: 'Install xdebug ## 2016120115'
+  apt:
+    name: php5-xdebug
+  when: environment_type == 'dev'
+
+- name: 'create xdebug.ini ## 2016120115'
+  file:
+    path: /etc/php5/mods-available/xdebug.ini
+    state: touch
+  when: environment_type == 'dev'
+
+- name: 'Xdebug config ## 2016120115'
+  blockinfile:
+    dest: /etc/php5/mods-available/xdebug.ini
+    marker: "; {mark} ANSIBLE MANAGED BLOCK"
+    block: |
+      [xdebug]
+      zend_extension=xdebug.so
+      xdebug.default_enable=1
+      xdebug.remote_enable=1
+      xdebug.remote_handler=dbgp
+      xdebug.remote_host=0.0.0.0
+      xdebug.remote_port=9000
+  when: environment_type == 'dev'
+
+- name: 'create xdebug.ini ## 2016120115'
+  file:
+    src: /etc/php5/mods-available/xdebug.ini
+    dest: /etc/php5/apache2/conf.d/25-xdebug.ini
+    state: link
+  when: environment_type == 'dev'
+
+- name: 'Restart apache2 ## 2016120115'
+  service:
+    name: apache2
+    state: restarted
+  when: environment_type == 'dev'
+
+- name: 'Set permissions wide open for dev. ## 2016120615 # 2016112915 # 2016120213
+    # 2016120214 # 2016120513 # 2016120513 # 2016120615 # 2016120615'
+  file:
+    path: '{{ drupal_core_path }}/sites/all/modules/'
+    mode: 777
+  when: environment_type == 'dev'

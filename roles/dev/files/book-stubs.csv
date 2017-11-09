@@ -1,0 +1,4 @@
+type,title,body,path
+book,Internal Docs,This is the top-level of the Internal Docs book.,docs/internal
+book,Collection Administration Guide,This is the top-level of the Collection Administration Guide,docs/collection-admin
+book,Patron Guide,This is the top-level of the Patron Guide,docs/patron-guide
