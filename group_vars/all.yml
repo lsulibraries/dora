@@ -259,6 +259,10 @@ git_versions: []
 # - { dest: "/sites/all/modules/trello_tickets/", version: "71e82e174947529f2bf365c58b381f574ea09ba6", repo: "https://github.com/lsulibraries/trello_tickets" }
 # - { dest: "/sites/all/themes/ldl/", version: "cbce2eff7934789002dbf0967a275b05f3cd7000", repo: "https://github.com/lsulibraries/ldl_theme" }
 
+#####################################################################################################
+# NB- when adding new sample collections, zips for compound collections need to contain a top-level #
+# directory whose name is recorded in the `dirname` dict key.                                       #
+#####################################################################################################
 s3_collections:
   - { cpd: false, title: "Huey P. Long", description: "Photos of the Governor", filename: "LSU-HPL.zip", cmodels: "islandora:sp_large_image_cmodel", namespace: "lsu-hpl", type: "zip" }
   - { cpd: false, title: "Camp Ruston", description: "heterogenous collection", filename: "latech-cmprt-simple.zip", cmodels: "islandora:sp_large_image_cmodel", namespace: "latech-cmprt", type: "zip" }

@@ -4,6 +4,8 @@ This vagrant/ansible project provides a minimal development environment for Loui
 
 [tldr](#migration)- make changes and commit to a new branch
 
+tldr*2 If you just want the box with collections, edit 'group_vars/all.yml' so that the variable `ingest_sample_collections: ` is `yes` instead of `no`.
+
 
 ### Box
 
