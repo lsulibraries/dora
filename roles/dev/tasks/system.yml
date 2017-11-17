@@ -10,8 +10,8 @@
 #   shell: "sh /opt/scripts/drupal-permissions/drupal-fix-permissions.sh --drupal_path={{ drupal_core_path }} --drupal_user=root --httpd_group=www-data"
 #   when: environment_type != 'dev'
 
-## be sure to set file perms correctly...
-# - name: 'Restart tomcat ## 2017012517 # 2016112310'
+##  Restart tomcat to pick up changes in xyz
+# - name: Restart tomcat
 #   service:
 #     name: tomcat7
 #     state: restarted
