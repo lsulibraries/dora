@@ -6,12 +6,6 @@
 ####                                                                 ####
 #########################################################################
 
-## be sure to set file perms correctly...
-- name: 'Restart tomcat ## 2017012517 # 2016112310'
-  service:
-    name: tomcat7
-    state: restarted
-
 - name: feature revert
   command: drush fra -y
   args:

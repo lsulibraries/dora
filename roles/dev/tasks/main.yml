@@ -4,6 +4,8 @@
 - include: vsets.yml
 - include: roles-permissions.yml
 - include: content.yml
+- include: theme-dev.yml
+  when: sassy
 - include: dev.yml
   when: run_dev_steps
 - include: finish.yml
