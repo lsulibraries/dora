@@ -57,3 +57,8 @@
   command: drush -u 1 ibi --ingest_set=1
   args:
     chdir: "{{ drupal_core_path }}"
+
+- name: ingest all collections from test.ldl...
+  command: drush irrccoai -u 1 --oai_endpoint=test.louisianadigitallibrary.org/oai2 --oai_remote_host=test.louisianadigitallibrary.org --oai_endpoint_protocol=http
+  args:
+    chdir: "{{ drupal_core_path }}"

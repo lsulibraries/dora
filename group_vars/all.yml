@@ -245,12 +245,12 @@ git_versions:
 # - { dest: "/sites/all/modules/islandora_solution_pack_newspaper/", version: "9fe4462cf967a1ba11f782b5f7f5a8a5898142a1", repo: "https://github.com/islandora/islandora_solution_pack_newspaper.git" }
 # - { dest: "/sites/all/modules/islandora_solution_pack_oh/", version: "eb6ada48a77003f7a02c292e5e862797cd7fddfa", repo: "https://github.com/lsulibraries/islandora_solution_pack_oh" }
 # - { dest: "/sites/all/modules/islandora_solution_pack_pdf/", version: "bb1ce3b1f7c7853360f8ebeabfbab287391f2562", repo: "https://github.com/lsulibraries/islandora_solution_pack_pdf" }
-- { dest: "/sites/all/modules/islandora_solution_pack_remote_resource/", version: "29583c0e849a367615bb96af8a56dc723979753d", repo: "https://github.com/lsulibraries/islandora_solution_pack_remote_resource" }
+- { dest: "/sites/all/modules/islandora_solution_pack_remote_resource/", version: "7860f4461f785e0f1ed0592c38edaeccd3bd59fd", repo: "https://github.com/lsulibraries/islandora_solution_pack_remote_resource" }
 # - { dest: "/sites/all/modules/islandora_solution_pack_video/", version: "4ba0b40707a77e4276ebe834e3b0c28ec4d5f96a", repo: "https://github.com/islandora/islandora_solution_pack_video.git" }
 # - { dest: "/sites/all/modules/islandora_solution_pack_web_archive/", version: "c53b3007fdc6d2a98420ea7d9c8fc276e2c923a1", repo: "https://github.com/islandora/islandora_solution_pack_web_archive.git" }
 # - { dest: "/sites/all/modules/islandora_transcript/", version: "52d2da53a3528d8b3cd7f8c44c517a1b4b86f39b", repo: "https://github.com/yorkulibraries/islandora_transcript" }
 # - { dest: "/sites/all/modules/islandora_url_redirector/", version: "142cff8bd3e03b1c3ecbc31d0fbf47b6d5b8ebee", repo: "https://github.com/bondjimbond/islandora_url_redirector" }
-# - { dest: "/sites/all/modules/islandora_utils/", version: "e068bbba43eb55c30e1505f5d1b663c8a7b8e2dc", repo: "https://github.com/lsulibraries/islandora_utils" }
+- { dest: "/sites/all/modules/islandora_utils/", version: "c67d8f5c81cce2f48210adb12084ec1b462ebe70", repo: "https://github.com/lsulibraries/islandora_utils" }
 # - { dest: "/sites/all/modules/islandora/", version: "46b642f2bec4eb872de58cdbc14b7326104c6e0e", repo: "https://github.com/islandora/islandora.git" }
 # - { dest: "/sites/all/modules/islandora_videojs/", version: "655d5bd84849af7a9f6768b8dc96093ab0ac00de", repo: "https://github.com/islandora/islandora_videojs.git" }
 # - { dest: "/sites/all/modules/islandora_xacml_editor/", version: "242dabc614a63cc8938e06c4a5450b61b5fbeec5", repo: "https://github.com/islandora/islandora_xacml_editor.git" }
