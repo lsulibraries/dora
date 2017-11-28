@@ -19,15 +19,6 @@
     - "{{ s3_collections }}"
   when: not item.0.stat.exists
   
-- name: Ensure that we have the latest isla utils.
-  git:
-    version: 3c935a9dd123653efb6ab0f3f5e9daad0bd35424
-    repo: https://github.com/lsulibraries/islandora_utils
-    dest: "{{ drupal_core_path }}/sites/all/modules/islandora_utils"
-    force: yes
-  register: git_deploy
-  until: git_deploy|succeeded
-
 - name: ensure ingest semaphore file exists
   file:
     path: /opt/ingested
