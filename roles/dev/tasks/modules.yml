@@ -20,6 +20,10 @@
     chdir: '{{ drupal_core_path }}'
   with_items: "{{ drush_dl }}"
 
+- wait_for:
+    host: 192.168.111.111
+    port: 8080
+
 - name: Enable modules.
   command: "drush -u 1 -y en {{ item }}"
   args:

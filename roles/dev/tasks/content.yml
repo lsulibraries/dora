@@ -38,3 +38,22 @@
 #     chdir: "{{ drupal_core_path }}"
 #   ignore_errors: true
 
+- name: Create test collection
+  command: drush -u 1 islandora-utils-create-collection --description='RR ingest test' --namespace=tulane-remote:collection --title="Tulane RR Test" --parent=islandora:root
+  args:
+    chdir: "{{ drupal_core_path }}"
+
+- name: set collection published
+  command: drush islandora-collection-toggle-publish-set publish --pid=tulane-remote:collection
+  args:
+    chdir: "{{ drupal_core_path }}"
+
+- name: preprocess small collection
+  command: drush -u 1 irrbp --namespace=tulane-remote --oai_endpoint=https://digitallibrary.tulane.edu/oai2 --oai_pid_index=3 --oai_set=tulane_cajun --oai_remote_host=https://digitallibrary.tulane.edu --parent=tulane-remote:collection
+  args:
+    chdir: "{{ drupal_core_path }}"
+
+- name: ingest small collection
+  command: drush -u 1 ibi --ingest_set=1
+  args:
+    chdir: "{{ drupal_core_path }}"
