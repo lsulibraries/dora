@@ -179,7 +179,7 @@ drush_vset_simple: []
 
 # git_versions: []
 git_versions:
-  - { dest: "/sites/all/modules/islandora-features/ldl_permissions/", version: "9f91e53e16d9970849d4f50e2240dfc17b133d05", repo: "https://github.com/lsulibraries/ldl_permissions" }
+  - { dest: "/sites/all/modules/islandora-features/ldl_permissions/", version: "041fc4e517ab8ceb5bf00c7344d9728a13e102ae", repo: "https://github.com/lsulibraries/ldl_permissions" }
 # - { dest: "/sites/all/libraries/bagit/", version: "8d197da6d18c06a7aa880d853eb50820f408c4bb", repo: "https://github.com/scholarslab/BagItPHP.git" }
 # - { dest: "/sites/all/libraries/tuque/", version: "6423fa135fbe275ad3129b36a54b4f0a85b70f8e", repo: "https://github.com/Islandora/tuque.git" }
 # - { dest: "/sites/all/modules/about-ldc/", version: "2adbe2ac6548d6fd0771aa85ef8fe6102c6c9520", repo: "https://github.com/lsulibraries/about-ldc" }
