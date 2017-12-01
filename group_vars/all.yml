@@ -180,7 +180,6 @@ drush_vset_simple:
 
 #git_versions: []
 git_versions:
-- { dest: "/sites/all/modules/features_ldl_blocks/", version: "FB-compound", repo: "https://github.com/lsulibraries/islandora_feature_block_setting_ldl_theme" }
 # - { dest: "/sites/all/libraries/bagit/", version: "8d197da6d18c06a7aa880d853eb50820f408c4bb", repo: "https://github.com/scholarslab/BagItPHP.git" }
 # - { dest: "/sites/all/libraries/tuque/", version: "6423fa135fbe275ad3129b36a54b4f0a85b70f8e", repo: "https://github.com/Islandora/tuque.git" }
 
@@ -189,7 +188,6 @@ git_versions:
 # - { dest: "/sites/all/modules/book_access/", version: "e2cb0c8333ffbb19df35a613993c5273adbc6ea6", repo: "https://github.com/lsulibraries/drupal_book_access" }
 # - { dest: "/sites/all/modules/drush_util/", version: "d724b76e60d09a6cdd7de40a4212dcc9d4998301", repo: "https://github.com/lsulibraries/drush-util" }
 # - { dest: "/sites/all/modules/google_analytics_reports/", version: "4e7229981ecbc33b8df1199f35c6f14477018c7e", repo: "https://github.com/discoverygarden/google_analytics_reports" }
-- { dest: "/sites/all/modules/features_ldl_blocks/", version: "9c8553e24a329c50cfdf80145a60b24fcc2dd904", repo: "https://github.com/lsulibraries/islandora_feature_block_setting_ldl_theme" }
 # - { dest: "/sites/all/modules/islandora_altmetrics/", version: "5e412281a931907bfc9a8ec49dcea32a42606743", repo: "https://github.com/islandora/islandora_altmetrics.git" }
 # - { dest: "/sites/all/modules/islandora_bagit/", version: "6ef89baa2e3d5686d5568f2d3520b9559e684495", repo: "https://github.com/islandora/islandora_bagit.git" }
 # - { dest: "/sites/all/modules/islandora_batch_derivative_trigger/", version: "4959cfb817742a33f9c8aec732e20222852bd35c", repo: "https://github.com/lsulibraries/islandora_batch_derivative_trigger" }
@@ -262,6 +260,7 @@ git_versions:
 # - { dest: "/sites/all/modules/objective_forms/", version: "c4a35af9aa70bb5f561c2726c0261f362d6d91cf", repo: "https://github.com/islandora/objective_forms.git" }
 # - { dest: "/sites/all/modules/php_lib/", version: "3db418ffb11b2ec16d3435253fb4e9cd553ed5ba", repo: "https://github.com/islandora/php_lib.git" }
 # - { dest: "/sites/all/modules/trello_tickets/", version: "71e82e174947529f2bf365c58b381f574ea09ba6", repo: "https://github.com/lsulibraries/trello_tickets" }
+- { dest: "/sites/all/modules/features_ldl_blocks/", version: "FB-compound", repo: "https://github.com/lsulibraries/islandora_feature_block_setting_ldl_theme" }
 - { dest: "/sites/all/themes/ldl/", version: "compoundObject", repo: "https://github.com/lsulibraries/ldl_theme" }
 
 #####################################################################################################
