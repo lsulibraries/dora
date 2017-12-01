@@ -178,7 +178,7 @@ drush_vset_simple:
 # - { key: site_frontpage, value: browse-collections }
 # - { key: site_name, value: 'Louisiana Digital Library' }
 
-#git_versions: []
+
 git_versions:
 # - { dest: "/sites/all/libraries/bagit/", version: "8d197da6d18c06a7aa880d853eb50820f408c4bb", repo: "https://github.com/scholarslab/BagItPHP.git" }
 # - { dest: "/sites/all/libraries/tuque/", version: "6423fa135fbe275ad3129b36a54b4f0a85b70f8e", repo: "https://github.com/Islandora/tuque.git" }
@@ -262,6 +262,7 @@ git_versions:
 # - { dest: "/sites/all/modules/trello_tickets/", version: "71e82e174947529f2bf365c58b381f574ea09ba6", repo: "https://github.com/lsulibraries/trello_tickets" }
 - { dest: "/sites/all/modules/features_ldl_blocks/", version: "FB-compound", repo: "https://github.com/lsulibraries/islandora_feature_block_setting_ldl_theme" }
 - { dest: "/sites/all/themes/ldl/", version: "compoundObject", repo: "https://github.com/lsulibraries/ldl_theme" }
+
 
 #####################################################################################################
 # NB- when adding new sample collections, zips for compound collections need to contain a top-level #
