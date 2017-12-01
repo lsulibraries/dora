@@ -27,6 +27,10 @@
 - name: Get record of ingested items.
   shell: cat /opt/ingested
   register: ingested
+
+- wait_for:
+    host: localhost
+    port: 8080
   
 - name: Create collection containers (parents).
   command: "drush  --user=admin islandora-utils-create-collection --description='{{ item.description }}' --namespace={{ item.namespace }}:collection --parent=islandora:root --title='{{ item.title }}'"
