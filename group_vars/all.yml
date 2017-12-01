@@ -212,7 +212,7 @@ git_versions:
 # - { dest: "/sites/all/modules/islandora_marcxml/", version: "fb2f03edc2d7ca445766228fe1d7de7abab76fa1", repo: "https://github.com/islandora/islandora_marcxml.git" }
 # - { dest: "/sites/all/modules/islandora_migrate_cdm_collections/", version: "0b5f5dfdeb5ae1add52d09a865142afdae636b25", repo: "https://github.com/mjordan/islandora_migrate_cdm_collections" }
 # - { dest: "/sites/all/modules/islandora_mods_display/", version: "4d77f1aad6dd7ba5131f65a39d8622bbf4cc6098", repo: "https://github.com/lsulibraries/islandora_mods_display" }
-# - { dest: "/sites/all/modules/islandora_namespace_homepage/", version: "07100eacdeda6430b58cdfc89affe8785b991312", repo: "https://github.com/lsulibraries/islandora_namespace_homepage" }
+- { dest: "/sites/all/modules/islandora_namespace_homepage/", version: "5dad0a85fc8623532d20bc6e4264dcc70d181e75", repo: "https://github.com/lsulibraries/islandora_namespace_homepage" }
 # - { dest: "/sites/all/modules/islandora_newspaper_batch/", version: "775afe8acdfed53fa3166fa92118e84db3b91cf6", repo: "https://github.com/islandora/islandora_newspaper_batch.git" }
 # - { dest: "/sites/all/modules/islandora_oai/", version: "634c86e1a78cd7167e705d07bb1ec770fd12d5b1", repo: "https://github.com/islandora/islandora_oai.git" }
 # - { dest: "/sites/all/modules/islandora_object_lock/", version: "78c4c80b7f45ca35b946259f548897aae720cb05", repo: "https://github.com/discoverygarden/islandora_object_lock.git" }
