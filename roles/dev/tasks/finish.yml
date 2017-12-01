@@ -6,13 +6,13 @@
 ####                                                                 ####
 #########################################################################
 
-- name: feature revert
-  command: drush fra -y
+- name: clear cache
+  command: drush cc all
   args:
     chdir: '{{ drupal_core_path }}'
 
-- name: clear cache
-  command: drush cc all
+- name: feature revert
+  command: drush fra -y
   args:
     chdir: '{{ drupal_core_path }}'
 
@@ -28,3 +28,9 @@
     mode: 0755
     recurse: yes
   when: environment_type == 'dev'
+
+# reverting manually after the build cleared GUI 'overridden' status.
+- name: feature revert
+  command: drush fra -y
+  args:
+    chdir: '{{ drupal_core_path }}'
