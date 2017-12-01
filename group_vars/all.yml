@@ -200,7 +200,8 @@ git_versions:
 # - { dest: "/sites/all/modules/islandora_compound_batch/", version: "ec2eb7fb9e7e4f4440b78e3975435f06d2b79ac0", repo: "https://github.com/MarcusBarnes/islandora_compound_batch" }
 # - { dest: "/sites/all/modules/islandora_compound_parent_metadata/", version: "175f501092e87f384a49fa361d27a19706bdad4e", repo: "https://github.com/lsulibraries/islandora_compound_parent_metadata" }
 # - { dest: "/sites/all/modules/islandora_datastream_crud/", version: "4a250e96bc0afcc0563263037d5e621a6fe7c217", repo: "https://github.com/mjordan/islandora_datastream_crud" }
-# - { dest: "/sites/all/modules/islandora-features/", version: "e49ffea3f8a92d6370fda44dc85c7fbab1de75b4", repo: "https://github.com/lsulibraries/islandora-features" }
+- { dest: "/sites/all/modules/islandora-features/", version: "FB-nosubmods", repo: "https://github.com/lsulibraries/islandora-features" }
+- { dest: "/sites/all/modules/features_ldl_blocks/", version: "FB-logos", repo: "https://github.com/lsulibraries/islandora_feature_block_setting_ldl_theme" }
 # - { dest: "/sites/all/modules/islandora_find_replace/", version: "1d194585a6a693cb68c004c4dac35f87d2db2ea6", repo: "https://github.com/contentmath/islandora_find_replace" }
 # - { dest: "/sites/all/modules/islandora_fits/", version: "963c5019e6f872b0d18759793ebec7870f521834", repo: "https://github.com/islandora/islandora_fits.git" }
 # - { dest: "/sites/all/modules/islandora_form_fieldpanel/", version: "08d6007dd5af074368888ebecc35dfa71db593ef", repo: "https://github.com/islandora/islandora_form_fieldpanel.git" }
@@ -257,7 +258,7 @@ git_versions:
 # - { dest: "/sites/all/modules/objective_forms/", version: "c4a35af9aa70bb5f561c2726c0261f362d6d91cf", repo: "https://github.com/islandora/objective_forms.git" }
 # - { dest: "/sites/all/modules/php_lib/", version: "3db418ffb11b2ec16d3435253fb4e9cd553ed5ba", repo: "https://github.com/islandora/php_lib.git" }
 # - { dest: "/sites/all/modules/trello_tickets/", version: "71e82e174947529f2bf365c58b381f574ea09ba6", repo: "https://github.com/lsulibraries/trello_tickets" }
-- { dest: "/sites/all/themes/ldl/", version: "78b5068002040c968529b72e627c8343deb1434c", repo: "https://github.com/lsulibraries/ldl_theme" }
+- { dest: "/sites/all/themes/ldl/", version: "stable", repo: "https://github.com/lsulibraries/ldl_theme" }
 
 #####################################################################################################
 # NB- when adding new sample collections, zips for compound collections need to contain a top-level #
@@ -272,6 +273,6 @@ s3_collections:
   - { cpd: false, title: "Loyola University New Orleans Community and Resilience Collection (Loyola)", description: "", filename: "loyno-p16313coll87-jp2.zip", cmodels: "islandora:sp_large_image_cmodel", namespace: "loyno-p16313coll87", type: "zip"}
   - { cpd: false, title: "Historic Photographs of Southwest Louisiana (McNeese)", description: "", filename: "mcneese-psl-sample.zip", cmodels: "islandora:sp_large_image_cmodel", namespace: "mcneese-psl", type: "zip"}
 
-ingest_sample_collections: yes
+ingest_sample_collections: no
 run_dev_steps: no
-sassy: yes
+sassy: no
