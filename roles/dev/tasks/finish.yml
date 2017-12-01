@@ -24,8 +24,8 @@
   file:
     path: "{{ drupal_core_path }}/"
     owner: vagrant
-    group: vagrant
-    mode: 0755
+    group: www-data
+    mode: 0775
     recurse: yes
   when: environment_type == 'dev'
 
