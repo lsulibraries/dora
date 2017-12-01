@@ -166,8 +166,9 @@ drush_role_remove_perm: []
 # drush_role_remove_perm:
 # - { role: 'intern', perm: "namespace administer homepages,manage own namespace field,manage objects in any namespace" }
 
-drush_vset_simple: []
-# drush_vset_simple:
+# drush_vset_simple: []
+drush_vset_simple:
+- { key: islandora_compound_object_use_jail_view, value: 1 }  
 # - { key: theme_default, value: ldl }
 # - { key: islandora_basic_collection_admin_page_size, value: 50 }
 # - { key: islandora_collection_search_advanced_search_alter, value: 1 }
@@ -179,12 +180,16 @@ drush_vset_simple: []
 
 #git_versions: []
 git_versions:
+- { dest: "/sites/all/modules/features_ldl_blocks/", version: "FB-compound", repo: "https://github.com/lsulibraries/islandora_feature_block_setting_ldl_theme" }
 # - { dest: "/sites/all/libraries/bagit/", version: "8d197da6d18c06a7aa880d853eb50820f408c4bb", repo: "https://github.com/scholarslab/BagItPHP.git" }
 # - { dest: "/sites/all/libraries/tuque/", version: "6423fa135fbe275ad3129b36a54b4f0a85b70f8e", repo: "https://github.com/Islandora/tuque.git" }
+
+- { dest: "/sites/all/libraries/JAIL/", version: "master", repo: "https://github.com/sebarmeli/JAIL" }
 # - { dest: "/sites/all/modules/about-ldc/", version: "2adbe2ac6548d6fd0771aa85ef8fe6102c6c9520", repo: "https://github.com/lsulibraries/about-ldc" }
 # - { dest: "/sites/all/modules/book_access/", version: "e2cb0c8333ffbb19df35a613993c5273adbc6ea6", repo: "https://github.com/lsulibraries/drupal_book_access" }
 # - { dest: "/sites/all/modules/drush_util/", version: "d724b76e60d09a6cdd7de40a4212dcc9d4998301", repo: "https://github.com/lsulibraries/drush-util" }
 # - { dest: "/sites/all/modules/google_analytics_reports/", version: "4e7229981ecbc33b8df1199f35c6f14477018c7e", repo: "https://github.com/discoverygarden/google_analytics_reports" }
+- { dest: "/sites/all/modules/features_ldl_blocks/", version: "9c8553e24a329c50cfdf80145a60b24fcc2dd904", repo: "https://github.com/lsulibraries/islandora_feature_block_setting_ldl_theme" }
 # - { dest: "/sites/all/modules/islandora_altmetrics/", version: "5e412281a931907bfc9a8ec49dcea32a42606743", repo: "https://github.com/islandora/islandora_altmetrics.git" }
 # - { dest: "/sites/all/modules/islandora_bagit/", version: "6ef89baa2e3d5686d5568f2d3520b9559e684495", repo: "https://github.com/islandora/islandora_bagit.git" }
 # - { dest: "/sites/all/modules/islandora_batch_derivative_trigger/", version: "4959cfb817742a33f9c8aec732e20222852bd35c", repo: "https://github.com/lsulibraries/islandora_batch_derivative_trigger" }
@@ -200,7 +205,7 @@ git_versions:
 # - { dest: "/sites/all/modules/islandora_compound_batch/", version: "ec2eb7fb9e7e4f4440b78e3975435f06d2b79ac0", repo: "https://github.com/MarcusBarnes/islandora_compound_batch" }
 # - { dest: "/sites/all/modules/islandora_compound_parent_metadata/", version: "175f501092e87f384a49fa361d27a19706bdad4e", repo: "https://github.com/lsulibraries/islandora_compound_parent_metadata" }
 # - { dest: "/sites/all/modules/islandora_datastream_crud/", version: "4a250e96bc0afcc0563263037d5e621a6fe7c217", repo: "https://github.com/mjordan/islandora_datastream_crud" }
-# - { dest: "/sites/all/modules/islandora-features/", version: "e49ffea3f8a92d6370fda44dc85c7fbab1de75b4", repo: "https://github.com/lsulibraries/islandora-features" }
+- { dest: "/sites/all/modules/islandora-features/", version: "FB-nosubmods", repo: "https://github.com/lsulibraries/islandora-features" }
 # - { dest: "/sites/all/modules/islandora_find_replace/", version: "1d194585a6a693cb68c004c4dac35f87d2db2ea6", repo: "https://github.com/contentmath/islandora_find_replace" }
 # - { dest: "/sites/all/modules/islandora_fits/", version: "963c5019e6f872b0d18759793ebec7870f521834", repo: "https://github.com/islandora/islandora_fits.git" }
 # - { dest: "/sites/all/modules/islandora_form_fieldpanel/", version: "08d6007dd5af074368888ebecc35dfa71db593ef", repo: "https://github.com/islandora/islandora_form_fieldpanel.git" }
@@ -269,7 +274,7 @@ s3_collections:
 #  - { cpd: true, title: "Camp Ruston", description: "heterogenous collection", filename: "latech-cmprt-cpd.zip", cmodels: "islandora:sp_large_image_cmodel", namespace: "latech-cmprt", type: "zip", dirname: "latech-cmprt-cpd"}
 #  - { cpd: false, title: "LA Hurricane Resources", description: "photos, bruh", filename: "uno-p120701coll13-jp2.zip", cmodels: "islandora:sp_large_image_cmodel", namespace: "uno-p120701coll13", type: "zip"}
 #  - { cpd: false, title: "Charles L. Thompson Photographs (lsu)", description: "", filename: "lsu-clt-jp2.zip", cmodels: "islandora:sp_large_image_cmodel", namespace: "lsu-clt", type: "zip"}
-- { cpd: false, title: "Loyola University New Orleans Community and Resilience Collection (Loyola)", description: "", filename: "loyno-p16313coll87-jp2.zip", cmodels: "islandora:sp_large_image_cmodel", namespace: "loyno-p16313coll87", type: "zip"}
+# - { cpd: false, title: "Loyola University New Orleans Community and Resilience Collection (Loyola)", description: "", filename: "loyno-p16313coll87-jp2.zip", cmodels: "islandora:sp_large_image_cmodel", namespace: "loyno-p16313coll87", type: "zip"}
 #  - { cpd: false, title: "Historic Photographs of Southwest Louisiana (McNeese)", description: "", filename: "mcneese-psl-sample.zip", cmodels: "islandora:sp_large_image_cmodel", namespace: "mcneese-psl", type: "zip"}
 - { cpd: true, title: "Edith Dabney Doll Collection", description: "Includes only compound items", filename: "lsu-p16313coll9-cpd.zip", cmodels: "islandora:sp_large_image_cmodel", namespace: "lsu-dolls", type: "zip", dirname: "lsu-p16313coll9-cpd"}
 
