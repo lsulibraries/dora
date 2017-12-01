@@ -235,7 +235,7 @@ git_versions:
 # - { dest: "/sites/all/modules/islandora_solution_pack_audio/", version: "d386517a45d811dc8cf81b76c8c0acab9a962629", repo: "https://github.com/islandora/islandora_solution_pack_audio.git" }
 # - { dest: "/sites/all/modules/islandora_solution_pack_book/", version: "1a30755430daa094703225213fad12c53ee854f2", repo: "https://github.com/islandora/islandora_solution_pack_book.git" }
 # - { dest: "/sites/all/modules/islandora_solution_pack_collection/", version: "8ada2b60c1fc98e65f45b2498806b7e47ab2fa6a", repo: "https://github.com/islandora/islandora_solution_pack_collection.git" }
-- { dest: "/sites/all/modules/islandora_solution_pack_compound/", version: "c6aebb53a5a2a73bac8d6691007ba49d97031eb0", repo: "https://github.com/lsulibraries/islandora_solution_pack_compound.git" }
+- { dest: "/sites/all/modules/islandora_solution_pack_compound/", version: "FB-overview", repo: "https://github.com/lsulibraries/islandora_solution_pack_compound.git" }
 # - { dest: "/sites/all/modules/islandora_solution_pack_disk_image/", version: "91f25ab90f49001da3a377ee3fb181ccaa14c69d", repo: "https://github.com/islandora/islandora_solution_pack_disk_image.git" }
 # - { dest: "/sites/all/modules/islandora_solution_pack_entities/", version: "dfbec21e0425eb3b4a4bfdbf1c9b1b993125572d", repo: "https://github.com/islandora/islandora_solution_pack_entities.git" }
 # - { dest: "/sites/all/modules/islandora_solution_pack_image/", version: "d8663375f832e43ee2b42e4448188f5c841f752b", repo: "https://github.com/islandora/islandora_solution_pack_image.git" }
@@ -257,7 +257,7 @@ git_versions:
 # - { dest: "/sites/all/modules/objective_forms/", version: "c4a35af9aa70bb5f561c2726c0261f362d6d91cf", repo: "https://github.com/islandora/objective_forms.git" }
 # - { dest: "/sites/all/modules/php_lib/", version: "3db418ffb11b2ec16d3435253fb4e9cd553ed5ba", repo: "https://github.com/islandora/php_lib.git" }
 # - { dest: "/sites/all/modules/trello_tickets/", version: "71e82e174947529f2bf365c58b381f574ea09ba6", repo: "https://github.com/lsulibraries/trello_tickets" }
-- { dest: "/sites/all/themes/ldl/", version: "8dc359b390e8719c9529ffd9881621e3927f7f6c", repo: "https://github.com/lsulibraries/ldl_theme" }
+- { dest: "/sites/all/themes/ldl/", version: "compoundObject", repo: "https://github.com/lsulibraries/ldl_theme" }
 
 #####################################################################################################
 # NB- when adding new sample collections, zips for compound collections need to contain a top-level #
