@@ -212,7 +212,7 @@ git_versions:
 # - { dest: "/sites/all/modules/islandora_marcxml/", version: "fb2f03edc2d7ca445766228fe1d7de7abab76fa1", repo: "https://github.com/islandora/islandora_marcxml.git" }
 # - { dest: "/sites/all/modules/islandora_migrate_cdm_collections/", version: "0b5f5dfdeb5ae1add52d09a865142afdae636b25", repo: "https://github.com/mjordan/islandora_migrate_cdm_collections" }
 # - { dest: "/sites/all/modules/islandora_mods_display/", version: "4d77f1aad6dd7ba5131f65a39d8622bbf4cc6098", repo: "https://github.com/lsulibraries/islandora_mods_display" }
-- { dest: "/sites/all/modules/islandora_namespace_homepage/", version: "5dad0a85fc8623532d20bc6e4264dcc70d181e75", repo: "https://github.com/lsulibraries/islandora_namespace_homepage" }
+- { dest: "/sites/all/modules/islandora_namespace_homepage/", version: "dash-fix", repo: "https://github.com/lsulibraries/islandora_namespace_homepage" }
 # - { dest: "/sites/all/modules/islandora_newspaper_batch/", version: "775afe8acdfed53fa3166fa92118e84db3b91cf6", repo: "https://github.com/islandora/islandora_newspaper_batch.git" }
 # - { dest: "/sites/all/modules/islandora_oai/", version: "634c86e1a78cd7167e705d07bb1ec770fd12d5b1", repo: "https://github.com/islandora/islandora_oai.git" }
 # - { dest: "/sites/all/modules/islandora_object_lock/", version: "78c4c80b7f45ca35b946259f548897aae720cb05", repo: "https://github.com/discoverygarden/islandora_object_lock.git" }
@@ -264,14 +264,16 @@ git_versions:
 # directory whose name is recorded in the `dirname` dict key.                                       #
 #####################################################################################################
 s3_collections:
-  - { cpd: false, title: "Huey P. Long", description: "Photos of the Governor", filename: "LSU-HPL.zip", cmodels: "islandora:sp_large_image_cmodel", namespace: "lsu-hpl", type: "zip" }
+  # - { cpd: false, title: "Huey P. Long", description: "Photos of the Governor", filename: "LSU-HPL.zip", cmodels: "islandora:sp_large_image_cmodel", namespace: "lsu-hpl", type: "zip" }
   - { cpd: false, title: "Camp Ruston", description: "heterogenous collection", filename: "latech-cmprt-simple.zip", cmodels: "islandora:sp_large_image_cmodel", namespace: "lsu-cmprt", type: "zip" }
-  - { cpd: true, title: "Camp Ruston", description: "heterogenous collection", filename: "latech-cmprt-cpd.zip", cmodels: "islandora:sp_large_image_cmodel", namespace: "lsuhsc-cmprt", type: "zip", dirname: "latech-cmprt-cpd"}
-  # - { cpd: false, title: "LA Hurricane Resources", description: "photos, bruh", filename: "uno-p120701coll13-jp2.zip", cmodels: "islandora:sp_large_image_cmodel", namespace: "uno-p120701coll13", type: "zip"}
+  - { cpd: false, title: "Camp Ruston", description: "heterogenous collection", filename: "latech-cmprt-simple.zip", cmodels: "islandora:sp_large_image_cmodel", namespace: "lsuhsc-cmprt", type: "zip" }
+  - { cpd: false, title: "Camp Ruston", description: "heterogenous collection", filename: "latech-cmprt-simple.zip", cmodels: "islandora:sp_large_image_cmodel", namespace: "lsuhscs-cmprt", type: "zip" }
+  # - { cpd: true, title: "Camp Ruston", description: "heterogenous collection", filename: "latech-cmprt-cpd.zip", cmodels: "islandora:sp_large_image_cmodel", namespace: "lsuhsc-cmprt", type: "zip", dirname: "latech-cmprt-cpd"}
+  # - { cpd: false, title: "LA Hurricane Resources", description: "photos, bruh", filename: "uno-p120701coll13-jp2.zip", cmodels: "islandora:sp_large_image_cmodel", namespace: "lsu-thwcoh-politics", type: "zip"}
   # - { cpd: false, title: "Charles L. Thompson Photographs (lsu)", description: "", filename: "lsu-clt-jp2.zip", cmodels: "islandora:sp_large_image_cmodel", namespace: "lsu-clt", type: "zip"}
   # - { cpd: false, title: "Loyola University New Orleans Community and Resilience Collection (Loyola)", description: "", filename: "loyno-p16313coll87-jp2.zip", cmodels: "islandora:sp_large_image_cmodel", namespace: "loyno-p16313coll87", type: "zip"}
   # - { cpd: false, title: "Historic Photographs of Southwest Louisiana (McNeese)", description: "", filename: "mcneese-psl-sample.zip", cmodels: "islandora:sp_large_image_cmodel", namespace: "mcneese-psl", type: "zip"}
 
 ingest_sample_collections: yes
-run_dev_steps: no
+run_dev_steps: yes
 sassy: no
