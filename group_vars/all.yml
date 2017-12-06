@@ -156,9 +156,9 @@ drush_role_create: []
 #- 'collection admin'
 #- 'intern'
 
-drush_role_add_perm: []
-# drush_role_add_perm:
-# - { role: 'administrator', perm: 'administer publish toggle defaults' }
+#drush_role_add_perm: []
+drush_role_add_perm:
+- { role: '"collection admin"', perm: 'always view interstital pages' }
 # - { role: 'administrator', perm: "namespace administer homepages,manage own namespace field,manage objects in any namespace" }
 # - { role: 'collection admin', perm: "administer islandora ip embargoes,control islandora ip embargoes,manage islandora ip embargoes" }
 # - { role: 'collection admin', perm: 'namespace administer homepages' }
@@ -168,9 +168,9 @@ drush_role_remove_perm: []
 # drush_role_remove_perm:
 # - { role: 'intern', perm: "namespace administer homepages,manage own namespace field,manage objects in any namespace" }
 
-drush_vset_simple: []
-# drush_vset_simple:
-# - { key: theme_default, value: ldl }
+#drush_vset_simple: []
+drush_vset_simple:
+- { key: islandora_solution_pack_remote_resource_redirection_type, value: goto }
 # - { key: islandora_basic_collection_admin_page_size, value: 50 }
 # - { key: islandora_collection_search_advanced_search_alter, value: 1 }
 # - { key: islandora_collection_toggle_publish_by_default, value: 0 }

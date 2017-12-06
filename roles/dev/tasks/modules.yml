@@ -40,3 +40,8 @@
   command: drush -y updatedb
   args:
     chdir: '{{ drupal_core_path }}'
+
+- name: install deps with composer for RR
+  command: composer install
+  args:
+    chdir: "{{ drupal_core_path }}/sites/all/modules/islandora_solution_pack_remote_resource/modules/islandora_remote_resource_batch"
