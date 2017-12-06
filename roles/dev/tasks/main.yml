@@ -22,3 +22,14 @@
   command: drush vset theme_default bartik
   args:
     chdir: '{{ drupal_core_path  }}'
+
+- name: get drush_extras
+  command: drush dl drush_extras
+  args:
+    chdir: '{{ drupal_core_path  }}'
+
+- name: remove block for advanced search (it's in the way)
+  command: drush block-configure --module=islandora_solr --delta=advanced
+  args:
+    chdir: '{{ drupal_core_path  }}'
+
