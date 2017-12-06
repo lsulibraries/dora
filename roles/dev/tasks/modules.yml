@@ -24,6 +24,11 @@
     host: 192.168.111.111
     port: 8080
 
+- name: remove old submod block_setting_ldl_theme
+  file:
+    path: "{{ drupal_core_path }}/sites/all/modules/islandora-features/block_setting_ldl_theme"
+    state: absent
+
 - name: Enable modules.
   command: "drush -u 1 -y en {{ item }}"
   args:
