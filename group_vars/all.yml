@@ -244,7 +244,7 @@ git_versions:
 # - { dest: "/sites/all/modules/islandora_solution_pack_image/", version: "d8663375f832e43ee2b42e4448188f5c841f752b", repo: "https://github.com/islandora/islandora_solution_pack_image.git" }
 # - { dest: "/sites/all/modules/islandora_solution_pack_large_image/", version: "f5dcc3d2ea4f22f8f9851f4227674f5dc78c9172", repo: "https://github.com/islandora/islandora_solution_pack_large_image.git" }
 # - { dest: "/sites/all/modules/islandora_solution_pack_newspaper/", version: "9fe4462cf967a1ba11f782b5f7f5a8a5898142a1", repo: "https://github.com/islandora/islandora_solution_pack_newspaper.git" }
-# - { dest: "/sites/all/modules/islandora_solution_pack_oh/", version: "eb6ada48a77003f7a02c292e5e862797cd7fddfa", repo: "https://github.com/lsulibraries/islandora_solution_pack_oh" }
+- { dest: "/sites/all/modules/islandora_solution_pack_oh/", version: "FB-compound", repo: "https://github.com/lsulibraries/islandora_solution_pack_oh" }
 # - { dest: "/sites/all/modules/islandora_solution_pack_pdf/", version: "bb1ce3b1f7c7853360f8ebeabfbab287391f2562", repo: "https://github.com/lsulibraries/islandora_solution_pack_pdf" }
 # - { dest: "/sites/all/modules/islandora_solution_pack_video/", version: "4ba0b40707a77e4276ebe834e3b0c28ec4d5f96a", repo: "https://github.com/islandora/islandora_solution_pack_video.git" }
 # - { dest: "/sites/all/modules/islandora_solution_pack_web_archive/", version: "c53b3007fdc6d2a98420ea7d9c8fc276e2c923a1", repo: "https://github.com/islandora/islandora_solution_pack_web_archive.git" }
