@@ -247,7 +247,7 @@ git_versions:
 # - { dest: "/sites/all/modules/islandora_solution_pack_web_archive/", version: "c53b3007fdc6d2a98420ea7d9c8fc276e2c923a1", repo: "https://github.com/islandora/islandora_solution_pack_web_archive.git" }
 # - { dest: "/sites/all/modules/islandora_transcript/", version: "52d2da53a3528d8b3cd7f8c44c517a1b4b86f39b", repo: "https://github.com/yorkulibraries/islandora_transcript" }
 # - { dest: "/sites/all/modules/islandora_url_redirector/", version: "142cff8bd3e03b1c3ecbc31d0fbf47b6d5b8ebee", repo: "https://github.com/bondjimbond/islandora_url_redirector" }
-# - { dest: "/sites/all/modules/islandora_utils/", version: "e068bbba43eb55c30e1505f5d1b663c8a7b8e2dc", repo: "https://github.com/lsulibraries/islandora_utils" }
+- { dest: "/sites/all/modules/islandora_utils/", version: "fb-cpolicy", repo: "https://github.com/lsulibraries/islandora_utils" }
 # - { dest: "/sites/all/modules/islandora/", version: "46b642f2bec4eb872de58cdbc14b7326104c6e0e", repo: "https://github.com/islandora/islandora.git" }
 # - { dest: "/sites/all/modules/islandora_videojs/", version: "655d5bd84849af7a9f6768b8dc96093ab0ac00de", repo: "https://github.com/islandora/islandora_videojs.git" }
 # - { dest: "/sites/all/modules/islandora_xacml_editor/", version: "242dabc614a63cc8938e06c4a5450b61b5fbeec5", repo: "https://github.com/islandora/islandora_xacml_editor.git" }
@@ -272,6 +272,6 @@ s3_collections:
   - { cpd: false, title: "Loyola University New Orleans Community and Resilience Collection (Loyola)", description: "", filename: "loyno-p16313coll87-jp2.zip", cmodels: "islandora:sp_large_image_cmodel", namespace: "loyno-p16313coll87", type: "zip"}
   - { cpd: false, title: "Historic Photographs of Southwest Louisiana (McNeese)", description: "", filename: "mcneese-psl-sample.zip", cmodels: "islandora:sp_large_image_cmodel", namespace: "mcneese-psl", type: "zip"}
 
-ingest_sample_collections: yes
+ingest_sample_collections: no
 run_dev_steps: no
-sassy: yes
+sassy: no
