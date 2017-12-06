@@ -171,7 +171,7 @@ drush_role_remove_perm: []
 #drush_vset_simple: []
 drush_vset_simple:
 - { key: islandora_solution_pack_remote_resource_redirection_type, value: goto }
-- { key: islandora_compound_object_use_jail_view, value: 1 }  
+# - { key: islandora_compound_object_use_jail_view, value: 1 }  
 # - { key: islandora_basic_collection_admin_page_size, value: 50 }
 # - { key: islandora_collection_search_advanced_search_alter, value: 1 }
 # - { key: islandora_collection_toggle_publish_by_default, value: 0 }
@@ -185,7 +185,7 @@ git_versions:
 # - { dest: "/sites/all/libraries/bagit/", version: "8d197da6d18c06a7aa880d853eb50820f408c4bb", repo: "https://github.com/scholarslab/BagItPHP.git" }
 # - { dest: "/sites/all/libraries/tuque/", version: "6423fa135fbe275ad3129b36a54b4f0a85b70f8e", repo: "https://github.com/Islandora/tuque.git" }
 
-- { dest: "/sites/all/libraries/JAIL/", version: "dbe6811f2a06b52a05dc8e40dcbfce8b3f5e8fcb", repo: "https://github.com/sebarmeli/JAIL" }
+# - { dest: "/sites/all/libraries/JAIL/", version: "dbe6811f2a06b52a05dc8e40dcbfce8b3f5e8fcb", repo: "https://github.com/sebarmeli/JAIL" }
 # - { dest: "/sites/all/modules/about-ldc/", version: "2adbe2ac6548d6fd0771aa85ef8fe6102c6c9520", repo: "https://github.com/lsulibraries/about-ldc" }
 # - { dest: "/sites/all/modules/book_access/", version: "e2cb0c8333ffbb19df35a613993c5273adbc6ea6", repo: "https://github.com/lsulibraries/drupal_book_access" }
 # - { dest: "/sites/all/modules/drush_util/", version: "d724b76e60d09a6cdd7de40a4212dcc9d4998301", repo: "https://github.com/lsulibraries/drush-util" }
@@ -205,7 +205,7 @@ git_versions:
 # - { dest: "/sites/all/modules/islandora_compound_batch/", version: "ec2eb7fb9e7e4f4440b78e3975435f06d2b79ac0", repo: "https://github.com/MarcusBarnes/islandora_compound_batch" }
 # - { dest: "/sites/all/modules/islandora_compound_parent_metadata/", version: "175f501092e87f384a49fa361d27a19706bdad4e", repo: "https://github.com/lsulibraries/islandora_compound_parent_metadata" }
 # - { dest: "/sites/all/modules/islandora_datastream_crud/", version: "4a250e96bc0afcc0563263037d5e621a6fe7c217", repo: "https://github.com/mjordan/islandora_datastream_crud" }
-- { dest: "/sites/all/modules/islandora-features/", version: "e49ffea3f8a92d6370fda44dc85c7fbab1de75b4", repo: "https://github.com/lsulibraries/islandora-features" }
+# - { dest: "/sites/all/modules/islandora-features/", version: "e49ffea3f8a92d6370fda44dc85c7fbab1de75b4", repo: "https://github.com/lsulibraries/islandora-features" }
 # - { dest: "/sites/all/modules/islandora_find_replace/", version: "1d194585a6a693cb68c004c4dac35f87d2db2ea6", repo: "https://github.com/contentmath/islandora_find_replace" }
 # - { dest: "/sites/all/modules/islandora_fits/", version: "963c5019e6f872b0d18759793ebec7870f521834", repo: "https://github.com/islandora/islandora_fits.git" }
 # - { dest: "/sites/all/modules/islandora_form_fieldpanel/", version: "08d6007dd5af074368888ebecc35dfa71db593ef", repo: "https://github.com/islandora/islandora_form_fieldpanel.git" }
@@ -216,7 +216,7 @@ git_versions:
 # - { dest: "/sites/all/modules/islandora_jwplayer/", version: "05779d1d1b43fd3341010b926ad0c8066d9e839d", repo: "https://github.com/islandora/islandora_jwplayer.git" }
 # - { dest: "/sites/all/modules/islandora_marcxml/", version: "fb2f03edc2d7ca445766228fe1d7de7abab76fa1", repo: "https://github.com/islandora/islandora_marcxml.git" }
 # - { dest: "/sites/all/modules/islandora_migrate_cdm_collections/", version: "0b5f5dfdeb5ae1add52d09a865142afdae636b25", repo: "https://github.com/mjordan/islandora_migrate_cdm_collections" }
-- { dest: "/sites/all/modules/islandora_mods_display/", version: "6c11eba06244f055c49956957b54d95cf079a161", repo: "https://github.com/lsulibraries/islandora_mods_display" }
+# - { dest: "/sites/all/modules/islandora_mods_display/", version: "6c11eba06244f055c49956957b54d95cf079a161", repo: "https://github.com/lsulibraries/islandora_mods_display" }
 - { dest: "/sites/all/modules/islandora_namespace_homepage/", version: "a996eb6d2033bcd3c90718324cc29946b81b487f", repo: "https://github.com/lsulibraries/islandora_namespace_homepage" }
 # - { dest: "/sites/all/modules/islandora_newspaper_batch/", version: "775afe8acdfed53fa3166fa92118e84db3b91cf6", repo: "https://github.com/islandora/islandora_newspaper_batch.git" }
 # - { dest: "/sites/all/modules/islandora_oai/", version: "634c86e1a78cd7167e705d07bb1ec770fd12d5b1", repo: "https://github.com/islandora/islandora_oai.git" }
@@ -240,7 +240,7 @@ git_versions:
 # - { dest: "/sites/all/modules/islandora_solution_pack_audio/", version: "d386517a45d811dc8cf81b76c8c0acab9a962629", repo: "https://github.com/islandora/islandora_solution_pack_audio.git" }
 # - { dest: "/sites/all/modules/islandora_solution_pack_book/", version: "1a30755430daa094703225213fad12c53ee854f2", repo: "https://github.com/islandora/islandora_solution_pack_book.git" }
 # - { dest: "/sites/all/modules/islandora_solution_pack_collection/", version: "8ada2b60c1fc98e65f45b2498806b7e47ab2fa6a", repo: "https://github.com/islandora/islandora_solution_pack_collection.git" }
-- { dest: "/sites/all/modules/islandora_solution_pack_compound/", version: "8a86b980229d8f287e22fea7edbf9752589e6f06", repo: "https://github.com/lsulibraries/islandora_solution_pack_compound.git" }
+# - { dest: "/sites/all/modules/islandora_solution_pack_compound/", version: "8a86b980229d8f287e22fea7edbf9752589e6f06", repo: "https://github.com/lsulibraries/islandora_solution_pack_compound.git" }
 # - { dest: "/sites/all/modules/islandora_solution_pack_disk_image/", version: "91f25ab90f49001da3a377ee3fb181ccaa14c69d", repo: "https://github.com/islandora/islandora_solution_pack_disk_image.git" }
 # - { dest: "/sites/all/modules/islandora_solution_pack_entities/", version: "dfbec21e0425eb3b4a4bfdbf1c9b1b993125572d", repo: "https://github.com/islandora/islandora_solution_pack_entities.git" }
 # - { dest: "/sites/all/modules/islandora_solution_pack_image/", version: "d8663375f832e43ee2b42e4448188f5c841f752b", repo: "https://github.com/islandora/islandora_solution_pack_image.git" }
@@ -263,8 +263,8 @@ git_versions:
 # - { dest: "/sites/all/modules/objective_forms/", version: "c4a35af9aa70bb5f561c2726c0261f362d6d91cf", repo: "https://github.com/islandora/objective_forms.git" }
 # - { dest: "/sites/all/modules/php_lib/", version: "3db418ffb11b2ec16d3435253fb4e9cd553ed5ba", repo: "https://github.com/islandora/php_lib.git" }
 # - { dest: "/sites/all/modules/trello_tickets/", version: "71e82e174947529f2bf365c58b381f574ea09ba6", repo: "https://github.com/lsulibraries/trello_tickets" }
-- { dest: "/sites/all/modules/features_ldl_blocks/", version: "039380f168a32624443311449ece8b8a3616f39a", repo: "https://github.com/lsulibraries/islandora_feature_block_setting_ldl_theme" }
-- { dest: "/sites/all/themes/ldl/", version: "1ab46a16d7f7fc06696c85d39121eff01c7934ac", repo: "https://github.com/lsulibraries/ldl_theme" }
+# - { dest: "/sites/all/modules/features_ldl_blocks/", version: "039380f168a32624443311449ece8b8a3616f39a", repo: "https://github.com/lsulibraries/islandora_feature_block_setting_ldl_theme" }
+# - { dest: "/sites/all/themes/ldl/", version: "1ab46a16d7f7fc06696c85d39121eff01c7934ac", repo: "https://github.com/lsulibraries/ldl_theme" }
 
 #####################################################################################################
 # NB- when adding new sample collections, zips for compound collections need to contain a top-level #
