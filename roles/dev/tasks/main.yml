@@ -11,3 +11,14 @@
 - include: finish.yml
 - include: sample-collections.yml
   when: ingest_sample_collections
+
+#one last thing
+- name: create metrotest:demo collection for testing
+  command: drush -u 1 islandora-utils-create-collection --title=metrotest --description=metrotest  --pid=metrotest:demo --cmodels=islandora:bookCModel,islandora:pageCModel,islandora:sp_basic_image,islandora:sp_large_image_cmodel,islandora:compoundCModel
+  args:
+    chdir: '{{ drupal_core_path }}'
+
+- name: vset theme_default to bartik bc multi-ingest menu
+  command: drush vset theme_default bartik
+  args:
+    chdir: '{{ drupal_core_path  }}'
