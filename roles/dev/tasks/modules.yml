@@ -23,6 +23,7 @@
 - wait_for:
     host: 192.168.111.111
     port: 8080
+  when: environment_type == 'dev'
 
 - name: remove old submod block_setting_ldl_theme
   file:
