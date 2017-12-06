@@ -48,6 +48,6 @@
     chdir: '{{drupal_core_path}}/sites/all/modules/islandora_multi_importer'
 
 - name: create metrotest:demo collection for testing
-  command: drush -u 1  --namespace=metrotest:demo
+  command: drush -u 1 islandora-utils-create-collection --title=metrotest --description=metrotest  --pid=metrotest:demo --cmodels=islandora:bookCModel,islandora:pageCModel,islandora:sp_basic_image,islandora:sp_large_image_cmodel,islandora:compoundCModel
   args:
     chdir: '{{ drupal_core_path }}'
