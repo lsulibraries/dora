@@ -281,3 +281,16 @@ s3_collections:
 ingest_sample_collections: yes
 run_dev_steps: yes
 sassy: yes
+
+
+# need to set the default pdf viewer
+# vagrant@vagrant-ubuntu-trusty-64:/var/www/ldl$ drush vget islandora_pdf_viewers --format=json
+# {
+#     "islandora_pdf_viewers": {
+#         "name": {
+#             "none": "none",
+#             "islandora_pdfjs": "islandora_pdfjs"
+#         },
+#         "default": "islandora_pdfjs"
+#     }
+# }
