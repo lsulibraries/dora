@@ -15,3 +15,147 @@
 #   service:
 #     name: tomcat7
 #     state: restarted
+
+
+- name: ensure new solr home exists
+  file:
+    path: /mnt/solr
+    state: directory
+    owner: tomcat7
+    group: tomcat7
+    mode: 0755
+
+
+- name: ensure tomcat dir exists on /mnt/logs
+  file:
+    path: /mnt/logs/tomcat7
+    state: directory
+    owner: tomcat7
+    group: tomcat7
+    mode: 0755
+
+- name: ensure apache2 dir exists on /mnt/logs
+  file:
+    path: /mnt/logs/apache2
+    state: directory
+    owner: www-data
+    group: www-data
+    mode: 0755
+
+- stat:
+    path: /usr/local/solr
+  register: solr_index_path
+
+- stat:
+    path: /var/log/tomcat7
+  register: tomcat_log_path
+
+- stat:
+    path: /var/log/apache2
+  register: apache_log_path
+
+- name: copy as much of the solr index as possible before shutdown
+  command: rsync -avz /usr/local/solr/ /mnt/solr/
+  when: solr_index_path.stat.islnk and solr_index_path.stat.lnk_source != '/mnt/solr'
+
+- name: copy existing tomcat logs to new location before shutdown
+  command: rsync -avz /var/log/tomcat7/ /mnt/logs/tomcat7/
+  when: tomcat_log_path.stat.exists and tomcat_log_path.stat.islnk and tomcat_log_path.stat.lnk_source != '/mnt/logs/tomcat7'
+
+- service: 
+    name: tomcat7
+    state: stopped
+  when: tomcat_log_path.stat.islnk and tomcat_log_path.stat.lnk_source != '/mnt/logs/tomcat7' and solr_index_path.stat.islnk and solr_index_path.stat.lnk_source != '/mnt/solr'
+
+- name: copy solr index again
+  command: rsync -avz /usr/local/solr/ /mnt/solr/
+  when: solr_index_path.stat.islnk and solr_index_path.stat.lnk_source != '/mnt/solr'
+
+- name: copy tomcat logs again
+  command: rsync -avz /var/log/tomcat7/ /mnt/logs/tomcat7/
+  when: tomcat_log_path.stat.islnk and tomcat_log_path.stat.lnk_source != '/mnt/logs/tomcat7'
+
+- name: remove current symlink
+  file:
+    path: /usr/local/solr
+    state: absent
+  when: solr_index_path.stat.lnk_source != '/mnt/solr'
+
+- name: create new link
+  file:
+    dest: /usr/local/solr
+    state: link
+    src: /mnt/solr
+    owner: tomcat7
+    group: tomcat7
+    mode: 0755
+
+- name: remove old logs dir
+  file:
+    path: /var/log/tomcat7
+    state: absent
+  when: tomcat_log_path.stat.isdir or tomcat_log_path.stat.lnk_source != '/mnt/logs/tomcat7'
+
+- name: create symlink to new location
+  file:
+    dest: /var/log/tomcat7
+    state: link
+    src: /mnt/logs/tomcat7/
+    owner: tomcat7
+    group: tomcat7
+    mode: 0755
+  when: not tomcat_log_path.stat.exists or tomcat_log_path.stat.lnk_source != '/mnt/logs/tomcat7'
+
+- service:
+    name: tomcat7
+    state: started
+
+- name: copy existing apache logs to new location before shutdown
+  command: rsync -avz /var/log/apache2/ /mnt/logs/apache2/
+  when: apache_log_path.stat.isdir or apache_log_path.stat.lnk_source != '/mnt/logs/apache2'
+
+- service:
+    name: apache2
+    state: stopped
+  when: apache_log_path.stat.lnk_source != '/mnt/logs/apache2'
+
+- name: copy the rest of the apache2 logs
+  command: rsync -avz /var/log/apache2/ /mnt/logs/apache2/
+  when: apache_log_path.stat.isdir or apache_log_path.stat.lnk_source != '/mnt/logs/apache2'
+
+- name: remove old logs dir
+  file:
+    path: /var/log/apache2
+    state: absent
+  when: apache_log_path.stat.isdir or apache_log_path.stat.lnk_source != '/mnt/logs/apache2'
+
+- name: create new apache logs symlink
+  file:
+    dest: /var/log/apache2
+    state: link
+    src: /mnt/logs/apache2/
+    owner: www-data
+    group: www-data
+    mode: 0755
+  when: apache_log_path.stat.lnk_source != '/mnt/logs/apache2'
+
+- debug:
+    var: apache_log_path
+
+- name: update apache2 log location
+  lineinfile:
+    state: present
+    dest: /etc/apache2/envvars
+    line: export APACHE_LOG_DIR=/mnt/logs/apache2$SUFFIX
+    regexp: 'export APACHE_LOG_DIR=/var/log/apache2$\SUFFIX'
+
+- name: update apache2 log rotation
+  lineinfile:
+    dest: /etc/logrotate.d/apache2
+    line: /mnt/logs/apache2/*.log {
+    regexp: '/var/log/apache2/\*\.log \{'
+
+- service:
+    name: apache2
+    state: started
+  become: true
