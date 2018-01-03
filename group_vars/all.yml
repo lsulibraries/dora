@@ -205,7 +205,7 @@ git_versions:
 # - { dest: "/sites/all/modules/islandora_compound_batch/", version: "ec2eb7fb9e7e4f4440b78e3975435f06d2b79ac0", repo: "https://github.com/MarcusBarnes/islandora_compound_batch" }
 # - { dest: "/sites/all/modules/islandora_compound_parent_metadata/", version: "175f501092e87f384a49fa361d27a19706bdad4e", repo: "https://github.com/lsulibraries/islandora_compound_parent_metadata" }
 # - { dest: "/sites/all/modules/islandora_datastream_crud/", version: "4a250e96bc0afcc0563263037d5e621a6fe7c217", repo: "https://github.com/mjordan/islandora_datastream_crud" }
-# - { dest: "/sites/all/modules/islandora-features/", version: "e49ffea3f8a92d6370fda44dc85c7fbab1de75b4", repo: "https://github.com/lsulibraries/islandora-features" }
+ - { dest: "/sites/all/modules/islandora-features/", version: "FB-switch-label-solr", repo: "https://github.com/lsulibraries/islandora-features" }
 # - { dest: "/sites/all/modules/islandora_find_replace/", version: "1d194585a6a693cb68c004c4dac35f87d2db2ea6", repo: "https://github.com/contentmath/islandora_find_replace" }
 # - { dest: "/sites/all/modules/islandora_fits/", version: "963c5019e6f872b0d18759793ebec7870f521834", repo: "https://github.com/islandora/islandora_fits.git" }
 # - { dest: "/sites/all/modules/islandora_form_fieldpanel/", version: "08d6007dd5af074368888ebecc35dfa71db593ef", repo: "https://github.com/islandora/islandora_form_fieldpanel.git" }
