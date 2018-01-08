@@ -1,2 +1,3 @@
 environment_type: 'production'
 ingest_sample_collections: no
+rebuild_solr: no # remove once the new solr schema is baked into the base box.

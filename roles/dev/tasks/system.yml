@@ -15,3 +15,63 @@
 #   service:
 #     name: tomcat7
 #     state: restarted
+
+- service:
+    name: tomcat7 
+    state: stopped
+  when: rebuild_solr
+
+- name: move solr index
+  command: "mv /usr/local/solr/collection1/conf /tmp/conf.{{ ansible_date_time.epoch }}"
+  when: rebuild_solr
+
+- git:
+    repo: https://github.com/lsulibraries/Islandora_solr_config
+    version: 2c813204ca52c1d13e6d07f95fd11ada53ca566e
+    dest: /usr/local/solr/collection1/conf
+  when: rebuild_solr
+
+- name: change ownership to tomcat7
+  file:
+    path: /usr/local/solr/collection1
+    owner: tomcat7
+    group: tomcat7
+    state: directory
+  when: rebuild_solr
+
+- name: move index
+  command: "mv /usr/local/solr/collection1/data /tmp/data.{{ ansible_date_time.epoch }}"
+  when: rebuild_solr
+
+- service:
+    name: tomcat7 
+    state: started
+  when: rebuild_solr
+
+- name: Wait for port 8000 to become open on the host, don't start checking for 10 seconds
+  wait_for:
+    port: 8080
+    delay: 10
+  when: rebuild_solr
+
+# once again for the newly created index.
+- name: change ownership to tomcat7
+  file:
+    path: /usr/local/solr/collection1
+    owner: tomcat7
+    group: tomcat7
+    state: directory
+  when: rebuild_solr
+
+- template:
+    src: rebuildSolr.sh.j2
+    dest: /usr/local/tomcat/webapps/fedoragsearch/client/rebuildSolr.sh
+    owner: root
+    group: root
+    mode: 0644
+  when: rebuild_solr
+
+- command: sh rebuildSolr.sh
+  args:
+    chdir: /usr/local/tomcat/webapps/fedoragsearch/client/
+  when: rebuild_solr
