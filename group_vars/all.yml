@@ -179,7 +179,8 @@ drush_vset_simple:
 # - { key: islandora_solr_limit_result_fields, value: 1 }
 # - { key: site_frontpage, value: browse-collections }
 # - { key: site_name, value: 'Louisiana Digital Library' }
-
+- { key: islandora_basic_collection_display_backend, value: 'islandora_solr_query_backend' }
+- { key: islandora_solr_collection_sort, value: "'mods_titleInfo_title_ss asc'" }
 
 git_versions:
 # - { dest: "/sites/all/libraries/bagit/", version: "8d197da6d18c06a7aa880d853eb50820f408c4bb", repo: "https://github.com/scholarslab/BagItPHP.git" }
@@ -264,7 +265,7 @@ git_versions:
 # - { dest: "/sites/all/modules/php_lib/", version: "3db418ffb11b2ec16d3435253fb4e9cd553ed5ba", repo: "https://github.com/islandora/php_lib.git" }
 # - { dest: "/sites/all/modules/trello_tickets/", version: "71e82e174947529f2bf365c58b381f574ea09ba6", repo: "https://github.com/lsulibraries/trello_tickets" }
 # - { dest: "/sites/all/modules/features_ldl_blocks/", version: "039380f168a32624443311449ece8b8a3616f39a", repo: "https://github.com/lsulibraries/islandora_feature_block_setting_ldl_theme" }
-# - { dest: "/sites/all/themes/ldl/", version: "1ab46a16d7f7fc06696c85d39121eff01c7934ac", repo: "https://github.com/lsulibraries/ldl_theme" }
+# - { dest: "/sites/all/themes/ldl/", version: "stable", repo: "https://github.com/lsulibraries/ldl_theme" }
 
 #####################################################################################################
 # NB- when adding new sample collections, zips for compound collections need to contain a top-level #
@@ -280,6 +281,6 @@ s3_collections:
 - { cpd: false, title: "Historic Photographs of Southwest Louisiana (McNeese)", description: "", filename: "mcneese-psl-sample.zip", cmodels: "islandora:sp_large_image_cmodel", namespace: "mcneese-psl", type: "zip"}
 - { cpd: true, title: "Edith Dabney Doll Collection", description: "Includes only compound items", filename: "lsu-p16313coll9-cpd.zip", cmodels: "islandora:sp_large_image_cmodel", namespace: "lsu-dolls", type: "zip", dirname: "lsu-p16313coll9-cpd"}
 
-ingest_sample_collections: yes
+ingest_sample_collections: no
 run_dev_steps: no
 sassy: no
