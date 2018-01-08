@@ -29,3 +29,15 @@
   args:
     chdir: "{{ drupal_core_path }}/sites/ldl"
   command: "drush -u 1 ev \"variable_set(\'islandora_openseadragon_settings\', {{ seadragon_settings }})\""
+
+- name: set collection display query language
+  args:
+    chdir: "{{ drupal_core_path  }}"
+  command: "drush vset islandora_basic_collection_display_backend: islandora_solr_query_backend"
+
+- name: set collection display query field and order
+  args:
+    chdir: "{{ drupal_core_path  }}"
+  command: "drush vset islandora_solr_collection_sort: 'mods_titleInfo_title asc'"
+
+
