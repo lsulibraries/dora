@@ -29,3 +29,8 @@
 #   args:
 #     chdir: "{{ drupal_core_path }}/sites/ldl"
 #   command: "drush -u 1 ev \"variable_set(\'islandora_openseadragon_settings\', {{ seadragon_settings }})\""
+
+- name: configure pdf_viewer default
+  args:
+    chdir: "{{ drupal_core_path }}/sites/ldl"
+  command: drush -u 1 ev "variable_set('islandora_pdf_viewers', array('name' => array('none' => 'none','islandora_pdfjs' => 'islandora_pdfjs'), 'default' => 'islandora_pdfjs',));"
