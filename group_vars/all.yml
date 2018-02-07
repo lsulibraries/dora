@@ -171,6 +171,8 @@ drush_role_remove_perm: []
 #drush_vset_simple: []
 drush_vset_simple:
 - { key: islandora_solution_pack_remote_resource_redirection_type, value: goto }
+- { key: 'islandora_book_metadata_display', value: 1}
+- { key: islandora_internet_archive_bookreader_default_page_view, value: '2'}
 # - { key: islandora_compound_object_use_jail_view, value: 1 }  
 # - { key: islandora_basic_collection_admin_page_size, value: 50 }
 # - { key: islandora_collection_search_advanced_search_alter, value: 1 }
@@ -245,7 +247,7 @@ git_versions:
 # - { dest: "/sites/all/modules/islandora_solution_pack_entities/", version: "dfbec21e0425eb3b4a4bfdbf1c9b1b993125572d", repo: "https://github.com/islandora/islandora_solution_pack_entities.git" }
 # - { dest: "/sites/all/modules/islandora_solution_pack_image/", version: "d8663375f832e43ee2b42e4448188f5c841f752b", repo: "https://github.com/islandora/islandora_solution_pack_image.git" }
 # - { dest: "/sites/all/modules/islandora_solution_pack_large_image/", version: "f5dcc3d2ea4f22f8f9851f4227674f5dc78c9172", repo: "https://github.com/islandora/islandora_solution_pack_large_image.git" }
-# - { dest: "/sites/all/modules/islandora_solution_pack_newspaper/", version: "9fe4462cf967a1ba11f782b5f7f5a8a5898142a1", repo: "https://github.com/islandora/islandora_solution_pack_newspaper.git" }
+- { dest: "/sites/all/modules/islandora_solution_pack_newspaper/", version: "7c7256a5d0ae0971693dc04ddec5244f25688640", repo: "https://github.com/islandora/islandora_solution_pack_newspaper.git" }
 # - { dest: "/sites/all/modules/islandora_solution_pack_oh/", version: "eb6ada48a77003f7a02c292e5e862797cd7fddfa", repo: "https://github.com/lsulibraries/islandora_solution_pack_oh" }
 # - { dest: "/sites/all/modules/islandora_solution_pack_pdf/", version: "bb1ce3b1f7c7853360f8ebeabfbab287391f2562", repo: "https://github.com/lsulibraries/islandora_solution_pack_pdf" }
 - { dest: "/sites/all/modules/islandora_solution_pack_remote_resource/", version: "d4e1fc1cf0909de9154d1d9953328752750b1eb4", repo: "https://github.com/lsulibraries/islandora_solution_pack_remote_resource" }
@@ -280,6 +282,6 @@ s3_collections:
 - { cpd: false, title: "Historic Photographs of Southwest Louisiana (McNeese)", description: "", filename: "mcneese-psl-sample.zip", cmodels: "islandora:sp_large_image_cmodel", namespace: "mcneese-psl", type: "zip"}
 - { cpd: true, title: "Edith Dabney Doll Collection", description: "Includes only compound items", filename: "lsu-p16313coll9-cpd.zip", cmodels: "islandora:sp_large_image_cmodel", namespace: "lsu-dolls", type: "zip", dirname: "lsu-p16313coll9-cpd"}
 
-ingest_sample_collections: yes
-run_dev_steps: no
+ingest_sample_collections: no
+run_dev_steps: yes
 sassy: no
