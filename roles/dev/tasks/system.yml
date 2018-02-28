@@ -15,3 +15,29 @@
 #   service:
 #     name: tomcat7
 #     state: restarted
+
+- name: get new version of curl
+  unarchive:
+    remote_src: yes
+    src: http://curl.haxx.se/download/curl-7.57.0.tar.gz
+    dest: /opt/
+    validate_certs: no
+
+
+- name: Build curl
+  command: "{{ item }}"
+  args:
+    chdir: /opt/curl-7.57.0
+  with_items:
+    - ./buildconf
+    - ./configure
+    - make
+    - make install
+    - ldconfig
+
+- name: link the new curl
+  file:
+    state: link
+    src: /usr/local/bin/curl
+    dest: /usr/bin/curl
+    force: yes
