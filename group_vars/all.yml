@@ -150,6 +150,7 @@ drush_en:
 # - islandora_utils
 - islandora_solution_pack_remote_resource
 - islandora_remote_resource_batch
+- islandora_change_namespace
 
 drush_role_create: []
 #drush_role_create:
@@ -198,6 +199,7 @@ git_versions:
 # - { dest: "/sites/all/modules/islandora_bookmark/", version: "0eac0995dbd9c67e3adeef798fb255797fbb7f25", repo: "https://github.com/islandora/islandora_bookmark.git" }
 # - { dest: "/sites/all/modules/islandora_bulk_delete/", version: "0757f8d93460ac4ba57573ac31bcfcd724cea6c9", repo: "https://github.com/mjordan/islandora_bulk_delete" }
 # - { dest: "/sites/all/modules/islandora_cdm_permalink_redirector/", version: "9220076963f573af132107dc52b4d57279846f10", repo: "https://github.com/lsulibraries/islandora_cdm_permalink_redirector" }
+- { dest: "/sites/all/modules/islandora_change_namespace/", version: "66236ea10374e4aab84c7a620a042dccef88ec7b", repo: "https://github.com/lsulibraries/islandora_change_namespace.git" }
 # - { dest: "/sites/all/modules/islandora_checksum_checker/", version: "fa75265a108c63b0dd574d19a9808285ecaed59e", repo: "https://github.com/islandora/islandora_checksum_checker.git" }
 # - { dest: "/sites/all/modules/islandora_checksum/", version: "baed326356a9b56dcc38f733a193a32f6e11f981", repo: "https://github.com/islandora/islandora_checksum.git" }
 # - { dest: "/sites/all/modules/islandora_collection_search/", version: "b13f52df0d1799c6bcaf2a87a12d152bf189466b", repo: "https://github.com/lsulibraries/islandora_collection_search" }
@@ -271,14 +273,14 @@ git_versions:
 # directory whose name is recorded in the `dirname` dict key.                                       #
 #####################################################################################################
 s3_collections:
-- { cpd: false, title: "Huey P. Long", description: "Photos of the Governor", filename: "LSU-HPL.zip", cmodels: "islandora:sp_large_image_cmodel", namespace: "lsu-hpl", type: "zip" }
-- { cpd: false, title: "Camp Ruston", description: "heterogenous collection", filename: "latech-cmprt-simple.zip", cmodels: "islandora:sp_large_image_cmodel", namespace: "latech-cmprt", type: "zip" }
+# - { cpd: false, title: "Huey P. Long", description: "Photos of the Governor", filename: "LSU-HPL.zip", cmodels: "islandora:sp_large_image_cmodel", namespace: "lsu-hpl", type: "zip" }
 - { cpd: true, title: "Camp Ruston", description: "heterogenous collection", filename: "latech-cmprt-cpd.zip", cmodels: "islandora:sp_large_image_cmodel", namespace: "latech-cmprt", type: "zip", dirname: "latech-cmprt-cpd"}
-- { cpd: false, title: "LA Hurricane Resources", description: "photos, bruh", filename: "uno-p120701coll13-jp2.zip", cmodels: "islandora:sp_large_image_cmodel", namespace: "uno-p120701coll13", type: "zip"}
-- { cpd: false, title: "Charles L. Thompson Photographs (lsu)", description: "", filename: "lsu-clt-jp2.zip", cmodels: "islandora:sp_large_image_cmodel", namespace: "lsu-clt", type: "zip"}
-- { cpd: false, title: "Loyola University New Orleans Community and Resilience Collection (Loyola)", description: "", filename: "loyno-p16313coll87-jp2.zip", cmodels: "islandora:sp_large_image_cmodel", namespace: "loyno-p16313coll87", type: "zip"}
-- { cpd: false, title: "Historic Photographs of Southwest Louisiana (McNeese)", description: "", filename: "mcneese-psl-sample.zip", cmodels: "islandora:sp_large_image_cmodel", namespace: "mcneese-psl", type: "zip"}
-- { cpd: true, title: "Edith Dabney Doll Collection", description: "Includes only compound items", filename: "lsu-p16313coll9-cpd.zip", cmodels: "islandora:sp_large_image_cmodel", namespace: "lsu-dolls", type: "zip", dirname: "lsu-p16313coll9-cpd"}
+# - { cpd: true, title: "Edith Dabney Doll Collection", description: "Includes only compound items", filename: "lsu-p16313coll9-cpd.zip", cmodels: "islandora:sp_large_image_cmodel", namespace: "lsu-dolls", type: "zip", dirname: "lsu-p16313coll9-cpd"}
+- { cpd: false, title: "Camp Ruston", description: "heterogenous collection", filename: "latech-cmprt-simple.zip", cmodels: "islandora:sp_large_image_cmodel", namespace: "latech-cmprt", type: "zip" }
+# - { cpd: false, title: "LA Hurricane Resources", description: "photos, bruh", filename: "uno-p120701coll13-jp2.zip", cmodels: "islandora:sp_large_image_cmodel", namespace: "uno-p120701coll13", type: "zip"}
+# - { cpd: false, title: "Charles L. Thompson Photographs (lsu)", description: "", filename: "lsu-clt-jp2.zip", cmodels: "islandora:sp_large_image_cmodel", namespace: "lsu-clt", type: "zip"}
+# - { cpd: false, title: "Loyola University New Orleans Community and Resilience Collection (Loyola)", description: "", filename: "loyno-p16313coll87-jp2.zip", cmodels: "islandora:sp_large_image_cmodel", namespace: "loyno-p16313coll87", type: "zip"}
+# - { cpd: false, title: "Historic Photographs of Southwest Louisiana (McNeese)", description: "", filename: "mcneese-psl-sample.zip", cmodels: "islandora:sp_large_image_cmodel", namespace: "mcneese-psl", type: "zip"}
 
 ingest_sample_collections: yes
 run_dev_steps: no
