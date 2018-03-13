@@ -205,7 +205,7 @@ git_versions:
 # - { dest: "/sites/all/modules/islandora_checksum/", version: "baed326356a9b56dcc38f733a193a32f6e11f981", repo: "https://github.com/islandora/islandora_checksum.git" }
 # - { dest: "/sites/all/modules/islandora_collection_search/", version: "b13f52df0d1799c6bcaf2a87a12d152bf189466b", repo: "https://github.com/lsulibraries/islandora_collection_search" }
 # - { dest: "/sites/all/modules/islandora_collection_toggle_publish/", version: "1855155c137542a56e961144898c6c8d3ed264fd", repo: "https://github.com/lsulibraries/islandora_collection_toggle_publish" }
-- { dest: "/sites/all/modules/islandora_content_stats/", version: "f59f6282b01385fb24f9be07ed68e9d7f051aa97", repo: "https://github.com/lsulibraries/islandora_content_stats" }
+- { dest: "/sites/all/modules/islandora_content_stats/", version: "533f83e32347e0579a325b58f178fda3570da278", repo: "https://github.com/lsulibraries/islandora_content_stats" }
 # - { dest: "/sites/all/modules/islandora_compound_batch/", version: "ec2eb7fb9e7e4f4440b78e3975435f06d2b79ac0", repo: "https://github.com/MarcusBarnes/islandora_compound_batch" }
 # - { dest: "/sites/all/modules/islandora_compound_parent_metadata/", version: "175f501092e87f384a49fa361d27a19706bdad4e", repo: "https://github.com/lsulibraries/islandora_compound_parent_metadata" }
 # - { dest: "/sites/all/modules/islandora_datastream_crud/", version: "4a250e96bc0afcc0563263037d5e621a6fe7c217", repo: "https://github.com/mjordan/islandora_datastream_crud" }
