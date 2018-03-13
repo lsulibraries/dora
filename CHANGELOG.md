@@ -10,3 +10,4 @@ This release pulls in a number of changes that have been hanging around in the d
 - **Change Namespace**: new module to clone a collection from one namespace to another
 - **libcurl**: updates OS curl version to overcome intermittent errors in operating the 'change namespace' module
 - **solr changes**
+- **title/subtitle display** 
