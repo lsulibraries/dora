@@ -25,3 +25,13 @@ This release pulls in a number of changes that have been hanging around in the d
 - **book_access**: ensures unsupported module is disabled
 
 ## LDL-0.8.1
+
+*winter hustle*
+
+- updates to the dora dev box ingest machinery
+- adds LSU fork of Remote Resource solution pack to facilitate OAI harvesting of Tulane collections
+- bugfix for the namespaced search feature
+- adds logo for vville, updates ull logo
+- system admin utilities improvements for finding datastreams, creating collections
+- updates seadragon viewer default zoom
+- mods display updates
