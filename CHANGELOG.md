@@ -23,6 +23,7 @@ This release pulls in a number of changes that have been hanging around in the d
 - **solr changes**
 - **title/subtitle display**
 - **book_access**: ensures unsupported module is disabled
+- **IP embargo**: adds support for passthru of multiple image servers; adds debug logging
 
 ## LDL-0.8.1
 
