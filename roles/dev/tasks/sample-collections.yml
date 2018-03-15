@@ -44,6 +44,12 @@
     chdir: "{{ drupal_core_path }}"
   with_items: "{{ s3_collections }}"
 
+- name: set state active
+  command: "drush islandora-utils-set-state active --pid={{ item.namespace }}:collection"
+  args:
+    chdir: "{{ drupal_core_path }}"
+  with_items: "{{ s3_collections }}"
+
 - name: Unzip cpd.zips. // this is a workaround until cpd_batch takes .zips
   unarchive:
     src: "/tmp/{{ item.filename }}"
