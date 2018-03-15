@@ -5,6 +5,18 @@
 ####                                                                 ####
 #### This play relies totally on the variables set in all.yml.       ####
 #########################################################################
+- name: Update drupal
+  command: "{{ item }}"
+  args:
+    chdir: '{{ drupal_core_path }}'
+  with_items:
+    - drush vset --exact maintenance_mode 1
+    - drush cc all
+    - drush ard default
+    - drush up -y
+    - drush vset --exact maintenance_mode 0
+    - drush cc all
+  when: update_drupal
 
 - name: update core modules
   git:
@@ -13,21 +25,23 @@
     force: true
     version: "{{ islandora_core_version }}"
   with_items: "{{ islandora_core_modules }}"
+  when: update_islandora_core
 
-- name: update ldl stable modules
+- name: update core modules
   git:
     repo: "{{ item.repo }}"
     dest: '{{drupal_core_path}}{{ item.dest }}'
     force: true
-    version: "{{ ldl_major_version }}"
-  with_items: "{{ lsulibraries_stable_modules }}"
+    version: 7.x
+  with_items: "{{ islandora_modules_7x_only }}"
+  when: update_islandora_core
 
-- name: update ldl updated modules
+- name: update ldl modules
   git:
     repo: "{{ item.repo }}"
     dest: '{{drupal_core_path}}{{ item.dest }}'
     force: true
-    version: "{{ ldl_release_version }}"
+    version: "{{ ldl_module_version }}"
   with_items: "{{ lsulibraries_modules_updated }}"
 
 - name: Get git repos.
@@ -65,11 +79,6 @@
   args:
     chdir: '{{ drupal_core_path }}'
   with_items: "{{ drush_dis }}"
-
-- name: Update drupal db.
-  command: drush -y updatedb
-  args:
-    chdir: '{{ drupal_core_path }}'
 
 - name: install deps with composer for RR
   command: composer install

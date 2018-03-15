@@ -185,102 +185,96 @@ drush_vset_simple:
 
 islandora_core_modules:
 ## islandora and discoverygarden use '7.x-1.*' as their stable branch ##
-
-#### islandora ###
-# - { dest: "/sites/all/libraries/tuque/", repo: "https://github.com/Islandora/tuque.git" }
-# - { dest: "/sites/all/modules/islandora_altmetrics/", repo: "https://github.com/islandora/islandora_altmetrics.git" }
-# - { dest: "/sites/all/modules/islandora_bagit/", repo: "https://github.com/islandora/islandora_bagit.git" }
-# - { dest: "/sites/all/modules/islandora_batch/", repo: "https://github.com/islandora/islandora_batch.git" }
-# - { dest: "/sites/all/modules/islandora_book_batch/", repo: "https://github.com/islandora/islandora_book_batch.git" }
-# - { dest: "/sites/all/modules/islandora_bookmark/", repo: "https://github.com/islandora/islandora_bookmark.git" }
-# - { dest: "/sites/all/modules/islandora_checksum_checker/", repo: "https://github.com/islandora/islandora_checksum_checker.git" }
-# - { dest: "/sites/all/modules/islandora_checksum/", repo: "https://github.com/islandora/islandora_checksum.git" }
-# - { dest: "/sites/all/modules/islandora_fits/", repo: "https://github.com/islandora/islandora_fits.git" }
-# - { dest: "/sites/all/modules/islandora_form_fieldpanel/", repo: "https://github.com/islandora/islandora_form_fieldpanel.git" }
-# - { dest: "/sites/all/modules/islandora_image_annotation/", repo: "https://github.com/islandora/islandora_image_annotation.git" }
-# - { dest: "/sites/all/modules/islandora_importer/", repo: "https://github.com/islandora/islandora_importer.git" }
-# - { dest: "/sites/all/modules/islandora_internet_archive_bookreader/", repo: "https://github.com/islandora/islandora_internet_archive_bookreader.git" }
-# - { dest: "/sites/all/modules/islandora_jwplayer/", repo: "https://github.com/islandora/islandora_jwplayer.git" }
-# - { dest: "/sites/all/modules/islandora_marcxml/", repo: "https://github.com/islandora/islandora_marcxml.git" }
-# - { dest: "/sites/all/modules/islandora_newspaper_batch/", repo: "https://github.com/islandora/islandora_newspaper_batch.git" }
-# - { dest: "/sites/all/modules/islandora_oai/", repo: "https://github.com/islandora/islandora_oai.git" }
-# - { dest: "/sites/all/modules/islandora_ocr/", repo: "https://github.com/islandora/islandora_ocr.git" }
-# - { dest: "/sites/all/modules/islandora_paged_content/", repo: "https://github.com/islandora/islandora_paged_content.git" }
-# - { dest: "/sites/all/modules/islandora_pathauto/", repo: "https://github.com/islandora/islandora_pathauto.git" }
-# - { dest: "/sites/all/modules/islandora_populator/", repo: "https://github.com/islandora/islandora_populator.git" }
-# - { dest: "/sites/all/modules/islandora_premis/", repo: "https://github.com/islandora/islandora_premis.git" }
-# - { dest: "/sites/all/modules/islandora_scholar/", repo: "https://github.com/islandora/islandora_scholar.git" }
-# - { dest: "/sites/all/modules/islandora_simple_workflow/", repo: "https://github.com/islandora/islandora_simple_workflow.git" }
-# - { dest: "/sites/all/modules/islandora_solr_facet_pages/", repo: "https://github.com/islandora/islandora_solr_facet_pages.git" }
-# - { dest: "/sites/all/modules/islandora_solr_metadata/", repo: "https://github.com/islandora/islandora_solr_metadata.git" }
-# - { dest: "/sites/all/modules/islandora_solr_search/", repo: "https://github.com/islandora/islandora_solr_search.git" }
-# - { dest: "/sites/all/modules/islandora_solr_views/", repo: "https://github.com/islandora/islandora_solr_views.git" }
-# - { dest: "/sites/all/modules/islandora_solution_pack_audio/", repo: "https://github.com/islandora/islandora_solution_pack_audio.git" }
-# - { dest: "/sites/all/modules/islandora_solution_pack_book/", repo: "https://github.com/islandora/islandora_solution_pack_book.git" }
-# - { dest: "/sites/all/modules/islandora_solution_pack_collection/", repo: "https://github.com/islandora/islandora_solution_pack_collection.git" }
-# - { dest: "/sites/all/modules/islandora_solution_pack_disk_image/", repo: "https://github.com/islandora/islandora_solution_pack_disk_image.git" }
-# - { dest: "/sites/all/modules/islandora_solution_pack_entities/", repo: "https://github.com/islandora/islandora_solution_pack_entities.git" }
-# - { dest: "/sites/all/modules/islandora_solution_pack_image/", repo: "https://github.com/islandora/islandora_solution_pack_image.git" }
-# - { dest: "/sites/all/modules/islandora_solution_pack_large_image/", repo: "https://github.com/islandora/islandora_solution_pack_large_image.git" }
+- { dest: "/sites/all/modules/islandora_bagit/", repo: "https://github.com/islandora/islandora_bagit.git" }
+- { dest: "/sites/all/modules/islandora_batch/", repo: "https://github.com/islandora/islandora_batch.git" }
+- { dest: "/sites/all/modules/islandora_book_batch/", repo: "https://github.com/islandora/islandora_book_batch.git" }
+- { dest: "/sites/all/modules/islandora_bookmark/", repo: "https://github.com/islandora/islandora_bookmark.git" }
+- { dest: "/sites/all/modules/islandora_checksum_checker/", repo: "https://github.com/islandora/islandora_checksum_checker.git" }
+- { dest: "/sites/all/modules/islandora_checksum/", repo: "https://github.com/islandora/islandora_checksum.git" }
+- { dest: "/sites/all/modules/islandora_fits/", repo: "https://github.com/islandora/islandora_fits.git" }
+- { dest: "/sites/all/modules/islandora_form_fieldpanel/", repo: "https://github.com/islandora/islandora_form_fieldpanel.git" }
+- { dest: "/sites/all/modules/islandora_importer/", repo: "https://github.com/islandora/islandora_importer.git" }
+- { dest: "/sites/all/modules/islandora_internet_archive_bookreader/", repo: "https://github.com/islandora/islandora_internet_archive_bookreader.git" }
+- { dest: "/sites/all/modules/islandora_jwplayer/", repo: "https://github.com/islandora/islandora_jwplayer.git" }
+- { dest: "/sites/all/modules/islandora_marcxml/", repo: "https://github.com/islandora/islandora_marcxml.git" }
+- { dest: "/sites/all/modules/islandora_newspaper_batch/", repo: "https://github.com/islandora/islandora_newspaper_batch.git" }
+- { dest: "/sites/all/modules/islandora_oai/", repo: "https://github.com/islandora/islandora_oai.git" }
+- { dest: "/sites/all/modules/islandora_ocr/", repo: "https://github.com/islandora/islandora_ocr.git" }
+- { dest: "/sites/all/modules/islandora_paged_content/", repo: "https://github.com/islandora/islandora_paged_content.git" }
+- { dest: "/sites/all/modules/islandora_pathauto/", repo: "https://github.com/islandora/islandora_pathauto.git" }
+- { dest: "/sites/all/modules/islandora_populator/", repo: "https://github.com/islandora/islandora_populator.git" }
+- { dest: "/sites/all/modules/islandora_premis/", repo: "https://github.com/islandora/islandora_premis.git" }
+- { dest: "/sites/all/modules/islandora_scholar/", repo: "https://github.com/islandora/islandora_scholar.git" }
+- { dest: "/sites/all/modules/islandora_simple_workflow/", repo: "https://github.com/islandora/islandora_simple_workflow.git" }
+- { dest: "/sites/all/modules/islandora_solr_facet_pages/", repo: "https://github.com/islandora/islandora_solr_facet_pages.git" }
+- { dest: "/sites/all/modules/islandora_solr_metadata/", repo: "https://github.com/islandora/islandora_solr_metadata.git" }
+- { dest: "/sites/all/modules/islandora_solr_search/", repo: "https://github.com/islandora/islandora_solr_search.git" }
+- { dest: "/sites/all/modules/islandora_solr_views/", repo: "https://github.com/islandora/islandora_solr_views.git" }
+- { dest: "/sites/all/modules/islandora_solution_pack_audio/", repo: "https://github.com/islandora/islandora_solution_pack_audio.git" }
+- { dest: "/sites/all/modules/islandora_solution_pack_book/", repo: "https://github.com/islandora/islandora_solution_pack_book.git" }
+- { dest: "/sites/all/modules/islandora_solution_pack_collection/", repo: "https://github.com/islandora/islandora_solution_pack_collection.git" }
+- { dest: "/sites/all/modules/islandora_solution_pack_disk_image/", repo: "https://github.com/islandora/islandora_solution_pack_disk_image.git" }
+- { dest: "/sites/all/modules/islandora_solution_pack_entities/", repo: "https://github.com/islandora/islandora_solution_pack_entities.git" }
+- { dest: "/sites/all/modules/islandora_solution_pack_image/", repo: "https://github.com/islandora/islandora_solution_pack_image.git" }
+- { dest: "/sites/all/modules/islandora_solution_pack_large_image/", repo: "https://github.com/islandora/islandora_solution_pack_large_image.git" }
 - { dest: "/sites/all/modules/islandora_solution_pack_newspaper/", repo: "https://github.com/islandora/islandora_solution_pack_newspaper.git" }
-# - { dest: "/sites/all/modules/islandora_solution_pack_video/", repo: "https://github.com/islandora/islandora_solution_pack_video.git" }
-# - { dest: "/sites/all/modules/islandora_solution_pack_web_archive/", repo: "https://github.com/islandora/islandora_solution_pack_web_archive.git" }
-# - { dest: "/sites/all/modules/islandora/", repo: "https://github.com/islandora/islandora.git" }
-# - { dest: "/sites/all/modules/islandora_videojs/", repo: "https://github.com/islandora/islandora_videojs.git" }
-# - { dest: "/sites/all/modules/islandora_xacml_editor/", repo: "https://github.com/islandora/islandora_xacml_editor.git" }
-# - { dest: "/sites/all/modules/islandora_xml_forms/", repo: "https://github.com/islandora/islandora_xml_forms.git" }
-# - { dest: "/sites/all/modules/islandora_xmlsitemap/", repo: "https://github.com/islandora/islandora_xmlsitemap.git" }
-# - { dest: "/sites/all/modules/objective_forms/", repo: "https://github.com/islandora/objective_forms.git" }
-# - { dest: "/sites/all/modules/php_lib/", repo: "https://github.com/islandora/php_lib.git" }
-#
-### discoverygarden ###
-# - { dest: "/sites/all/modules/google_analytics_reports/", repo: "https://github.com/discoverygarden/google_analytics_reports" }
-# - { dest: "/sites/all/modules/islandora_object_lock/", repo: "https://github.com/discoverygarden/islandora_object_lock.git" }
-# - { dest: "/sites/all/modules/islandora_paged_content_pdf_batch/", repo: "https://github.com/discoverygarden/islandora_paged_content_pdf_batch" }
+- { dest: "/sites/all/modules/islandora_solution_pack_video/", repo: "https://github.com/islandora/islandora_solution_pack_video.git" }
+- { dest: "/sites/all/modules/islandora_solution_pack_web_archive/", repo: "https://github.com/islandora/islandora_solution_pack_web_archive.git" }
+- { dest: "/sites/all/modules/islandora_videojs/", repo: "https://github.com/islandora/islandora_videojs.git" }
+- { dest: "/sites/all/modules/islandora_xacml_editor/", repo: "https://github.com/islandora/islandora_xacml_editor.git" }
+- { dest: "/sites/all/modules/islandora_xml_forms/", repo: "https://github.com/islandora/islandora_xml_forms.git" }
+- { dest: "/sites/all/modules/islandora_xmlsitemap/", repo: "https://github.com/islandora/islandora_xmlsitemap.git" }
+- { dest: "/sites/all/modules/islandora/", repo: "https://github.com/islandora/islandora.git" }
+- { dest: "/sites/all/modules/objective_forms/", repo: "https://github.com/islandora/objective_forms.git" }
+- { dest: "/sites/all/modules/php_lib/", repo: "https://github.com/islandora/php_lib.git" }
 
-lsulibraries_stable_modules:
-# - { dest: "/sites/all/modules/about-ldc/", repo: "https://github.com/lsulibraries/about-ldc" }
-# - { dest: "/sites/all/modules/book_access/", repo: "https://github.com/lsulibraries/drupal_book_access" }
-# - { dest: "/sites/all/modules/drush_util/", repo: "https://github.com/lsulibraries/drush-util" }
-# - { dest: "/sites/all/modules/islandora_batch_derivative_trigger/", repo: "https://github.com/lsulibraries/islandora_batch_derivative_trigger" }
-# - { dest: "/sites/all/modules/islandora_cdm_permalink_redirector/", repo: "https://github.com/lsulibraries/islandora_cdm_permalink_redirector" }
-# - { dest: "/sites/all/modules/islandora_collection_search/", repo: "https://github.com/lsulibraries/islandora_collection_search" }
-# - { dest: "/sites/all/modules/islandora_collection_toggle_publish/", repo: "https://github.com/lsulibraries/islandora_collection_toggle_publish" }
-# - { dest: "/sites/all/modules/islandora_compound_parent_metadata/", repo: "https://github.com/lsulibraries/islandora_compound_parent_metadata" }
-# - { dest: "/sites/all/modules/islandora_ip_embargo/", repo: "https://github.com/lsulibraries/islandora_ip_embargo.git" }
-# - { dest: "/sites/all/modules/islandora_pdfjs/", repo: "https://github.com/lsulibraries/islandora_pdfjs" }
-# - { dest: "/sites/all/modules/islandora_solr_results_preference/", repo: "https://github.com/lsulibraries/islandora_solr_results_preference.git" }
-# - { dest: "/sites/all/modules/islandora_solution_pack_pdf/", repo: "https://github.com/lsulibraries/islandora_solution_pack_pdf" }
-# - { dest: "/sites/all/modules/islandora_xquery/", repo: "https://github.com/lsulibraries/islandora_xquery.git" }
-# - { dest: "/sites/all/modules/trello_tickets/", repo: "https://github.com/lsulibraries/trello_tickets" }
+islandora_modules_7x_only:
+- { dest: "/sites/all/modules/google_analytics_reports/", repo: "https://github.com/discoverygarden/google_analytics_reports" }
+- { dest: "/sites/all/modules/islandora_altmetrics/", repo: "https://github.com/islandora/islandora_altmetrics.git" }
+- { dest: "/sites/all/modules/islandora_image_annotation/", repo: "https://github.com/islandora/islandora_image_annotation.git" }
+- { dest: "/sites/all/modules/islandora_object_lock/", repo: "https://github.com/discoverygarden/islandora_object_lock.git" }
+- { dest: "/sites/all/modules/islandora_paged_content_pdf_batch/", repo: "https://github.com/discoverygarden/islandora_paged_content_pdf_batch" }
 
 lsulibraries_modules_updated:
 ## checkout using version label specified in this file below
+- { dest: "/sites/all/modules/about-ldc/", repo: "https://github.com/lsulibraries/about-ldc" }
+- { dest: "/sites/all/modules/book_access/", repo: "https://github.com/lsulibraries/drupal_book_access" }
+- { dest: "/sites/all/modules/drush_util/", repo: "https://github.com/lsulibraries/drush-util" }
 - { dest: "/sites/all/modules/features_ldl_blocks/", repo: "https://github.com/lsulibraries/islandora_feature_block_setting_ldl_theme" }
+- { dest: "/sites/all/modules/islandora_batch_derivative_trigger/", repo: "https://github.com/lsulibraries/islandora_batch_derivative_trigger" }
+- { dest: "/sites/all/modules/islandora_cdm_permalink_redirector/", repo: "https://github.com/lsulibraries/islandora_cdm_permalink_redirector" }
 - { dest: "/sites/all/modules/islandora_change_namespace/", repo: "https://github.com/lsulibraries/islandora_change_namespace.git" }
-- { dest: "/sites/all/modules/islandora-features/", repo: "https://github.com/lsulibraries/islandora-features" }
+- { dest: "/sites/all/modules/islandora_collection_search/", repo: "https://github.com/lsulibraries/islandora_collection_search" }
+- { dest: "/sites/all/modules/islandora_collection_toggle_publish/", repo: "https://github.com/lsulibraries/islandora_collection_toggle_publish" }
+- { dest: "/sites/all/modules/islandora_compound_parent_metadata/", repo: "https://github.com/lsulibraries/islandora_compound_parent_metadata" }
+- { dest: "/sites/all/modules/islandora_ip_embargo/", repo: "https://github.com/lsulibraries/islandora_ip_embargo.git" }
 - { dest: "/sites/all/modules/islandora_mods_display/", repo: "https://github.com/lsulibraries/islandora_mods_display" }
 - { dest: "/sites/all/modules/islandora_namespace_homepage/", repo: "https://github.com/lsulibraries/islandora_namespace_homepage" }
-- { dest: "/sites/all/modules/islandora_solution_pack_remote_resource/", repo: "https://github.com/lsulibraries/islandora_solution_pack_remote_resource" }
+- { dest: "/sites/all/modules/islandora_pdfjs/", repo: "https://github.com/lsulibraries/islandora_pdfjs" }
+- { dest: "/sites/all/modules/islandora_solr_results_preference/", repo: "https://github.com/lsulibraries/islandora_solr_results_preference.git" }
 - { dest: "/sites/all/modules/islandora_solution_pack_compound/", repo: "https://github.com/lsulibraries/islandora_solution_pack_compound.git" }
 - { dest: "/sites/all/modules/islandora_solution_pack_oh/", repo: "https://github.com/lsulibraries/islandora_solution_pack_oh" }
+- { dest: "/sites/all/modules/islandora_solution_pack_pdf/", repo: "https://github.com/lsulibraries/islandora_solution_pack_pdf" }
+- { dest: "/sites/all/modules/islandora_solution_pack_remote_resource/", repo: "https://github.com/lsulibraries/islandora_solution_pack_remote_resource" }
 - { dest: "/sites/all/modules/islandora_utils/", repo: "https://github.com/lsulibraries/islandora_utils" }
+- { dest: "/sites/all/modules/islandora_xquery/", repo: "https://github.com/lsulibraries/islandora_xquery.git" }
+- { dest: "/sites/all/modules/islandora-features/", repo: "https://github.com/lsulibraries/islandora-features" }
+- { dest: "/sites/all/modules/trello_tickets/", repo: "https://github.com/lsulibraries/trello_tickets" }
 - { dest: "/sites/all/themes/ldl/", repo: "https://github.com/lsulibraries/ldl_theme" }
 
-#git_versions: []
-other_modules:
-# - { dest: "/sites/all/libraries/bagit/", version: "8d197da6d18c06a7aa880d853eb50820f408c4bb", repo: "https://github.com/scholarslab/BagItPHP.git" }
+other_modules: ## to be pulled by specific version
+- { dest: "/sites/all/libraries/bagit/", version: "8d197da6d18c06a7aa880d853eb50820f408c4bb", repo: "https://github.com/scholarslab/BagItPHP.git" }
 - { dest: "/sites/all/libraries/JAIL/", version: "dbe6811f2a06b52a05dc8e40dcbfce8b3f5e8fcb", repo: "https://github.com/sebarmeli/JAIL" }
-# - { dest: "/sites/all/modules/islandora_bulk_delete/", version: "0757f8d93460ac4ba57573ac31bcfcd724cea6c9", repo: "https://github.com/mjordan/islandora_bulk_delete" }
-# - { dest: "/sites/all/modules/islandora_compound_batch/", version: "ec2eb7fb9e7e4f4440b78e3975435f06d2b79ac0", repo: "https://github.com/MarcusBarnes/islandora_compound_batch" }
+- { dest: "/sites/all/libraries/tuque/", version: '1.x', repo: "https://github.com/Islandora/tuque.git" }
+- { dest: "/sites/all/modules/islandora_bulk_delete/", version: "0757f8d93460ac4ba57573ac31bcfcd724cea6c9", repo: "https://github.com/mjordan/islandora_bulk_delete" }
+- { dest: "/sites/all/modules/islandora_compound_batch/", version: "ec2eb7fb9e7e4f4440b78e3975435f06d2b79ac0", repo: "https://github.com/MarcusBarnes/islandora_compound_batch" }
 - { dest: "/sites/all/modules/islandora_datastream_crud/", version: "4a250e96bc0afcc0563263037d5e621a6fe7c217", repo: "https://github.com/mjordan/islandora_datastream_crud" }
 - { dest: "/sites/all/modules/islandora_find_replace/", version: "1d194585a6a693cb68c004c4dac35f87d2db2ea6", repo: "https://github.com/contentmath/islandora_find_replace" }
-# - { dest: "/sites/all/modules/islandora_migrate_cdm_collections/", version: "0b5f5dfdeb5ae1add52d09a865142afdae636b25", repo: "https://github.com/mjordan/islandora_migrate_cdm_collections" }
-# - { dest: "/sites/all/modules/islandora_openseadragon/", version: "064d1282e87b06cddcfd74bc92efa22df7aa5f5f", repo: "https://github.com/Islandora/islandora_openseadragon" }
-# - { dest: "/sites/all/modules/islandora_social_metatags/", version: "65f57718a0934c0cd8c1b550dc5b0f7e44be5153", repo: "https://github.com/Islandora-Labs/islandora_social_metatags" }
-# - { dest: "/sites/all/modules/islandora_transcript/", version: "52d2da53a3528d8b3cd7f8c44c517a1b4b86f39b", repo: "https://github.com/yorkulibraries/islandora_transcript" }
-# - { dest: "/sites/all/modules/islandora_url_redirector/", version: "142cff8bd3e03b1c3ecbc31d0fbf47b6d5b8ebee", repo: "https://github.com/bondjimbond/islandora_url_redirector" }
-
+- { dest: "/sites/all/modules/islandora_migrate_cdm_collections/", version: "0b5f5dfdeb5ae1add52d09a865142afdae636b25", repo: "https://github.com/mjordan/islandora_migrate_cdm_collections" }
+- { dest: "/sites/all/modules/islandora_openseadragon/", version: "064d1282e87b06cddcfd74bc92efa22df7aa5f5f", repo: "https://github.com/Islandora/islandora_openseadragon" }
+- { dest: "/sites/all/modules/islandora_social_metatags/", version: "65f57718a0934c0cd8c1b550dc5b0f7e44be5153", repo: "https://github.com/Islandora-Labs/islandora_social_metatags" }
+- { dest: "/sites/all/modules/islandora_transcript/", version: "52d2da53a3528d8b3cd7f8c44c517a1b4b86f39b", repo: "https://github.com/yorkulibraries/islandora_transcript" }
+- { dest: "/sites/all/modules/islandora_url_redirector/", version: "142cff8bd3e03b1c3ecbc31d0fbf47b6d5b8ebee", repo: "https://github.com/bondjimbond/islandora_url_redirector" }
 
 
 #####################################################################################################
@@ -288,13 +282,13 @@ other_modules:
 # directory whose name is recorded in the `dirname` dict key.                                       #
 #####################################################################################################
 s3_collections:
-- { cpd: false, title: "Huey P. Long", description: "Photos of the Governor", filename: "LSU-HPL.zip", cmodels: "islandora:sp_large_image_cmodel", namespace: "lsu-hpl", type: "zip" }
 - { cpd: false, title: "Camp Ruston", description: "heterogenous collection", filename: "latech-cmprt-simple.zip", cmodels: "islandora:sp_large_image_cmodel", namespace: "latech-cmprt", type: "zip" }
-- { cpd: true, title: "Camp Ruston", description: "heterogenous collection", filename: "latech-cmprt-cpd.zip", cmodels: "islandora:sp_large_image_cmodel", namespace: "latech-cmprt", type: "zip", dirname: "latech-cmprt-cpd"}
-- { cpd: false, title: "LA Hurricane Resources", description: "photos, bruh", filename: "uno-p120701coll13-jp2.zip", cmodels: "islandora:sp_large_image_cmodel", namespace: "uno-p120701coll13", type: "zip"}
 - { cpd: false, title: "Charles L. Thompson Photographs (lsu)", description: "", filename: "lsu-clt-jp2.zip", cmodels: "islandora:sp_large_image_cmodel", namespace: "lsu-clt", type: "zip"}
-- { cpd: false, title: "Loyola University New Orleans Community and Resilience Collection (Loyola)", description: "", filename: "loyno-p16313coll87-jp2.zip", cmodels: "islandora:sp_large_image_cmodel", namespace: "loyno-p16313coll87", type: "zip"}
 - { cpd: false, title: "Historic Photographs of Southwest Louisiana (McNeese)", description: "", filename: "mcneese-psl-sample.zip", cmodels: "islandora:sp_large_image_cmodel", namespace: "mcneese-psl", type: "zip"}
+- { cpd: false, title: "Huey P. Long", description: "Photos of the Governor", filename: "LSU-HPL.zip", cmodels: "islandora:sp_large_image_cmodel", namespace: "lsu-hpl", type: "zip" }
+- { cpd: false, title: "LA Hurricane Resources", description: "photos, bruh", filename: "uno-p120701coll13-jp2.zip", cmodels: "islandora:sp_large_image_cmodel", namespace: "uno-p120701coll13", type: "zip"}
+- { cpd: false, title: "Loyola University New Orleans Community and Resilience Collection (Loyola)", description: "", filename: "loyno-p16313coll87-jp2.zip", cmodels: "islandora:sp_large_image_cmodel", namespace: "loyno-p16313coll87", type: "zip"}
+- { cpd: true, title: "Camp Ruston", description: "heterogenous collection", filename: "latech-cmprt-cpd.zip", cmodels: "islandora:sp_large_image_cmodel", namespace: "latech-cmprt", type: "zip", dirname: "latech-cmprt-cpd"}
 - { cpd: true, title: "Edith Dabney Doll Collection", description: "Includes only compound items", filename: "lsu-p16313coll9-cpd.zip", cmodels: "islandora:sp_large_image_cmodel", namespace: "lsu-dolls", type: "zip", dirname: "lsu-p16313coll9-cpd"}
 
 ingest_sample_collections: yes
@@ -303,11 +297,7 @@ sassy: no
 
 ## git versions
 
-ldl_major_version: 0.x
-ldl_release_version: 0.9.0
-update_ldl: no
-
+ldl_module_version: develop
 islandora_core_version: 7.x-1.10
 update_islandora_core: yes
-
-updatedb: yes
+update_drupal: yes
