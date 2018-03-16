@@ -10,7 +10,7 @@ from [Semantic Versioning 2.0.0 (2018-03-13)](https://semver.org/):
 >  - PATCH version when you make backwards-compatible bug fixes.
 
 
-## LDL-0.9.0
+## 0.9.0
 *loose-ends*
 
 This release pulls in a number of changes that have been hanging around in the dev sphere since the winter holidays.
@@ -25,7 +25,7 @@ This release pulls in a number of changes that have been hanging around in the d
 - **book_access**: ensures unsupported module is disabled
 - **IP embargo**: adds support for passthru of multiple image servers; adds debug logging
 
-## LDL-0.8.1
+## 0.8.1
 
 *winter hustle*
 
