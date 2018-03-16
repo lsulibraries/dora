@@ -235,32 +235,33 @@ islandora_modules_7x_only:
 - { dest: "/sites/all/modules/islandora_object_lock/", repo: "https://github.com/discoverygarden/islandora_object_lock.git" }
 - { dest: "/sites/all/modules/islandora_paged_content_pdf_batch/", repo: "https://github.com/discoverygarden/islandora_paged_content_pdf_batch" }
 
+lsulibraries_gh_protocol: "https://github.com/" ## git@github.com: or https://github.com/
 lsulibraries_modules_updated:
 ## checkout using version label specified in this file below
-- { dest: "/sites/all/modules/about-ldc/", repo: "https://github.com/lsulibraries/about-ldc" }
-- { dest: "/sites/all/modules/book_access/", repo: "https://github.com/lsulibraries/drupal_book_access" }
-- { dest: "/sites/all/modules/drush_util/", repo: "https://github.com/lsulibraries/drush-util" }
-- { dest: "/sites/all/modules/features_ldl_blocks/", repo: "https://github.com/lsulibraries/islandora_feature_block_setting_ldl_theme" }
-- { dest: "/sites/all/modules/islandora_batch_derivative_trigger/", repo: "https://github.com/lsulibraries/islandora_batch_derivative_trigger" }
-- { dest: "/sites/all/modules/islandora_cdm_permalink_redirector/", repo: "https://github.com/lsulibraries/islandora_cdm_permalink_redirector" }
-- { dest: "/sites/all/modules/islandora_change_namespace/", repo: "https://github.com/lsulibraries/islandora_change_namespace.git" }
-- { dest: "/sites/all/modules/islandora_collection_search/", repo: "https://github.com/lsulibraries/islandora_collection_search" }
-- { dest: "/sites/all/modules/islandora_collection_toggle_publish/", repo: "https://github.com/lsulibraries/islandora_collection_toggle_publish" }
-- { dest: "/sites/all/modules/islandora_compound_parent_metadata/", repo: "https://github.com/lsulibraries/islandora_compound_parent_metadata" }
-- { dest: "/sites/all/modules/islandora_ip_embargo/", repo: "https://github.com/lsulibraries/islandora_ip_embargo.git" }
-- { dest: "/sites/all/modules/islandora_mods_display/", repo: "https://github.com/lsulibraries/islandora_mods_display" }
-- { dest: "/sites/all/modules/islandora_namespace_homepage/", repo: "https://github.com/lsulibraries/islandora_namespace_homepage" }
-- { dest: "/sites/all/modules/islandora_pdfjs/", repo: "https://github.com/lsulibraries/islandora_pdfjs" }
-- { dest: "/sites/all/modules/islandora_solr_results_preference/", repo: "https://github.com/lsulibraries/islandora_solr_results_preference.git" }
-- { dest: "/sites/all/modules/islandora_solution_pack_compound/", repo: "https://github.com/lsulibraries/islandora_solution_pack_compound.git" }
-- { dest: "/sites/all/modules/islandora_solution_pack_oh/", repo: "https://github.com/lsulibraries/islandora_solution_pack_oh" }
-- { dest: "/sites/all/modules/islandora_solution_pack_pdf/", repo: "https://github.com/lsulibraries/islandora_solution_pack_pdf" }
-- { dest: "/sites/all/modules/islandora_solution_pack_remote_resource/", repo: "https://github.com/lsulibraries/islandora_solution_pack_remote_resource" }
-- { dest: "/sites/all/modules/islandora_utils/", repo: "https://github.com/lsulibraries/islandora_utils" }
-- { dest: "/sites/all/modules/islandora_xquery/", repo: "https://github.com/lsulibraries/islandora_xquery.git" }
-- { dest: "/sites/all/modules/islandora-features/", repo: "https://github.com/lsulibraries/islandora-features" }
-- { dest: "/sites/all/modules/trello_tickets/", repo: "https://github.com/lsulibraries/trello_tickets" }
-- { dest: "/sites/all/themes/ldl/", repo: "https://github.com/lsulibraries/ldl_theme" }
+- { dest: "/sites/all/modules/about-ldc/", repo: "lsulibraries/about-ldc" }
+- { dest: "/sites/all/modules/book_access/", repo: "lsulibraries/drupal_book_access" }
+- { dest: "/sites/all/modules/drush_util/", repo: "lsulibraries/drush-util" }
+- { dest: "/sites/all/modules/features_ldl_blocks/", repo: "lsulibraries/islandora_feature_block_setting_ldl_theme" }
+- { dest: "/sites/all/modules/islandora_batch_derivative_trigger/", repo: "lsulibraries/islandora_batch_derivative_trigger" }
+- { dest: "/sites/all/modules/islandora_cdm_permalink_redirector/", repo: "lsulibraries/islandora_cdm_permalink_redirector" }
+- { dest: "/sites/all/modules/islandora_change_namespace/", repo: "lsulibraries/islandora_change_namespace.git" }
+- { dest: "/sites/all/modules/islandora_collection_search/", repo: "lsulibraries/islandora_collection_search" }
+- { dest: "/sites/all/modules/islandora_collection_toggle_publish/", repo: "lsulibraries/islandora_collection_toggle_publish" }
+- { dest: "/sites/all/modules/islandora_compound_parent_metadata/", repo: "lsulibraries/islandora_compound_parent_metadata" }
+- { dest: "/sites/all/modules/islandora_ip_embargo/", repo: "lsulibraries/islandora_ip_embargo.git" }
+- { dest: "/sites/all/modules/islandora_mods_display/", repo: "lsulibraries/islandora_mods_display" }
+- { dest: "/sites/all/modules/islandora_namespace_homepage/", repo: "lsulibraries/islandora_namespace_homepage" }
+- { dest: "/sites/all/modules/islandora_pdfjs/", repo: "lsulibraries/islandora_pdfjs" }
+- { dest: "/sites/all/modules/islandora_solr_results_preference/", repo: "lsulibraries/islandora_solr_results_preference.git" }
+- { dest: "/sites/all/modules/islandora_solution_pack_compound/", repo: "lsulibraries/islandora_solution_pack_compound.git" }
+- { dest: "/sites/all/modules/islandora_solution_pack_oh/", repo: "lsulibraries/islandora_solution_pack_oh" }
+- { dest: "/sites/all/modules/islandora_solution_pack_pdf/", repo: "lsulibraries/islandora_solution_pack_pdf" }
+- { dest: "/sites/all/modules/islandora_solution_pack_remote_resource/", repo: "lsulibraries/islandora_solution_pack_remote_resource" }
+- { dest: "/sites/all/modules/islandora_utils/", repo: "lsulibraries/islandora_utils" }
+- { dest: "/sites/all/modules/islandora_xquery/", repo: "lsulibraries/islandora_xquery.git" }
+- { dest: "/sites/all/modules/islandora-features/", repo: "lsulibraries/islandora-features" }
+- { dest: "/sites/all/modules/trello_tickets/", repo: "lsulibraries/trello_tickets" }
+- { dest: "/sites/all/themes/ldl/", repo: "lsulibraries/ldl_theme" }
 
 other_modules: ## to be pulled by specific version
 - { dest: "/sites/all/libraries/bagit/", version: "8d197da6d18c06a7aa880d853eb50820f408c4bb", repo: "https://github.com/scholarslab/BagItPHP.git" }
@@ -290,14 +291,15 @@ s3_collections:
 - { cpd: false, title: "Loyola University New Orleans Community and Resilience Collection (Loyola)", description: "", filename: "loyno-p16313coll87-jp2.zip", cmodels: "islandora:sp_large_image_cmodel", namespace: "loyno-p16313coll87", type: "zip"}
 - { cpd: true, title: "Camp Ruston", description: "heterogenous collection", filename: "latech-cmprt-cpd.zip", cmodels: "islandora:sp_large_image_cmodel", namespace: "latech-cmprt", type: "zip", dirname: "latech-cmprt-cpd"}
 - { cpd: true, title: "Edith Dabney Doll Collection", description: "Includes only compound items", filename: "lsu-p16313coll9-cpd.zip", cmodels: "islandora:sp_large_image_cmodel", namespace: "lsu-dolls", type: "zip", dirname: "lsu-p16313coll9-cpd"}
+- { cpd: true, title: "LSU Libraries Postcard Collections", description: "Its good!", filename: "lsu-postcard-cpd.zip", cmodels: "islandora:sp_large_image_cmodel", namespace: "lsu-postcard", type: "zip", dirname: "lsu-postcard-cpd" }
 
 ingest_sample_collections: yes
 run_dev_steps: no
 sassy: no
 
 ## git versions
-
-ldl_module_version: develop
+ldl_release: 0.9.0
+ldl_module_version: release-0.9.0 # could alse be master, develop
 islandora_core_version: 7.x-1.10
 update_islandora_core: yes
 update_drupal: yes

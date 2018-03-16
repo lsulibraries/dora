@@ -38,9 +38,10 @@
 
 - name: update ldl modules
   git:
-    repo: "{{ item.repo }}"
+    repo: "{{ lsulibraries_gh_protocol }}{{ item.repo }}"
     dest: '{{drupal_core_path}}{{ item.dest }}'
     force: true
+    accept_hostkey: true
     version: "{{ ldl_module_version }}"
   with_items: "{{ lsulibraries_modules_updated }}"
 
