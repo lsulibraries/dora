@@ -1,6 +1,6 @@
 # Changelog
 
-from [Semantic Versioning 2.0.0 (2018-03-13)](https://semver.org/):
+using [Semantic Versioning 2.0.0 (2018-03-13)](https://semver.org/):
 
 >Given a version number MAJOR.MINOR.PATCH, increment the:
 
@@ -16,13 +16,14 @@ from [Semantic Versioning 2.0.0 (2018-03-13)](https://semver.org/):
 This release pulls in a number of changes that have been hanging around in the dev sphere since the winter holidays.
 
 - **Theme**: adds new Compound object display for both desktop and mobile
-- **Newspaper** solution pack: updates to latest from islandora
-- **Book**: configures metadata display; sets viewer default to 'two-up'
+- **drupal updates**: to drupal core and contrib (non-islandora) modules
+- **islandora version update**: to version 7.x-1.10
+- **Book**: sets viewer default to 'two-up'
 - **Change Namespace**: new module to clone a collection from one namespace to another
 - **libcurl**: updates OS curl version to overcome intermittent errors in operating the 'change namespace' module
 - **solr changes**
 - **title/subtitle display**
-- **book_access**: ensures unsupported module is disabled
+- **book_access**: ensures unsupported drupal contrib module is disabled
 - **IP embargo**: adds support for passthru of multiple image servers; adds debug logging
 
 ## 0.8.1
@@ -36,3 +37,5 @@ This release pulls in a number of changes that have been hanging around in the d
 - system admin utilities improvements for finding datastreams, creating collections
 - updates seadragon viewer default zoom
 - mods display updates
+
+for previous versions, (for now) see tags and project history in https://github.com/lsulibraries/islandora_ansible
