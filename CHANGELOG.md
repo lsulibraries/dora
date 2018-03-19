@@ -25,6 +25,8 @@ This release pulls in a number of changes that have been hanging around in the d
 - **title/subtitle display**
 - **book_access**: ensures unsupported drupal contrib module is disabled
 - **IP embargo**: adds support for passthru of multiple image servers; adds debug logging
+- **pdfjs**: retires lsulibraries fork, [PR accepted](https://github.com/Islandora/islandora_pdfjs/pull/25), also [in JIRA](https://jira.duraspace.org/browse/ISLANDORA-2157)
+- **PDF solution pack**: retires lsulibraries fork by moving local override into theme templates/ https://github.com/lsulibraries/dora/commit/f903afbbe90b6788416a895e463f96fa5926e4f4
 
 ## 0.8.1
 
