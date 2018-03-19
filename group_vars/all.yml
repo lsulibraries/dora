@@ -203,6 +203,7 @@ islandora_core_modules:
 - { dest: "/sites/all/modules/islandora_ocr/", repo: "https://github.com/islandora/islandora_ocr.git" }
 - { dest: "/sites/all/modules/islandora_paged_content/", repo: "https://github.com/islandora/islandora_paged_content.git" }
 - { dest: "/sites/all/modules/islandora_pathauto/", repo: "https://github.com/islandora/islandora_pathauto.git" }
+- { dest: "/sites/all/modules/islandora_pdfjs/", repo: "islandora/islandora_pdfjs" }
 - { dest: "/sites/all/modules/islandora_populator/", repo: "https://github.com/islandora/islandora_populator.git" }
 - { dest: "/sites/all/modules/islandora_premis/", repo: "https://github.com/islandora/islandora_premis.git" }
 - { dest: "/sites/all/modules/islandora_scholar/", repo: "https://github.com/islandora/islandora_scholar.git" }
@@ -252,7 +253,6 @@ lsulibraries_modules_updated:
 - { dest: "/sites/all/modules/islandora_ip_embargo/", repo: "lsulibraries/islandora_ip_embargo.git" }
 - { dest: "/sites/all/modules/islandora_mods_display/", repo: "lsulibraries/islandora_mods_display" }
 - { dest: "/sites/all/modules/islandora_namespace_homepage/", repo: "lsulibraries/islandora_namespace_homepage" }
-- { dest: "/sites/all/modules/islandora_pdfjs/", repo: "lsulibraries/islandora_pdfjs" }
 - { dest: "/sites/all/modules/islandora_solr_results_preference/", repo: "lsulibraries/islandora_solr_results_preference.git" }
 - { dest: "/sites/all/modules/islandora_solution_pack_compound/", repo: "lsulibraries/islandora_solution_pack_compound.git" }
 - { dest: "/sites/all/modules/islandora_solution_pack_oh/", repo: "lsulibraries/islandora_solution_pack_oh" }
