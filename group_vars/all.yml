@@ -220,6 +220,7 @@ islandora_core_modules:
 - { dest: "/sites/all/modules/islandora_solution_pack_image/", repo: "https://github.com/islandora/islandora_solution_pack_image.git" }
 - { dest: "/sites/all/modules/islandora_solution_pack_large_image/", repo: "https://github.com/islandora/islandora_solution_pack_large_image.git" }
 - { dest: "/sites/all/modules/islandora_solution_pack_newspaper/", repo: "https://github.com/islandora/islandora_solution_pack_newspaper.git" }
+- { dest: "/sites/all/modules/islandora_solution_pack_pdf/", repo: "islandora/islandora_solution_pack_pdf" }
 - { dest: "/sites/all/modules/islandora_solution_pack_video/", repo: "https://github.com/islandora/islandora_solution_pack_video.git" }
 - { dest: "/sites/all/modules/islandora_solution_pack_web_archive/", repo: "https://github.com/islandora/islandora_solution_pack_web_archive.git" }
 - { dest: "/sites/all/modules/islandora_videojs/", repo: "https://github.com/islandora/islandora_videojs.git" }
@@ -256,7 +257,6 @@ lsulibraries_modules_updated:
 - { dest: "/sites/all/modules/islandora_solr_results_preference/", repo: "lsulibraries/islandora_solr_results_preference.git" }
 - { dest: "/sites/all/modules/islandora_solution_pack_compound/", repo: "lsulibraries/islandora_solution_pack_compound.git" }
 - { dest: "/sites/all/modules/islandora_solution_pack_oh/", repo: "lsulibraries/islandora_solution_pack_oh" }
-- { dest: "/sites/all/modules/islandora_solution_pack_pdf/", repo: "lsulibraries/islandora_solution_pack_pdf" }
 - { dest: "/sites/all/modules/islandora_solution_pack_remote_resource/", repo: "lsulibraries/islandora_solution_pack_remote_resource" }
 - { dest: "/sites/all/modules/islandora_utils/", repo: "lsulibraries/islandora_utils" }
 - { dest: "/sites/all/modules/islandora_xquery/", repo: "lsulibraries/islandora_xquery.git" }
