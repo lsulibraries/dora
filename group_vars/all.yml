@@ -176,6 +176,7 @@ drush_vset_simple:
 - { key: islandora_internet_archive_bookreader_default_page_view, value: '2'}
 - { key: islandora_compound_object_show_compound_parents_in_breadcrumbs, value: 1 }
 - { key: islandora_basic_collection_display_backend, value: islandora_basic_collection_legacy_sparql }
+- { key: 'islandora_book_metadata_display', value: 1 }
 # - { key: islandora_basic_collection_admin_page_size, value: 50 }
 # - { key: islandora_collection_search_advanced_search_alter, value: 1 }
 # - { key: islandora_collection_toggle_publish_by_default, value: 0 }
