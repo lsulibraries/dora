@@ -19,6 +19,7 @@ This release pulls in a number of changes that have been hanging around in the d
 - **drupal updates**: to drupal core and contrib (non-islandora) modules
 - **islandora version update**: to version 7.x-1.10
 - **Book**: sets viewer default to 'two-up'
+- **Book**: sets book level object metadata to display
 - **Change Namespace**: new module to clone a collection from one namespace to another
 - **libcurl**: updates OS curl version to overcome intermittent errors in operating the 'change namespace' module
 - **solr changes**
