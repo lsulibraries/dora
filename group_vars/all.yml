@@ -203,7 +203,7 @@ islandora_core_modules:
 - { dest: "/sites/all/modules/islandora_ocr/", repo: "https://github.com/islandora/islandora_ocr.git" }
 - { dest: "/sites/all/modules/islandora_paged_content/", repo: "https://github.com/islandora/islandora_paged_content.git" }
 - { dest: "/sites/all/modules/islandora_pathauto/", repo: "https://github.com/islandora/islandora_pathauto.git" }
-- { dest: "/sites/all/modules/islandora_pdfjs/", repo: "islandora/islandora_pdfjs" }
+- { dest: "/sites/all/modules/islandora_pdfjs/", repo: "https://github.com/islandora/islandora_pdfjs" }
 - { dest: "/sites/all/modules/islandora_populator/", repo: "https://github.com/islandora/islandora_populator.git" }
 - { dest: "/sites/all/modules/islandora_premis/", repo: "https://github.com/islandora/islandora_premis.git" }
 - { dest: "/sites/all/modules/islandora_scholar/", repo: "https://github.com/islandora/islandora_scholar.git" }
@@ -220,7 +220,7 @@ islandora_core_modules:
 - { dest: "/sites/all/modules/islandora_solution_pack_image/", repo: "https://github.com/islandora/islandora_solution_pack_image.git" }
 - { dest: "/sites/all/modules/islandora_solution_pack_large_image/", repo: "https://github.com/islandora/islandora_solution_pack_large_image.git" }
 - { dest: "/sites/all/modules/islandora_solution_pack_newspaper/", repo: "https://github.com/islandora/islandora_solution_pack_newspaper.git" }
-- { dest: "/sites/all/modules/islandora_solution_pack_pdf/", repo: "islandora/islandora_solution_pack_pdf" }
+- { dest: "/sites/all/modules/islandora_solution_pack_pdf/", repo: "https://github.com/islandora/islandora_solution_pack_pdf" }
 - { dest: "/sites/all/modules/islandora_solution_pack_video/", repo: "https://github.com/islandora/islandora_solution_pack_video.git" }
 - { dest: "/sites/all/modules/islandora_solution_pack_web_archive/", repo: "https://github.com/islandora/islandora_solution_pack_web_archive.git" }
 - { dest: "/sites/all/modules/islandora_videojs/", repo: "https://github.com/islandora/islandora_videojs.git" }
