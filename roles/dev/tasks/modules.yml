@@ -5,51 +5,44 @@
 ####                                                                 ####
 #### This play relies totally on the variables set in all.yml.       ####
 #########################################################################
-- name: Update drupal
-  command: "{{ item }}"
-  args:
-    chdir: '{{ drupal_core_path }}'
-  with_items:
-    - drush vset --exact maintenance_mode 1
-    - drush cc all
-    - drush ard default
-    - drush up -y
-    - drush vset --exact maintenance_mode 0
-    - drush cc all
-  when: update_drupal
 
-- name: update core modules
+- name: Set maintenance mode.
+  command: drush vset --exact maintenance_mode 1
+  args:
+    chdir: "{{ drupal_core_path }}"
+
+- name: Update islandora core modules with versions 7.x-y.z
   git:
-    repo: "{{ item.repo }}"
     dest: '{{drupal_core_path}}{{ item.dest }}'
     force: true
+    repo: "{{ item.repo }}"
     version: "{{ islandora_core_version }}"
   with_items: "{{ islandora_core_modules }}"
   when: update_islandora_core
 
-- name: update core modules
+- name: update islandora 7.x core modules
   git:
-    repo: "{{ item.repo }}"
     dest: '{{drupal_core_path}}{{ item.dest }}'
     force: true
+    repo: "{{ item.repo }}"
     version: 7.x
   with_items: "{{ islandora_modules_7x_only }}"
   when: update_islandora_core
 
 - name: update ldl modules
   git:
-    repo: "{{ lsulibraries_gh_protocol }}{{ item.repo }}"
+    accept_hostkey: true
     dest: '{{drupal_core_path}}{{ item.dest }}'
     force: true
-    accept_hostkey: true
+    repo: "{{ lsulibraries_gh_protocol }}{{ item.repo }}"
     version: "{{ ldl_module_version }}"
   with_items: "{{ lsulibraries_modules_updated }}"
 
-- name: Get git repos.
+- name: Get other tracked modules.
   git:
-    repo: "{{ item.repo }}"
     dest: '{{drupal_core_path}}{{ item.dest }}'
     force: true
+    repo: "{{ item.repo }}"
     version: "{{ item.version }}"
   with_items: "{{ other_modules }}"
 
@@ -59,15 +52,16 @@
     chdir: '{{ drupal_core_path }}'
   with_items: "{{ drush_dl }}"
 
-- wait_for:
-    host: 192.168.111.111
-    port: 8080
-  when: environment_type == 'dev'
-
 - name: remove old submod block_setting_ldl_theme
   file:
     path: "{{ drupal_core_path }}/sites/all/modules/islandora-features/block_setting_ldl_theme"
     state: absent
+
+## Because islandora solution packs will fail installation if fedora is not yet online.
+- wait_for:
+    host: localhost
+    port: 8080
+  when: environment_type == 'dev'
 
 - name: Enable modules.
   command: "drush -u 1 -y en {{ item }}"
@@ -81,7 +75,20 @@
     chdir: '{{ drupal_core_path }}'
   with_items: "{{ drush_dis }}"
 
+- name: updatedb after [potentially] new module/version installation.
+  command: drush updatedb -y
+  args:
+    chdir: "{{ drupal_core_path }}"
+
 - name: install deps with composer for RR
   command: composer install
   args:
     chdir: "{{ drupal_core_path }}/sites/all/modules/islandora_solution_pack_remote_resource/modules/islandora_remote_resource_batch"
+
+- name: Finish up Drupal updates.
+  command: "{{ item }}"
+  args:
+    chdir: "{{ drupal_core_path }}"
+  with_items:
+    - drush vset --exact maintenance_mode 0
+    - drush cc all

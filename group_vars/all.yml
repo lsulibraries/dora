@@ -185,6 +185,10 @@ drush_vset_simple:
 # - { key: site_frontpage, value: browse-collections }
 # - { key: site_name, value: 'Louisiana Digital Library' }
 
+drush_vset_simple_env_specific:
+- { key: 'islandora_openseadragon_tilesource', value: 'djatoka' }
+- { key: 'islandora_openseadragon_iiif_url', value:  '0.0.0.0'}
+
 islandora_core_modules:
 ## islandora and discoverygarden use '7.x-1.*' as their stable branch ##
 - { dest: "/sites/all/modules/islandora_bagit/", repo: "https://github.com/islandora/islandora_bagit.git" }
@@ -226,7 +230,6 @@ islandora_core_modules:
 - { dest: "/sites/all/modules/islandora_solution_pack_web_archive/", repo: "https://github.com/islandora/islandora_solution_pack_web_archive.git" }
 - { dest: "/sites/all/modules/islandora_videojs/", repo: "https://github.com/islandora/islandora_videojs.git" }
 - { dest: "/sites/all/modules/islandora_xacml_editor/", repo: "https://github.com/islandora/islandora_xacml_editor.git" }
-- { dest: "/sites/all/modules/islandora_xml_forms/", repo: "https://github.com/islandora/islandora_xml_forms.git" }
 - { dest: "/sites/all/modules/islandora_xmlsitemap/", repo: "https://github.com/islandora/islandora_xmlsitemap.git" }
 - { dest: "/sites/all/modules/islandora/", repo: "https://github.com/islandora/islandora.git" }
 - { dest: "/sites/all/modules/objective_forms/", repo: "https://github.com/islandora/objective_forms.git" }
@@ -262,6 +265,7 @@ lsulibraries_modules_updated:
 - { dest: "/sites/all/modules/islandora_utils/", repo: "lsulibraries/islandora_utils" }
 - { dest: "/sites/all/modules/islandora_xquery/", repo: "lsulibraries/islandora_xquery.git" }
 - { dest: "/sites/all/modules/islandora-features/", repo: "lsulibraries/islandora-features" }
+- { dest: "/sites/all/modules/islandora_xml_forms/", repo: "lsulibraries/islandora_xml_forms.git" }
 - { dest: "/sites/all/modules/trello_tickets/", repo: "lsulibraries/trello_tickets" }
 - { dest: "/sites/all/themes/ldl/", repo: "lsulibraries/ldl_theme" }
 
@@ -305,3 +309,6 @@ ldl_module_version: release-0.9.0 # could alse be master, develop
 islandora_core_version: 7.x-1.10
 update_islandora_core: yes
 update_drupal: yes
+update_drupal_version: 7.58
+update_drupal_contrib_modules: yes
+update_drupal_contrib_modules_drush_args: # for example, --security-only

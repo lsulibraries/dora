@@ -10,6 +10,13 @@
     chdir: "{{ drupal_core_path }}"
   with_items: "{{ drush_vset_simple }}"
 
+- name: Set ENV-specific simple key => val variables.
+  command: drush -u 1 vset {{ item.key }} {{ item.value }}
+  args:
+    chdir: "{{ drupal_core_path }}"
+  with_items: "{{ drush_vset_simple_env_specific }}"
+
+
 #########################################################################
 #### other ways to vset that are less easy to automate in this play. ####
 #########################################################################

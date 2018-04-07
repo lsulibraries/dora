@@ -79,7 +79,7 @@
   args:
     chdir: "{{ drupal_core_path }}"
   with_items: "{{ s3_collections }}"
-  when: "'{{ item.filename }}' not in ingested.stdout and {{ item.cpd }}"
+  when: "'item.filename' not in ingested.stdout and item.cpd"
 
 - name: Create embargo list.
   command: drush iipeadd --low=130.39.0.0 --high=130.39.255.255 --list=lsu-wired

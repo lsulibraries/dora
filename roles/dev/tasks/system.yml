@@ -16,13 +16,23 @@
 #     name: tomcat7
 #     state: restarted
 
+  ## If present, causes later git checkout to fail (it's tracked in the current version).
+- name: Remove untracked xml in drupal module.
+  file:
+    path: "{{ drupal_core_path }}/sites/all/modules/islandora_xml_forms/builder/self_transforms/blankNodes.xsl"
+    state: absent
+
+- name: Get current curl version.
+  shell: curl --version
+  register: curl_version
+
 - name: get new version of curl
   unarchive:
     remote_src: yes
     src: http://curl.haxx.se/download/curl-7.57.0.tar.gz
     dest: /opt/
     validate_certs: no
-
+  when: curl_version.stdout.find ('7.57.0') == -1
 
 - name: Build curl
   command: "{{ item }}"
@@ -34,6 +44,7 @@
     - make
     - make install
     - ldconfig
+  when: curl_version.stdout.find ('7.57.0') == -1
 
 - name: link the new curl
   file:
@@ -41,3 +52,4 @@
     src: /usr/local/bin/curl
     dest: /usr/bin/curl
     force: yes
+  when: curl_version.stdout.find ('7.57.0') == -1

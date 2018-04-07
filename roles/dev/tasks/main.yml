@@ -1,5 +1,7 @@
 ---
 - include: system.yml
+- include: drupal.yml
+  when: update_drupal
 - include: modules.yml
 - include: vsets.yml
 - include: roles-permissions.yml
