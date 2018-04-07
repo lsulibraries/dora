@@ -1,18 +1,18 @@
 ## Updates Drupal and contrib modules.
-## This play is not run if 'update_drupal' is not true. See all.yml.
 
 - name: Set maintenance mode.
-  command: drush vset --exact maintenance_mode 1
-  args:
-    chdir: "{{ drupal_core_path }}"
-
-- name: Take drupal backup.
   command: "{{ item }}"
   args:
     chdir: "{{ drupal_core_path }}"
   with_items:
+    - drush vset --exact maintenance_mode 1
     - drush cc all
-    - drush ard default
+
+- name: Take drupal backup.
+  command: drush ard default
+  args:
+    chdir: "{{ drupal_core_path }}"
+  when: update_drupal_backup_first
 
 - name: Update drupal
   command: "{{ item }}"
@@ -21,6 +21,7 @@
   with_items:
     - "drush up -y drupal-{{ update_drupal_version }}"
     - drush -y updatedb
+  when: update_drupal
 
 - name: Update drupal modules.
   command: "{{ item }}"
