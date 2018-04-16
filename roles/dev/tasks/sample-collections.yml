@@ -18,12 +18,12 @@
     - "{{ collections.results }}"
     - "{{ s3_collections }}"
   when: not item.0.stat.exists
-  
+
 - name: ensure ingest semaphore file exists
   file:
     path: /opt/ingested
     state: touch
-  
+
 - name: Get record of ingested items.
   shell: cat /opt/ingested
   register: ingested
@@ -33,13 +33,19 @@
     port: 8080
 
 - name: Create collection containers (parents).
-  command: "drush  --user=admin islandora-utils-create-collection --description='{{ item.description }}' --namespace={{ item.namespace }}:collection --parent=islandora:root --title='{{ item.title }}'"
+  command: "drush  -u 1 islandora-utils-create-collection --description='{{ item.description }}' --namespace={{ item.namespace }}:collection --parent=islandora:root --title='{{ item.title }}'"
   args:
     chdir: "{{ drupal_core_path }}"
   with_items: "{{ s3_collections }}"
 
 - name: Publish collections.
   command: "drush islandora-collection-toggle-publish-set publish --pid={{ item.namespace }}:collection"
+  args:
+    chdir: "{{ drupal_core_path }}"
+  with_items: "{{ s3_collections }}"
+
+- name: set state active
+  command: "drush -u 1 islandora-utils-set-state active --pid={{ item.namespace }}:collection"
   args:
     chdir: "{{ drupal_core_path }}"
   with_items: "{{ s3_collections }}"
@@ -63,7 +69,6 @@
   args:
     chdir: "{{ drupal_core_path }}"
 
-
 - name: create fresh structure files
   shell: "cd {{ drupal_core_path }}/sites/all/modules/islandora_compound_batch/extras/scripts && php create_structure_files.php /tmp/{{ item.dirname }}"
   with_items: "{{ s3_collections }}"
@@ -74,7 +79,7 @@
   args:
     chdir: "{{ drupal_core_path }}"
   with_items: "{{ s3_collections }}"
-  when: "'{{ item.filename }}' not in ingested.stdout and {{ item.cpd }}"
+  when: "'item.filename' not in ingested.stdout and item.cpd"
 
 - name: Create embargo list.
   command: drush iipeadd --low=130.39.0.0 --high=130.39.255.255 --list=lsu-wired

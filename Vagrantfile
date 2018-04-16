@@ -12,7 +12,7 @@ Vagrant.configure("2") do |config|
 
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://atlas.hashicorp.com/search.
-  config.vm.box = "dora"                                                                                                                                                                                                      
+  config.vm.box = "dora"
   config.vm.box_url = 'https://s3-us-west-2.amazonaws.com/lsulibraries-vagrant-boxes/dora.json'
   config.vm.box_version = '1.1.0'
   config.vm.box_download_checksum_type = 'sha256'

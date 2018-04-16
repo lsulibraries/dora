@@ -1,5 +1,6 @@
 ---
 - include: system.yml
+- include: drupal.yml
 - include: modules.yml
 - include: vsets.yml
 - include: roles-permissions.yml
