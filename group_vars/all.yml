@@ -187,7 +187,7 @@ drush_vset_simple:
 
 drush_vset_simple_env_specific:
 - { key: 'islandora_openseadragon_tilesource', value: 'djatoka' }
-- { key: 'islandora_openseadragon_iiif_url', value:  '0.0.0.0'}
+- { key: 'islandora_openseadragon_iiif_url', value:  '192.168.55.55'}
 
 islandora_core_modules:
 ## islandora and discoverygarden use '7.x-1.*' as their stable branch ##
@@ -290,7 +290,7 @@ other_modules: ## to be pulled by specific version
 #####################################################################################################
 s3_collections:
 - { cpd: false, title: "Camp Ruston", description: "heterogenous collection", filename: "latech-cmprt-simple.zip", cmodels: "islandora:sp_large_image_cmodel", namespace: "latech-cmprt", type: "zip" }
-# - { cpd: false, title: "Charles L. Thompson Photographs (lsu)", description: "", filename: "lsu-clt-jp2.zip", cmodels: "islandora:sp_large_image_cmodel", namespace: "lsu-clt", type: "zip"}
+- { cpd: false, title: "Charles L. Thompson Photographs (lsu)", description: "", filename: "lsu-clt-jp2.zip", cmodels: "islandora:sp_large_image_cmodel", namespace: "lsu-clt", type: "zip"}
 - { cpd: false, title: "Historic Photographs of Southwest Louisiana (McNeese)", description: "", filename: "mcneese-psl-sample.zip", cmodels: "islandora:sp_large_image_cmodel", namespace: "mcneese-psl", type: "zip"}
 - { cpd: false, title: "Huey P. Long", description: "Photos of the Governor", filename: "LSU-HPL.zip", cmodels: "islandora:sp_large_image_cmodel", namespace: "lsu-hpl", type: "zip" }
 - { cpd: false, title: "LA Hurricane Resources", description: "photos, bruh", filename: "uno-p120701coll13-jp2.zip", cmodels: "islandora:sp_large_image_cmodel", namespace: "uno-p120701coll13", type: "zip"}
