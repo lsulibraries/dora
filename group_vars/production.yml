@@ -1,2 +1,5 @@
 environment_type: 'production'
 ingest_sample_collections: no
+drush_vset_simple_env_specific:
+- { key: 'islandora_openseadragon_tilesource', value: 'iiif' }
+- { key: 'islandora_openseadragon_iiif_url', value: 'http://192.168.55.55/iiif/2' }

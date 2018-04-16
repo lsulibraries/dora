@@ -1,0 +1,41 @@
+## Updates Drupal and contrib modules.
+
+- name: Set maintenance mode.
+  command: "{{ item }}"
+  args:
+    chdir: "{{ drupal_core_path }}"
+  with_items:
+    - drush vset --exact maintenance_mode 1
+    - drush cc all
+
+- name: Take drupal backup.
+  command: drush ard default
+  args:
+    chdir: "{{ drupal_core_path }}"
+  when: update_drupal_backup_first
+
+- name: Update drupal
+  command: "{{ item }}"
+  args:
+    chdir: '{{ drupal_core_path }}'
+  with_items:
+    - "drush up -y drupal-{{ update_drupal_version }}"
+    - drush -y updatedb
+  when: update_drupal
+
+- name: Update drupal modules.
+  command: "{{ item }}"
+  args:
+    chdir: "{{ drupal_core_path }}"
+  with_items:
+    - "drush up -y {{ update_drupal_contrib_modules_drush_args }}"
+    - drush -y updatedb
+  when: update_drupal_contrib_modules
+
+- name: Finish up Drupal updates.
+  command: "{{ item }}"
+  args:
+    chdir: "{{ drupal_core_path }}"
+  with_items:
+    - drush vset --exact maintenance_mode 0
+    - drush cc all

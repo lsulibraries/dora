@@ -1,3 +1,5 @@
+# manual testing plan
+
 ## top nav
 - 'about LDC' link visible and worknig ?
 - 'documentation' link visible
@@ -12,3 +14,5 @@
 ## IP Embargo
 - multiple image servers work (djatoka + cantaloupe, book + lg image)
 - debug logging is disabled at cron
+
+## compound
