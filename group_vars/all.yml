@@ -115,8 +115,17 @@ drush_version: "e658a9641f498b33c05bb9f66fedcd749e3eeb4f"
 # drush_dis: []
 drush_dis:
 - book_access
+- islandora_xquery
 #- ...
 #- ...
+
+drush_uninstall:
+- book_access
+- book_access_ui
+- islandora_xquery
+module_paths_to_delete:
+- /sites/all/modules/book_access
+- /sites/all/modules/islandora_xquery
 
 drush_dl: []
 # drush_dl:
@@ -243,10 +252,10 @@ islandora_modules_7x_only:
 - { dest: "/sites/all/modules/islandora_paged_content_pdf_batch/", repo: "https://github.com/discoverygarden/islandora_paged_content_pdf_batch" }
 
 lsulibraries_gh_protocol: "https://github.com/" ## git@github.com: or https://github.com/
+
 lsulibraries_modules_updated:
 ## checkout using version label specified in this file below
 - { dest: "/sites/all/modules/about-ldc/", repo: "lsulibraries/about-ldc" }
-- { dest: "/sites/all/modules/book_access/", repo: "lsulibraries/drupal_book_access" }
 - { dest: "/sites/all/modules/drush_util/", repo: "lsulibraries/drush-util" }
 - { dest: "/sites/all/modules/features_ldl_blocks/", repo: "lsulibraries/islandora_feature_block_setting_ldl_theme" }
 - { dest: "/sites/all/modules/islandora_batch_derivative_trigger/", repo: "lsulibraries/islandora_batch_derivative_trigger" }
@@ -263,7 +272,6 @@ lsulibraries_modules_updated:
 - { dest: "/sites/all/modules/islandora_solution_pack_oh/", repo: "lsulibraries/islandora_solution_pack_oh" }
 - { dest: "/sites/all/modules/islandora_solution_pack_remote_resource/", repo: "lsulibraries/islandora_solution_pack_remote_resource" }
 - { dest: "/sites/all/modules/islandora_utils/", repo: "lsulibraries/islandora_utils" }
-- { dest: "/sites/all/modules/islandora_xquery/", repo: "lsulibraries/islandora_xquery.git" }
 - { dest: "/sites/all/modules/islandora-features/", repo: "lsulibraries/islandora-features" }
 - { dest: "/sites/all/modules/islandora_xml_forms/", repo: "lsulibraries/islandora_xml_forms.git" }
 - { dest: "/sites/all/modules/trello_tickets/", repo: "lsulibraries/trello_tickets" }
@@ -283,6 +291,8 @@ other_modules: ## to be pulled by specific version
 - { dest: "/sites/all/modules/islandora_transcript/", version: "52d2da53a3528d8b3cd7f8c44c517a1b4b86f39b", repo: "https://github.com/yorkulibraries/islandora_transcript" }
 - { dest: "/sites/all/modules/islandora_url_redirector/", version: "142cff8bd3e03b1c3ecbc31d0fbf47b6d5b8ebee", repo: "https://github.com/bondjimbond/islandora_url_redirector" }
 
+modules_to_uninstall:
+- { dest: "/sites/all/modules/book_access/", repo: "book_access" }
 
 #####################################################################################################
 # NB- when adding new sample collections, zips for compound collections need to contain a top-level #
@@ -300,15 +310,15 @@ s3_collections:
 - { cpd: true, title: "LSU Libraries Postcard Collections", description: "Its good!", filename: "lsu-postcard-cpd.zip", cmodels: "islandora:sp_large_image_cmodel", namespace: "lsu-postcard", type: "zip", dirname: "lsu-postcard-cpd" }
 
 ingest_sample_collections: yes
-run_dev_steps: no
+run_dev_steps: yes
 sassy: no
 
 ## git versions
 ldl_release: 0.9.0
-ldl_module_version: release-0.9.0 # could alse be master, develop
-islandora_core_version: 7.x-1.10
+ldl_module_version: develop # could alse be master, develop
+islandora_core_version: 7.x-1.11
 update_islandora_core: yes
-update_drupal: no
+update_drupal: yes
 update_drupal_backup_first: no
 update_drupal_version: 7.58
 update_drupal_contrib_modules: yes

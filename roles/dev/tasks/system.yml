@@ -53,3 +53,9 @@
     dest: /usr/bin/curl
     force: yes
   when: curl_version.stdout.find ('7.57.0') == -1
+
+- name: ensure xhprof is not enabled in production
+  file:
+    path: /etc/php5/apache2/conf.d/xhprof.ini
+    state: absent
+  when: environment_type != 'dev'
