@@ -116,6 +116,7 @@ drush_version: "e658a9641f498b33c05bb9f66fedcd749e3eeb4f"
 drush_dis:
 - book_access
 - islandora_xquery
+- islandora_jwplayer
 #- ...
 #- ...
 
@@ -123,9 +124,11 @@ drush_uninstall:
 - book_access
 - book_access_ui
 - islandora_xquery
+- islandora_jwplayer
 module_paths_to_delete:
 - /sites/all/modules/book_access
 - /sites/all/modules/islandora_xquery
+- /sites/all/modules/islandora_jwplayer
 
 drush_dl: []
 # drush_dl:
@@ -210,7 +213,6 @@ islandora_core_modules:
 - { dest: "/sites/all/modules/islandora_form_fieldpanel/", repo: "https://github.com/islandora/islandora_form_fieldpanel.git" }
 - { dest: "/sites/all/modules/islandora_importer/", repo: "https://github.com/islandora/islandora_importer.git" }
 - { dest: "/sites/all/modules/islandora_internet_archive_bookreader/", repo: "https://github.com/islandora/islandora_internet_archive_bookreader.git" }
-- { dest: "/sites/all/modules/islandora_jwplayer/", repo: "https://github.com/islandora/islandora_jwplayer.git" }
 - { dest: "/sites/all/modules/islandora_marcxml/", repo: "https://github.com/islandora/islandora_marcxml.git" }
 - { dest: "/sites/all/modules/islandora_newspaper_batch/", repo: "https://github.com/islandora/islandora_newspaper_batch.git" }
 - { dest: "/sites/all/modules/islandora_oai/", repo: "https://github.com/islandora/islandora_oai.git" }
