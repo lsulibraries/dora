@@ -314,7 +314,7 @@ run_dev_steps: yes
 sassy: no
 
 ## git versions
-ldl_release: 0.9.0
+ldl_release: 0.10.0
 ldl_module_version: develop # could alse be master, develop
 islandora_core_version: 7.x-1.11
 update_islandora_core: yes
