@@ -9,6 +9,11 @@ using [Semantic Versioning 2.0.0 (2018-03-13)](https://semver.org/):
 >  - MINOR version when you add functionality in a backwards-compatible manner, and
 >  - PATCH version when you make backwards-compatible bug fixes.
 
+## 0.10.0
+*item 2.0 in progress*
+
+This release adds theme changes bringing book and large image into line with *item 2.0*.
+
 
 ## 0.9.0
 *loose-ends*
