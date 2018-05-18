@@ -160,9 +160,10 @@ drush_en:
 # - islandora_transcript
 # - islandora_url_redirector
 # - islandora_utils
-- islandora_solution_pack_remote_resource
-- islandora_remote_resource_batch
 - islandora_change_namespace
+- islandora_list_collections
+- islandora_remote_resource_batch
+- islandora_solution_pack_remote_resource
 
 drush_role_create: []
 #drush_role_create:
@@ -267,6 +268,7 @@ lsulibraries_modules_updated:
 - { dest: "/sites/all/modules/islandora_collection_toggle_publish/", repo: "lsulibraries/islandora_collection_toggle_publish" }
 - { dest: "/sites/all/modules/islandora_compound_parent_metadata/", repo: "lsulibraries/islandora_compound_parent_metadata" }
 - { dest: "/sites/all/modules/islandora_ip_embargo/", repo: "lsulibraries/islandora_ip_embargo.git" }
+- { dest: "/sites/all/modules/islandora_list_collections/", repo: "lsulibraries/islandora_list_collections" }
 - { dest: "/sites/all/modules/islandora_mods_display/", repo: "lsulibraries/islandora_mods_display" }
 - { dest: "/sites/all/modules/islandora_namespace_homepage/", repo: "lsulibraries/islandora_namespace_homepage" }
 - { dest: "/sites/all/modules/islandora_solr_results_preference/", repo: "lsulibraries/islandora_solr_results_preference.git" }
@@ -274,8 +276,8 @@ lsulibraries_modules_updated:
 - { dest: "/sites/all/modules/islandora_solution_pack_oh/", repo: "lsulibraries/islandora_solution_pack_oh" }
 - { dest: "/sites/all/modules/islandora_solution_pack_remote_resource/", repo: "lsulibraries/islandora_solution_pack_remote_resource" }
 - { dest: "/sites/all/modules/islandora_utils/", repo: "lsulibraries/islandora_utils" }
-- { dest: "/sites/all/modules/islandora-features/", repo: "lsulibraries/islandora-features" }
 - { dest: "/sites/all/modules/islandora_xml_forms/", repo: "lsulibraries/islandora_xml_forms.git" }
+- { dest: "/sites/all/modules/islandora-features/", repo: "lsulibraries/islandora-features" }
 - { dest: "/sites/all/modules/trello_tickets/", repo: "lsulibraries/trello_tickets" }
 - { dest: "/sites/all/themes/ldl/", repo: "lsulibraries/ldl_theme" }
 
