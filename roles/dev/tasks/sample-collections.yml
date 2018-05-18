@@ -72,14 +72,14 @@
 - name: create fresh structure files
   shell: "cd {{ drupal_core_path }}/sites/all/modules/islandora_compound_batch/extras/scripts && php create_structure_files.php /tmp/{{ item.dirname }}"
   with_items: "{{ s3_collections }}"
-  when: "{{ item.cpd }}"
+  when: item.cpd
 
 - name: Ingest (cpd).
   shell: "drush islandora_compound_batch_preprocess -u 1 --scan_target=/tmp/{{ item.dirname }} --parent={{ item.namespace }}:collection --namespace={{ item.namespace }}  && drush -u 1 ibi && echo '{{ item.filename }} ' >> /opt/ingested"
   args:
     chdir: "{{ drupal_core_path }}"
   with_items: "{{ s3_collections }}"
-  when: "'item.filename' not in ingested.stdout and item.cpd"
+  when: item.filename not in ingested.stdout and item.cpd
 
 - name: Create embargo list.
   command: drush iipeadd --low=130.39.0.0 --high=130.39.255.255 --list=lsu-wired
