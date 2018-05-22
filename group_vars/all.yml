@@ -117,6 +117,8 @@ drush_dis:
 - book_access
 - islandora_xquery
 - islandora_jwplayer
+- islandora_checksum
+- islandora_checksum_checker
 #- ...
 #- ...
 
