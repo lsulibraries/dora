@@ -190,7 +190,7 @@ drush_vset_simple:
 - { key: islandora_compound_object_use_jail_view, value: 1 }
 - { key: islandora_internet_archive_bookreader_default_page_view, value: '2'}
 - { key: islandora_namespace_restriction_enforced, value: 0 }
-- { key: islandora_solr_namespace_restriction, value: '' }
+#- { key: islandora_solr_namespace_restriction, value: '' } # see vsets.yml
 - { key: islandora_solution_pack_remote_resource_redirection_type, value: goto }
 # - { key: islandora_basic_collection_admin_page_size, value: 50 }
 # - { key: islandora_collection_search_advanced_search_alter, value: 1 }

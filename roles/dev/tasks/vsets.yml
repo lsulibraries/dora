@@ -46,3 +46,8 @@
   command: php -r 'print json_encode(array("image" => "image", "pdf" => 0, "ocr" => "ocr"));' | drush vset --format=json islandora_book_ingest_derivatives -
   args:
     chdir: "{{ drupal_core_path }}"
+
+- name: unset solr namespace restriction
+  command: drush eval "variable_set('islandora_solr_namespace_restriction', NULL);"
+  args:
+    chdir: "{{ drupal_core_path }}"
