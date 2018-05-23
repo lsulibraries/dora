@@ -310,7 +310,7 @@ s3_collections:
 - { cpd: true, title: "LSU Libraries Postcard Collections", description: "Its good!", filename: "lsu-postcard-cpd.zip", cmodels: "islandora:sp_large_image_cmodel", namespace: "lsu-postcard", type: "zip", dirname: "lsu-postcard-cpd" }
 
 ingest_sample_collections: yes
-run_dev_steps: yes
+run_dev_steps: no
 sassy: no
 
 ## git versions
