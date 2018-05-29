@@ -117,6 +117,7 @@ drush_dis:
 - book_access
 - islandora_xquery
 - islandora_jwplayer
+- islandora_paged_content_pdf_batch
 #- ...
 #- ...
 
@@ -153,7 +154,6 @@ drush_en:
 # - islandora_ip_embargo
 # - islandora_namespace_homepage
 # - islandora_oh
-# - islandora_paged_content_pdf_batch
 # - islandora_simple_workflow
 # - islandora_social_metatags
 # - islandora_solr_results_preference
@@ -251,7 +251,6 @@ islandora_modules_7x_only:
 - { dest: "/sites/all/modules/islandora_altmetrics/", repo: "https://github.com/islandora/islandora_altmetrics.git" }
 - { dest: "/sites/all/modules/islandora_image_annotation/", repo: "https://github.com/islandora/islandora_image_annotation.git" }
 - { dest: "/sites/all/modules/islandora_object_lock/", repo: "https://github.com/discoverygarden/islandora_object_lock.git" }
-- { dest: "/sites/all/modules/islandora_paged_content_pdf_batch/", repo: "https://github.com/discoverygarden/islandora_paged_content_pdf_batch" }
 
 lsulibraries_gh_protocol: "https://github.com/" ## git@github.com: or https://github.com/
 

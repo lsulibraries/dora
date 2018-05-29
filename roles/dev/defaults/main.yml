@@ -2,6 +2,7 @@
 ---
 drush_dis:
 - islandora_bagit
+- islandora_paged_content_pdf_batch
 #- ...
 #- ...
 
@@ -26,7 +27,6 @@ drush_en:
 # - islandora_ip_embargo
 # - islandora_namespace_homepage
 # - islandora_oh
-# - islandora_paged_content_pdf_batch
 # - islandora_simple_workflow
 # - islandora_social_metatags
 # - islandora_solr_results_preference
@@ -98,7 +98,6 @@ git_versions:
 # - { dest: "/sites/all/modules/islandora_object_lock/", version: "78c4c80b7f45ca35b946259f548897aae720cb05", repo: "https://github.com/discoverygarden/islandora_object_lock.git" }
 # - { dest: "/sites/all/modules/islandora_ocr/", version: "2cf3f5da3fd35b3fcd212a1f915660dedc23dad7", repo: "https://github.com/islandora/islandora_ocr.git" }
 # - { dest: "/sites/all/modules/islandora_openseadragon/", version: "064d1282e87b06cddcfd74bc92efa22df7aa5f5f", repo: "https://github.com/Islandora/islandora_openseadragon" }
-# - { dest: "/sites/all/modules/islandora_paged_content_pdf_batch/", version: "7d33a4958bf2a3e49786bb5315c6d515ce6c6a14", repo: "https://github.com/discoverygarden/islandora_paged_content_pdf_batch" }
 # - { dest: "/sites/all/modules/islandora_paged_content/", version: "3a46a57f14fd69ceeee386dad665b925bcbc757b", repo: "https://github.com/islandora/islandora_paged_content.git" }
 # - { dest: "/sites/all/modules/islandora_pathauto/", version: "bb4c2a819444c4ae8c9744d8a98b70c0ee95feba", repo: "https://github.com/islandora/islandora_pathauto.git" }
 # - { dest: "/sites/all/modules/islandora_pdfjs/", version: "af0ddfaea99a94c52a0f31a4f566d3ef6cc2acf2", repo: "https://github.com/lsulibraries/islandora_pdfjs" }
