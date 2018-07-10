@@ -57,17 +57,43 @@
     remote_src: yes
   with_items: "{{ s3_collections }}"
 
+- name: ensure that islandora_batch is enabled.
+  command: drush en -y islandora_batch
+  args:
+    chdir: "{{ drupal_core_path }}"
+
 - name: Ingest (simple).
   shell: "drush --user=admin islandora_batch_scan_preprocess --content_models='{{ item.cmodels }}' --parent={{ item.namespace }}:collection --parent_relationship_pred=isMemberOfCollection --type={{ item.type }} --scan_target=/tmp/{{ item.filename }} --namespace={{ item.namespace }} && drush -u 1 ibi && echo '{{ item.filename }} ' >> /opt/ingested"
   args:
     chdir: "{{ drupal_core_path }}"
   with_items: "{{ s3_collections }}"
-  when: "'{{ item.filename }}' not in ingested.stdout and not {{ item.cpd }}"
+  when: (item.filename not in ingested.stdout) and (not item.cpd)
 
-- name: ensure that islandora_batch is enabled.
-  command: drush en -y islandora_batch
+- name: Create collection containers (newspaper).
+  command: "drush  -u 1 islandora-utils-create-collection --description='{{ item.description }}' --namespace={{ item.namespace }}:collection --parent=islandora:root --title='{{ item.title }}'"
   args:
     chdir: "{{ drupal_core_path }}"
+  with_items: "{{ sample_data_newspapers }}"
+
+- name: Publish collections.
+  command: "drush islandora-collection-toggle-publish-set publish --pid={{ item.namespace }}:collection"
+  args:
+    chdir: "{{ drupal_core_path }}"
+  with_items: "{{ sample_data_newspapers }}"
+
+- name: Create top-level newspapers
+  shell: "drush islandora-utils-ingest-item --cmodel='islandora:newspaperCModel' --collection='{{ item.collection }}' --pid=''{{ item.parent }}'' --title='{{ item.title }}' -u 1 && echo '{{ item.parent }}' >> /opt/ingested"
+  args:
+    chdir: "{{ drupal_core_path }}"
+  with_items: "{{ sample_data_newspapers }}"
+  when: item.parent not in ingested.stdout
+
+- name: Ingest newspaper issues.
+  shell: "drush islandora_newspaper_batch_preprocess --namespace={{ item.namespace }} --parent={{ item.parent }} --scan_target=/tmp/{{ item.filename }} --type=zip -u 1 && drush -u 1 ibi && echo '{{ item.filename }} ' >> /opt/ingested && drush -u 1 ibi"
+  args:
+    chdir: "{{ drupal_core_path }}"
+  with_items: "{{ sample_data_newspapers }}"
+  when: item.filename not in ingested.stdout
 
 - name: create fresh structure files
   shell: "cd {{ drupal_core_path }}/sites/all/modules/islandora_compound_batch/extras/scripts && php create_structure_files.php /tmp/{{ item.dirname }}"
