@@ -304,20 +304,124 @@ other_modules: ## to be pulled by specific version
 # NB- when adding new sample collections, zips for compound collections need to contain a top-level #
 # directory whose name is recorded in the `dirname` dict key.                                       #
 #####################################################################################################
-s3_collections:
-- { cpd: false, title: "Camp Ruston", description: "heterogenous collection", filename: "latech-cmprt-simple.zip", cmodels: "islandora:sp_large_image_cmodel", namespace: "latech-cmprt", type: "zip" }
-- { cpd: false, title: "Charles L. Thompson Photographs (lsu)", description: "", filename: "lsu-clt-jp2.zip", cmodels: "islandora:sp_large_image_cmodel", namespace: "lsu-clt", type: "zip"}
-- { cpd: false, title: "Historic Photographs of Southwest Louisiana (McNeese)", description: "", filename: "mcneese-psl-sample.zip", cmodels: "islandora:sp_large_image_cmodel", namespace: "mcneese-psl", type: "zip"}
-- { cpd: false, title: "Huey P. Long", description: "Photos of the Governor", filename: "LSU-HPL.zip", cmodels: "islandora:sp_large_image_cmodel", namespace: "lsu-hpl", type: "zip" }
-- { cpd: false, title: "LA Hurricane Resources", description: "photos, bruh", filename: "uno-p120701coll13-jp2.zip", cmodels: "islandora:sp_large_image_cmodel", namespace: "uno-p120701coll13", type: "zip"}
-- { cpd: false, title: "Loyola University New Orleans Community and Resilience Collection (Loyola)", description: "", filename: "loyno-p16313coll87-jp2.zip", cmodels: "islandora:sp_large_image_cmodel", namespace: "loyno-p16313coll87", type: "zip"}
-- { cpd: true, title: "Camp Ruston", description: "heterogenous collection", filename: "latech-cmprt-cpd.zip", cmodels: "islandora:sp_large_image_cmodel", namespace: "latech-cmprt", type: "zip", dirname: "latech-cmprt-cpd"}
-- { cpd: true, title: "Edith Dabney Doll Collection", description: "Includes only compound items", filename: "lsu-p16313coll9-cpd.zip", cmodels: "islandora:sp_large_image_cmodel", namespace: "lsu-dolls", type: "zip", dirname: "lsu-p16313coll9-cpd"}
-- { cpd: true, title: "LSU Libraries Postcard Collections", description: "Its good!", filename: "lsu-postcard-cpd.zip", cmodels: "islandora:sp_large_image_cmodel", namespace: "lsu-postcard", type: "zip", dirname: "lsu-postcard-cpd" }
 
-sample_data_newspapers:
-- { collection: 'lsu-ag-sugar:collection', title: "LSU Ag Center Sugar Bulletins", description: "Sweet!", filename: "sugarbulletins_sample_1983all.zip", cmodels: "islandora:newspaperCModel", namespace: "lsu-ag-sugar", dirname: "sugarbulletins_sample_1983all", parent: 'lsu-ag-sugar:bulletin' }
+ldl_sample_data:
+# ## some fields are required (REQ)
+# ## others are optional (OPT)
+# ## still others are ingest_type-dependent (TD)
+# ## some are deprecated (DEP)
+#
+# - {
+  # ingest_type: REQ newspaper | newspaper_issue | cpd | simple | book,
+  # src_filename: REQ base name of the file in s3 to be downloaded to /tmp/,
+  # collection: REQ pid of the collection with which this thing is associated,
+  # pid: TD specify the pid for the thing being ingested,
+  # namespace: OPT specify namespace for the thing(s) being ingested,
+  # cmodels: TD specify the cmodel of the thing(s) you are ingesting,
+  # title: OPT,
+  # description: OPT,
+  # news_parent: TD newspaper-specific,
+  # cpd: DEP
+# }
 
+- {
+  ingest_type: "simple",
+  src_filename: "loyno-p16313coll87-jp2.zip",
+  collection: "loyno-p16313coll87:collection",
+  namespace: "loyno-p16313coll87",
+  cmodels: "islandora:sp_large_image_cmodel",
+  title: "Loyola University New Orleans Community and Resilience Collection (Loyola)",
+  description: '',
+  }
+- {
+  ingest_type: "cpd",
+  src_filename: "lsu-postcard-cpd.zip",
+  collection: "lsu-postcard:collection",
+  namespace: "lsu-postcard",
+  cmodels: "islandora:sp_large_image_cmodel",
+  title: LSU Libraries Postcard Collections,
+  description: '',
+  }
+- {
+  ingest_type: "cpd",
+  src_filename: "lsu-p16313coll9-cpd.zip",
+  collection: "lsu-p16313coll9:collection",
+  namespace: "lsu-p16313coll9",
+  cmodels: "islandora:sp_large_image_cmodel",
+  title: "Edith Dabney Doll Collection",
+  description: '',
+  }
+- {
+  ingest_type: simple,
+  src_filename: "uno-p120701coll13-jp2.zip",
+  collection: "uno-p120701coll13:collection",
+  namespace: "uno-p120701coll13",
+  cmodels: "islandora:sp_large_image_cmodel",
+  title: "Louisiana Hurricane Resources",
+  description: '',
+  }
+- {
+  ingest_type: simple,
+  src_filename: "LSU-HPL.zip",
+  collection: "lsu-hpl:collection",
+  namespace: "lsu-hpl",
+  cmodels: "islandora:sp_large_image_cmodel",
+  title: "Huey P. Long",
+  description: "Photos of the Governor",
+  }
+- {
+  ingest_type: simple,
+  src_filename: "mcneese-psl-sample.zip",
+  collection: "mcneese-psl:collection",
+  namespace: "mcneese-psl",
+  cmodels: "islandora:sp_large_image_cmodel",
+  title: "Historic Photographs of Southwest Louisiana (McNeese)",
+  description: ""
+  }
+- {
+  ingest_type: "simple",
+  src_filename: "latech-cmprt-simple.zip",
+  collection: "latech-cmprt:collection",
+  # pid: TD specify the pid for the thing being ingested,
+  namespace: "latech-cmprt",
+  cmodels: "islandora:sp_large_image_cmodel",
+  title: "Camp Ruston",
+  description: "A collection of photographs from the Camp Ruston POW camp."
+  # news_parent: TD newspaper-specific,
+  # cpd: DEP
+  }
+- {
+  ingest_type: "cpd",
+  src_filename: "latech-cmprt-cpd.zip",
+  collection: "latech-cmprt:collection",
+  # pid: TD specify the pid for the thing being ingested,
+  namespace: "latech-cmprt",
+  cmodels: "islandora:sp_large_image_cmodel",
+  # title: OPT,
+  # description: OPT,
+  # news_parent: TD newspaper-specific,
+  # cpd: DEP
+  }
+- {
+  ingest_type: simple,
+  src_filename: "lsu-clt-jp2.zip",
+  collection: "lsu-clt:collection",
+  namespace: "lsu-clt",
+  cmodels: "islandora:sp_large_image_cmodel",
+  title: "Charles L. Thompson Photographs",
+  description: ''
+  }
+- {
+  ingest_type: newspaper,
+  src_filename: "sugarbulletins_sample_1983all.zip",
+  collection: "lsu-ag-sugar:collection",
+  pid: '',
+  namespace: "lsu-ag-sugar",
+  cmodels: "islandora:newspaperCModel",
+  title: "LSU Ag Center Sugar Bulletins",
+  description: '',
+  news_parent: "lsu-ag-sugar:bulletin" ,
+}
 ingest_sample_collections: yes
 run_dev_steps: yes
 sassy: no
