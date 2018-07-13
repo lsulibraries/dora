@@ -261,3 +261,5 @@ seadragon_settings: >-
       'collectionLayout' => 'horizontal',
       'collectionTileSize' => 800,
       'collectionTileMargin' => 80,)
+
+drupalextension_home: /opt/drupalextension
