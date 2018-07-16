@@ -15,7 +15,7 @@
     url: "https://s3-us-west-2.amazonaws.com/lsulibraries-sample-collections/{{item.1.src_filename}}"
     dest: "/tmp/{{ item.1.src_filename }}"
   loop: "{{ downloads.results|zip(ldl_sample_data)|list }}"
-  when: not item.0.stat.exists
+  when: not item.0.stat.exists and item.1.src_filename != ''
 
 - name: ensure ingest semaphore file exists
   file:
@@ -35,7 +35,7 @@
   args:
     chdir: "{{ drupal_core_path }}"
   with_items: "{{ ldl_sample_data }}"
-  when: item.title is defined
+  when: item.title is defined and item.description is defined
 
 - name: Publish collections.
   command: "drush islandora-collection-toggle-publish-set publish --pid={{ item.collection }}"
@@ -55,6 +55,7 @@
     dest: "/tmp/"
     remote_src: yes
   with_items: "{{ ldl_sample_data }}"
+  when: item.ingest_type == 'cpd'
 
 - name: ensure that islandora_batch is enabled.
   command: drush en -y islandora_batch
@@ -69,18 +70,19 @@
   when: (item.src_filename not in ingested.stdout) and (item.ingest_type == 'simple')
 
 - name: Create top-level newspapers
-  shell: "drush islandora-utils-ingest-item --cmodel='islandora:newspaperCModel' --collection='{{ item.collection }}' --pid='{{ item.news_parent }}' --title='{{ item.title }}' -u 1 && echo '{{ item.news_parent }}' >> /opt/ingested"
+  shell: "drush islandora-utils-ingest-item --cmodel='islandora:newspaperCModel' --collection='{{ item.collection }}' --pid='{{ item.pid }}' --title='{{ item.title }}' -u 1 && echo '{{ item.pid }}' >> /opt/ingested"
   args:
     chdir: "{{ drupal_core_path }}"
   with_items: "{{ ldl_sample_data }}"
-  when: (item.ingest_type == 'newspaper') and (item.news_parent not in ingested.stdout)
+  when: (item.ingest_type == 'newspaper') and (item.pid not in ingested.stdout)
 
 - name: Ingest newspaper issues.
-  shell: "drush islandora_newspaper_batch_preprocess --namespace={{ item.namespace }} --parent={{ item.news_parent }} --scan_target=/tmp/{{ item.src_filename }} --type=zip -u 1 && drush -u 1 ibi && echo '{{ item.src_filename }} ' >> /opt/ingested && drush -u 1 ibi"
+  # drush islandora_newspaper_batch_preprocess --namespace=lsu-ag-sugar --parent=lsu-ag-sugar:bulletin --scan_target=/tmp/sugarbulletins_sample_1983all.zip --type=zip -u 1 && drush -u 1 ibi && echo 'sugarbulletins_sample_1983all.zip ' >> /opt/ingested
+  shell: "drush islandora_newspaper_batch_preprocess --namespace={{ item.namespace }} --parent={{ item.news_parent }} --scan_target=/tmp/{{ item.src_filename }} --type=zip -u 1 && drush -u 1 ibi && echo '{{ item.src_filename }} ' >> /opt/ingested"
   args:
     chdir: "{{ drupal_core_path }}"
   with_items: "{{ ldl_sample_data }}"
-  when: item.src_filename not in ingested.stdout and item.ingest_type == 'newspaper'
+  when: item.src_filename not in ingested.stdout and item.ingest_type == 'newspaper_issue'
 
 - name: create cpd structure files
   shell: "cd {{ drupal_core_path }}/sites/all/modules/islandora_compound_batch/extras/scripts && php create_structure_files.php /tmp/{{ item.src_filename.split('.')[0] }}"

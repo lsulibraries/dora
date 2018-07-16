@@ -23,12 +23,12 @@
     name: tomcat7
     state: started
 
-# - name: symlink behat
-#   file:
-#     state: link
-#     src: "{{ drupalextension_home }}/bin/behat"
-#     path: /usr/local/bin/behat
-#     mode: 0755
+- name: symlink behat
+  file:
+    state: link
+    src: "{{ drupalextension_home }}/bin/behat"
+    path: /usr/local/bin/behat
+    mode: 0755
 
 - name: git local tests
   git:

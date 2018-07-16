@@ -163,7 +163,10 @@ drush_en:
 # - islandora_url_redirector
 # - islandora_utils
 - islandora_change_namespace
+- islandora_content_stats
+- islandora_elide_download
 - islandora_list_collections
+- islandora_regenerate_dc
 - islandora_remote_resource_batch
 - islandora_solution_pack_remote_resource
 
@@ -271,10 +274,13 @@ lsulibraries_modules_updated:
 - { dest: "/sites/all/modules/islandora_collection_search/", repo: "lsulibraries/islandora_collection_search" }
 - { dest: "/sites/all/modules/islandora_collection_toggle_publish/", repo: "lsulibraries/islandora_collection_toggle_publish" }
 - { dest: "/sites/all/modules/islandora_compound_parent_metadata/", repo: "lsulibraries/islandora_compound_parent_metadata" }
+- { dest: "/sites/all/modules/islandora_content_stats/", repo: "lsulibraries/islandora_content_stats" }
+- { dest: "/sites/all/modules/islandora_elide_download/", repo: "lsulibraries/islandora_elide_download" }
 - { dest: "/sites/all/modules/islandora_ip_embargo/", repo: "lsulibraries/islandora_ip_embargo.git" }
 - { dest: "/sites/all/modules/islandora_list_collections/", repo: "lsulibraries/islandora_list_collections" }
 - { dest: "/sites/all/modules/islandora_mods_display/", repo: "lsulibraries/islandora_mods_display" }
 - { dest: "/sites/all/modules/islandora_namespace_homepage/", repo: "lsulibraries/islandora_namespace_homepage" }
+- { dest: "/sites/all/modules/islandora_regenerate_dc/", repo: "lsulibraries/islandora_regenerate_dc" }
 - { dest: "/sites/all/modules/islandora_solr_results_preference/", repo: "lsulibraries/islandora_solr_results_preference.git" }
 - { dest: "/sites/all/modules/islandora_solution_pack_compound/", repo: "lsulibraries/islandora_solution_pack_compound.git" }
 - { dest: "/sites/all/modules/islandora_solution_pack_oh/", repo: "lsulibraries/islandora_solution_pack_oh" }
@@ -312,16 +318,16 @@ ldl_sample_data:
 # ## some are deprecated (DEP)
 #
 # - {
-  # ingest_type: REQ newspaper | newspaper_issue | cpd | simple | book,
-  # src_filename: REQ base name of the file in s3 to be downloaded to /tmp/,
-  # collection: REQ pid of the collection with which this thing is associated,
-  # pid: TD specify the pid for the thing being ingested,
-  # namespace: OPT specify namespace for the thing(s) being ingested,
-  # cmodels: TD specify the cmodel of the thing(s) you are ingesting,
-  # title: OPT,
-  # description: OPT,
-  # news_parent: TD newspaper-specific,
-  # cpd: DEP
+#   ingest_type: REQ newspaper | newspaper_issue | cpd | simple | book,
+#   src_filename: REQ base name of the file in s3 to be downloaded to /tmp/,
+#   collection: REQ pid of the collection with which this thing is associated,
+#   pid: TD specify the pid for the thing being ingested,
+#   namespace: OPT specify namespace for the thing(s) being ingested,
+#   cmodels: TD specify the cmodel of the thing(s) you are ingesting,
+#   title: OPT,
+#   description: OPT,
+#   news_parent: TD newspaper-specific,
+#   cpd: DEP
 # }
 
 - {
@@ -413,6 +419,14 @@ ldl_sample_data:
   }
 - {
   ingest_type: newspaper,
+  collection: 'lsu-ag-sugar:collection',
+  pid: 'lsu-ag-sugar:bulletin',
+  title: "LSU Ag Center Sugar Bulletins",
+  description: '',
+  src_filename: ''
+  }
+- {
+  ingest_type: newspaper_issue,
   src_filename: "sugarbulletins_sample_1983all.zip",
   collection: "lsu-ag-sugar:collection",
   pid: '',
@@ -421,7 +435,18 @@ ldl_sample_data:
   title: "LSU Ag Center Sugar Bulletins",
   description: '',
   news_parent: "lsu-ag-sugar:bulletin" ,
-}
+  }
+- {
+  ingest_type: newspaper_issue,
+  src_filename: "sugarbulletins_sample_1984to2002.zip",
+  collection: "lsu-ag-sugar:collection",
+  pid: '',
+  namespace: "lsu-ag-sugar",
+  cmodels: "islandora:newspaperCModel",
+  title: "LSU Ag Center Sugar Bulletins",
+  description: '',
+  news_parent: "lsu-ag-sugar:bulletin" ,
+  }
 ingest_sample_collections: yes
 run_dev_steps: yes
 sassy: no
