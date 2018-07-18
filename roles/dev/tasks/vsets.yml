@@ -35,7 +35,7 @@
 - name: configure seadragon
   args:
     chdir: "{{ drupal_core_path }}/sites/ldl"
-  command: "drush -u 1 ev \"variable_set(\'islandora_openseadragon_settings\', {{ seadragon_settings }})\""
+  command: "drush -u 1 ev \"variable_set(\\'islandora_openseadragon_settings\\', {{ seadragon_settings }})\""
 
 - name: configure pdf_viewer default
   args:
