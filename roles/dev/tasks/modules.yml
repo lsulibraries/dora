@@ -29,6 +29,8 @@
   with_items: "{{ islandora_modules_7x_only }}"
   when: update_islandora_core
 
+# - name: remove old
+
 - name: update ldl modules
   git:
     accept_hostkey: true

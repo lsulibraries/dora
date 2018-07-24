@@ -1,16 +1,16 @@
 ---
-- include: system.yml
-- include: drupal.yml
+# - include: system.yml
+# - include: drupal.yml
 - include: modules.yml
-- include: vsets.yml
-- include: roles-permissions.yml
-- include: content.yml
-- include: theme-dev.yml
-  when: sassy
-- include: dev.yml
-  when: run_dev_steps
-- include: behat.yml
-  when: run_dev_steps and environment_type == 'dev'
-- include: finish.yml
-- include: sample-collections.yml
-  when: ingest_sample_collections and environment_type != 'production'
+# - include: vsets.yml
+# - include: roles-permissions.yml
+# - include: content.yml
+# - include: theme-dev.yml
+#   when: sassy
+# - include: dev.yml
+#   when: run_dev_steps
+# - include: behat.yml
+#   when: run_dev_steps and environment_type == 'dev'
+# - include: finish.yml
+# - include: sample-collections.yml
+#   when: ingest_sample_collections and environment_type != 'production'
