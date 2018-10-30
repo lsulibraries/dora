@@ -9,6 +9,11 @@
   when: sassy
 - include: dev.yml
   when: run_dev_steps
+<<<<<<< Updated upstream
+=======
+- include: behat.yml
+  when: run_dev_steps and environment_type == 'dev'
+>>>>>>> Stashed changes
 - include: finish.yml
 - include: sample-collections.yml
   when: ingest_sample_collections and environment_type != 'production'

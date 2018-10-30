@@ -1,6 +1,6 @@
 # main.yml
 ---
-drush_dis:
+modules_to_disable:
 - islandora_bagit
 #- ...
 #- ...
@@ -13,7 +13,7 @@ drush_dl:
 # - reroute_email
 # - views_bulk_operations
 
-drush_en:
+modules_to_enable:
 - islandora_batch_derivative_trigger
 # - islandora_bulk_delete
 # - islandora_cdm_permalink_redirector
