@@ -1,17 +1,8 @@
 # main.yml
 ---
-modules_to_disable:
-- islandora_bagit
-#- ...
-#- ...
+modules_to_disable: []
 
-drush_dl:
-- admin_views
-# - better_exposed_filters
-# - imce
-# - omega-7.x-3.1
-# - reroute_email
-# - views_bulk_operations
+drush_dl: []
 
 modules_to_enable:
 - islandora_batch_derivative_trigger

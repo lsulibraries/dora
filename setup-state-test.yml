@@ -1,0 +1,320 @@
+---
+- hosts: all
+  become: yes
+  vars:
+    mods_uninstalled:
+    - actions_permissions
+    - adv_search_node
+    - aggregator
+    - alpha_pagination_sample_view
+    - blog
+    - book
+    - bulk_export
+    - contact
+    - context_layouts
+    - ctools_access_ruleset
+    - ctools_ajax_sample
+    - ctools_custom_content
+    - ctools_plugin_example
+    - date_all_day
+    - date_context
+    - date_migrate_example
+    - date_repeat
+    - date_repeat_field
+    - date_tools
+    - date_views
+    - datepicker_block
+    - datepicker_views
+    - devel_generate
+    - devel_node_access
+    - documentation
+    - doi_populator
+    - endnotexml_populator
+    - feeds_import
+    - feeds_news
+    - forum
+    - imagemagick_advanced
+    - islandora_badges
+    - islandora_bookmark_csv_exports
+    - islandora_compound_object_zip_importer
+    - islandora_oadoi
+    - islandora_object_lock_length
+    - islandora_object_lock_rest
+    - islandora_scopus
+    - islandora_wos
+    - islandora_xslt_populator
+    - job_scheduler_trigger
+    - locale
+    - node_export_book
+    - node_export_dependency
+    - node_export_features
+    - node_export_features_ui
+    - node_export_feeds
+    - node_export_relation
+    - openid
+    - page_manager
+    - pmid_populator
+    - poll
+    - ris_populator
+    - rules_admin
+    - rules_i18n
+    - rules_scheduler
+    - statistics
+    - stylizer
+    - syslog
+    - term_depth
+    - tracker
+    - translation
+    - trello_api_explorer
+    - trello_example
+    - trello_oauth
+    - trello_rules
+    - trello_user
+    - trigger
+    - uuid_path
+    - uuid_services
+    - uuid_services_example
+    - views_content
+    - xmlsitemap_engines
+    - xmlsitemap_i18n
+    - xmlsitemap_menu
+    - xmlsitemap_node
+    - xmlsitemap_taxonomy
+    - xmlsitemap_user
+
+    mods_disabled:
+    - alpha
+    - bibutils
+    - citation_exporter
+    - citeproc
+    - csl
+    - doi_importer
+    - endnotexml_importer
+    - garland
+    - islandora_altmetrics
+    - islandora_bagit
+    - islandora_bibliography
+    - islandora_bookmark
+    - islandora_checksum
+    - islandora_checksum_checker
+    - islandora_doi
+    - islandora_endnotexml
+    - islandora_entities
+    - islandora_entities_csv_import
+    - islandora_google_scholar
+    - islandora_marcxml
+    - islandora_object_lock
+    - islandora_pmid
+    - islandora_ris
+    - islandora_scholar
+    - islandora_scholar_embargo
+    - islandora_solr_views
+    - islandora_xacml_api
+    - islandora_xacml_editor
+    - omega
+    - overlay
+    - pmid_importer
+    - ris_importer
+    - stark
+
+    mods_enabled:
+    - islandora_mods_on_ingest
+    - alpha_pagination
+    - auto_entitylabel
+    - bartik
+    - block
+    - block_setting_ldl_theme
+    - blockexport
+    - ckeditor
+    - color
+    - colorbox
+    - comment
+    - context
+    - context_ui
+    - contextual
+    - ctools
+    - dashboard
+    - date
+    - date_api
+    - date_popup
+    - datepicker
+    - dblog
+    - delta
+    - delta_blocks
+    - delta_color
+    - delta_ui
+    - devel
+    - diff
+    - drush_util
+    - entity
+    - entity_token
+    - features
+    - feeds
+    - feeds_tamper
+    - feeds_tamper_ui
+    - feeds_ui
+    - field
+    - field_sql_storage
+    - field_ui
+    - file
+    - filter
+    - google_analytics_reports
+    - google_analytics_reports_api
+    - googleanalytics
+    - help
+    - image
+    - imagemagick
+    - imce
+    - islandora
+    - islandora_audio
+    - islandora_basic_collection
+    - islandora_basic_image
+    - islandora_batch
+    - islandora_batch_derivative_trigger
+    - islandora_batch_report
+    - islandora_book
+    - islandora_book_batch
+    - islandora_bulk_delete
+    - islandora_cdm_permalink_redirector
+    - islandora_change_namespace
+    - islandora_collection_landing_pages
+    - islandora_collection_search
+    - islandora_collection_toggle_publish
+    - islandora_compound_batch
+    - islandora_compound_object
+    - islandora_compound_parent_metadata
+    - islandora_content_stats
+    - islandora_datastream_crud
+    - islandora_disk_image
+    - islandora_elide_download
+    - islandora_find_replace
+    - islandora_fits
+    - islandora_form_fieldpanel
+    - islandora_gsearcher
+    - islandora_image_annotation
+    - islandora_importer
+    - islandora_internet_archive_bookreader
+    - islandora_ip_embargo
+    - islandora_large_image
+    - islandora_list_collections
+    - islandora_migrate_cdm_collections
+    - islandora_mods_display
+    - islandora_namespace_homepage
+    - islandora_newspaper
+    - islandora_newspaper_batch
+    - islandora_oai
+    - islandora_ocr
+    - islandora_oh
+    - islandora_openseadragon
+    - islandora_paged_content
+    - islandora_paged_content_pdf_batch
+    - islandora_pathauto
+    - islandora_pdf
+    - islandora_pdfjs
+    - islandora_populator
+    - islandora_premis
+    - islandora_pretty_text_diff
+    - islandora_regenerate_dc
+    - islandora_remote_resource_batch
+    - islandora_simple_workflow
+    - islandora_social_metatags
+    - islandora_solr
+    - islandora_solr_config
+    - islandora_solr_facet_pages
+    - islandora_solr_metadata
+    - islandora_solr_results_preference
+    - islandora_solution_pack_remote_resource
+    - islandora_transcript
+    - islandora_url_redirector
+    - islandora_utils
+    - islandora_video
+    - islandora_videojs
+    - islandora_web_archive
+    - islandora_xmlsitemap
+    - job_scheduler
+    - jquery_update
+    - ldl
+    - ldl_permissions
+    - libraries
+    - list
+    - meeting_minutes
+    - menu
+    - module_filter
+    - node
+    - node_export
+    - number
+    - objective_forms
+    - omega_tools
+    - options
+    - path
+    - pathauto
+    - php
+    - php_lib
+    - rdf
+    - reroute_email
+    - rules
+    - search
+    - seven
+    - shortcut
+    - simpletest
+    - solr_lsu_settings
+    - strongarm
+    - system
+    - taxonomy
+    - text
+    - token
+    - toolbar
+    - trello
+    - trello_tickets
+    - update
+    - user
+    - uuid
+    - views
+    - views_bulk_operations
+    - views_data_export
+    - views_lsu
+    - views_ui
+    - xml_form_api
+    - xml_form_builder
+    - xml_form_elements
+    - xml_forms
+    - xml_schema_api
+    - xmlsitemap
+    - xmlsitemap_custom
+    - zip_importer
+
+    mods_not_found_in_basebox:
+    - { dest: "/sites/all/modules/islandora_mods_on_ingest/", repo: "https://github.com/lsulibraries/islandora_mods_on_ingest.git" }
+    - { dest: "/sites/all/modules/islandora_change_namespace/", repo: "https://github.com/lsulibraries/islandora_change_namespace.git" }
+    - { dest: "/sites/all/modules/islandora_content_stats/", repo: "https://github.com/lsulibraries/islandora_content_stats" }
+    - { dest: "/sites/all/modules/islandora_elide_download/", repo: "https://github.com/lsulibraries/islandora_elide_download" }
+    - { dest: "/sites/all/modules/islandora_gsearcher/", repo: "https://github.com/discoverygarden/islandora_gsearcher" }
+    - { dest: "/sites/all/modules/islandora_list_collections/", repo: "https://github.com/lsulibraries/islandora_list_collections" }
+    - { dest: "/sites/all/modules/islandora_regenerate_dc/", repo: "https://github.com/lsulibraries/islandora_regenerate_dc" }
+    - { dest: "/sites/all/modules/islandora_solution_pack_remote_resource/", upstream_repo: "mjordan/islandora_solution_pack_remote_resource", repo: "https://github.com/lsulibraries/islandora_solution_pack_remote_resource" }
+    - { dest: "/sites/all/modules/islandora_pretty_text_diff", repo: "https://github.com/contentmath/islandora_pretty_text_diff", version: master }
+  tasks:
+  - name: Get modules not already present
+    git:
+      dest: '{{drupal_core_path}}{{ item.dest }}'
+      force: true
+      repo: "{{ item.repo }}"
+    with_items: "{{ mods_not_found_in_basebox }}"
+
+  - name: Enable modules.
+    command: "drush -u 1 -y en {{ item }}"
+    args:
+      chdir: "{{ drupal_core_path }}"
+    with_items: "{{ mods_enabled }}"
+
+  - name: Disable unsued modules.
+    command: "drush dis -y {{ item }}"
+    args:
+      chdir: '{{ drupal_core_path }}'
+    with_items: "{{ mods_disabled }}"
+
+  - name: Unistall modules
+    shell: "drush pm-uninstall -y {{ item }}"
+    args:
+      chdir: "{{ drupal_core_path }}"
+    with_items: "{{ mods_uninstalled }}"

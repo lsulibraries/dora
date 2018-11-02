@@ -1,0 +1,121 @@
+## Removes unused modules.
+---
+- hosts: all
+  become: yes
+  tasks:
+  - name: Disable modules before uninstalling
+    shell: "drush dis -y {{ item }}"
+    args:
+      chdir: "{{ drupal_core_path }}"
+    with_items: "{{ modules_to_uninstall }}"
+
+  - name: Unistall modules
+    shell: "drush pm-uninstall -y {{ item }}"
+    args:
+      chdir: "{{ drupal_core_path }}"
+    with_items: "{{ modules_to_uninstall }}"
+
+  - name: Delete modules
+    file:
+      path: "{{ drupal_core_path }}{{ item }}"
+      state: absent
+    with_items: "{{ module_paths_to_delete }}"
+
+  - name: cc all.
+    command: drush cc all
+    args:
+      chdir: "{{ drupal_core_path }}"
+
+  vars:
+    modules_to_uninstall:
+    - islandora_altmetrics
+    - islandora_badges
+    - citation_exporter doi_importer endnotexml_importer islandora_bibliography islandora_google_scholar pmid_importer ris_importer
+    - islandora_endnotexml islandora_pmid islandora_ris islandora_doi
+    - islandora_scholar_embargo
+    - bibutils citeproc
+    - csl
+    - islandora_scholar
+    - alpha
+    - alpha_pagination
+    - bagit
+    - book
+    - book_access
+    - book_access_ui
+    - comment
+    - context
+    - context_ui
+    - contextual
+    - date_popup
+    - date_migration_example
+    - datepicker
+    - delta
+    - delta_color
+    - delta_ui
+    - devel
+    - diff
+    - documentation
+    - drush_util
+    - views_lsu
+    - islandora_collection_landing_pages
+    - feeds_tamper feeds_tamper_ui
+    - feeds_import feeds_news
+    - feeds feeds_ui
+    - field_ui
+    - garland
+    - google_analytics_reports
+    - google_analytics_reports_api
+    - googleanalytics
+    - islandora_bagit
+    - islandora_entities_csv_import
+    - islandora_entities
+    - islandora_bookmark
+    - islandora_compound_convert
+    - islandora_disk_image
+    - islandora_image_annotation
+    - islandora_jwplayer
+    - islandora_list_collections
+    - islandora_migrate_cdm_collections
+    - islandora_object_lock
+    - islandora_object_lock_length
+    - islandora_populator
+    - islandora_solr_views
+    - islandora_web_archive
+    - islandora_xquery
+    - islandora_xquery
+    - islandora-features
+    - job_scheduler
+    - module_filter
+    - node_export
+    - oauthconnector
+    - omega
+    - overlay
+    - rdf
+    - search
+    - simpletest
+    - uuid
+    - uuid_services_example
+    - views_bulk_operations
+    - views_ui
+    - xhprof
+
+    module_paths_to_delete:
+    - /sites/all/modules/alpha_pagination
+    - /sites/all/modules/book_access
+    - /sites/all/modules/drush_util
+    - /sites/all/modules/feeds
+    - /sites/all/modules/feeds_tamper
+    - /sites/all/modules/google_analytics_reports
+    - /sites/all/modules/islandora_altmetrics
+    - /sites/all/modules/islandora_bagit
+    - /sites/all/modules/islandora_bookmark
+    - /sites/all/modules/islandora_compound_convert
+    - /sites/all/modules/islandora_image_annotation
+    - /sites/all/modules/islandora_jwplayer
+    - /sites/all/modules/islandora_migrate_cdm_collections
+    - /sites/all/modules/islandora_populator
+    - /sites/all/modules/islandora_scholar
+    - /sites/all/modules/islandora_xquery
+    - /sites/all/modules/islandora-features
+    - /sites/all/modules/xhprof
+    - /sites/all/modules/islandora_list_collections
