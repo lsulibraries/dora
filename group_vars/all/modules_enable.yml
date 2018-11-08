@@ -99,9 +99,7 @@ modules_to_enable:
 - list
 - meeting_minutes
 - menu
-- module_filter
 - node
-- node_export
 - number
 - objective_forms
 - omega_tools
