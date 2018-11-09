@@ -6,18 +6,16 @@
 
 - name: "Check for collections that we've already downloaded."
   stat:
-    path: "/tmp/{{ item.filename }}"
-  with_items: "{{ s3_collections }}"
-  register: collections
+    path: "/tmp/{{ item.src_filename }}"
+  with_items: "{{ ldl_sample_data }}"
+  register: downloads
 
 - name: Download collections
   get_url:
-    url: "https://s3-us-west-2.amazonaws.com/lsulibraries-sample-collections/{{item.1.filename}}"
-    dest: "/tmp/{{ item.1.filename }}"
-  with_together:
-    - "{{ collections.results }}"
-    - "{{ s3_collections }}"
-  when: not item.0.stat.exists
+    url: "https://s3-us-west-2.amazonaws.com/lsulibraries-sample-collections/{{item.1.src_filename}}"
+    dest: "/tmp/{{ item.1.src_filename }}"
+  loop: "{{ downloads.results|zip(ldl_sample_data)|list }}"
+  when: not item.0.stat.exists and item.1.src_filename != ''
 
 - name: ensure ingest semaphore file exists
   file:
@@ -33,65 +31,82 @@
     port: 8080
 
 - name: Create collection containers (parents).
-  command: "drush  -u 1 islandora-utils-create-collection --description='{{ item.description }}' --namespace={{ item.namespace }}:collection --parent=islandora:root --title='{{ item.title }}'"
+  command: "drush  -u 1 islandora-utils-create-collection --description='{{ item.description }}' --namespace={{ item.collection }} --parent=islandora:root --title='{{ item.title }}'"
   args:
     chdir: "{{ drupal_core_path }}"
-  with_items: "{{ s3_collections }}"
+  with_items: "{{ ldl_sample_data }}"
+  when: item.title is defined and item.description is defined
 
 - name: Publish collections.
-  command: "drush islandora-collection-toggle-publish-set publish --pid={{ item.namespace }}:collection"
+  command: "drush islandora-collection-toggle-publish-set publish --pid={{ item.collection }}"
   args:
     chdir: "{{ drupal_core_path }}"
-  with_items: "{{ s3_collections }}"
+  with_items: "{{ ldl_sample_data }}"
 
 - name: set state active
-  command: "drush -u 1 islandora-utils-set-state active --pid={{ item.namespace }}:collection"
+  command: "drush -u 1 islandora-utils-set-state active --pid={{ item.collection }}"
   args:
     chdir: "{{ drupal_core_path }}"
-  with_items: "{{ s3_collections }}"
+  with_items: "{{ ldl_sample_data }}"
 
 - name: Unzip cpd.zips. // this is a workaround until cpd_batch takes .zips
   unarchive:
-    src: "/tmp/{{ item.filename }}"
+    src: "/tmp/{{ item.src_filename }}"
     dest: "/tmp/"
     remote_src: yes
-  with_items: "{{ s3_collections }}"
-
-- name: Ingest (simple).
-  shell: "drush --user=admin islandora_batch_scan_preprocess --content_models='{{ item.cmodels }}' --parent={{ item.namespace }}:collection --parent_relationship_pred=isMemberOfCollection --type={{ item.type }} --scan_target=/tmp/{{ item.filename }} --namespace={{ item.namespace }} && drush -u 1 ibi && echo '{{ item.filename }} ' >> /opt/ingested"
-  args:
-    chdir: "{{ drupal_core_path }}"
-  with_items: "{{ s3_collections }}"
-  when: "'{{ item.filename }}' not in ingested.stdout and not {{ item.cpd }}"
+  with_items: "{{ ldl_sample_data }}"
+  when: item.ingest_type == 'cpd'
 
 - name: ensure that islandora_batch is enabled.
   command: drush en -y islandora_batch
   args:
     chdir: "{{ drupal_core_path }}"
 
-- name: create fresh structure files
-  shell: "cd {{ drupal_core_path }}/sites/all/modules/islandora_compound_batch/extras/scripts && php create_structure_files.php /tmp/{{ item.dirname }}"
-  with_items: "{{ s3_collections }}"
-  when: "{{ item.cpd }}"
+- name: Ingest (simple).
+  shell: "drush --user=admin islandora_batch_scan_preprocess --content_models='{{ item.cmodels }}' --parent={{ item.namespace }}:collection --parent_relationship_pred=isMemberOfCollection --type=zip --scan_target=/tmp/{{ item.src_filename }} --namespace={{ item.namespace }} && drush -u 1 ibi && echo '{{ item.src_filename }} ' >> /opt/ingested"
+  args:
+    chdir: "{{ drupal_core_path }}"
+  with_items: "{{ ldl_sample_data }}"
+  when: (item.src_filename not in ingested.stdout) and (item.ingest_type == 'simple')
+
+- name: Create top-level newspapers
+  shell: "drush islandora-utils-ingest-item --cmodel='islandora:newspaperCModel' --collection='{{ item.collection }}' --pid='{{ item.pid }}' --title='{{ item.title }}' -u 1 && echo '{{ item.pid }}' >> /opt/ingested"
+  args:
+    chdir: "{{ drupal_core_path }}"
+  with_items: "{{ ldl_sample_data }}"
+  when: (item.ingest_type == 'newspaper') and (item.pid not in ingested.stdout)
+
+- name: Ingest newspaper issues.
+  # drush islandora_newspaper_batch_preprocess --namespace=lsu-ag-sugar --parent=lsu-ag-sugar:bulletin --scan_target=/tmp/sugarbulletins_sample_1983all.zip --type=zip -u 1 && drush -u 1 ibi && echo 'sugarbulletins_sample_1983all.zip ' >> /opt/ingested
+  shell: "drush islandora_newspaper_batch_preprocess --namespace={{ item.namespace }} --parent={{ item.news_parent }} --scan_target=/tmp/{{ item.src_filename }} --type=zip -u 1 && drush -u 1 ibi && echo '{{ item.src_filename }} ' >> /opt/ingested"
+  args:
+    chdir: "{{ drupal_core_path }}"
+  with_items: "{{ ldl_sample_data }}"
+  when: item.src_filename not in ingested.stdout and item.ingest_type == 'newspaper_issue'
+
+- name: create cpd structure files
+  shell: "cd {{ drupal_core_path }}/sites/all/modules/islandora_compound_batch/extras/scripts && php create_structure_files.php /tmp/{{ item.src_filename.split('.')[0] }}"
+  with_items: "{{ ldl_sample_data }}"
+  when: item.ingest_type == 'cpd'
 
 - name: Ingest (cpd).
-  shell: "drush islandora_compound_batch_preprocess -u 1 --scan_target=/tmp/{{ item.dirname }} --parent={{ item.namespace }}:collection --namespace={{ item.namespace }}  && drush -u 1 ibi && echo '{{ item.filename }} ' >> /opt/ingested"
+  shell: "drush islandora_compound_batch_preprocess -u 1 --scan_target=/tmp/{{ item.src_filename.split('.')[0] }} --parent={{ item.collection }} --namespace={{ item.namespace }}  && drush -u 1 ibi && echo '{{ item.src_filename }} ' >> /opt/ingested"
   args:
     chdir: "{{ drupal_core_path }}"
-  with_items: "{{ s3_collections }}"
-  when: "'item.filename' not in ingested.stdout and item.cpd"
+  with_items: "{{ ldl_sample_data }}"
+  when: item.src_filename not in ingested.stdout and item.ingest_type == 'cpd'
 
-- name: Create embargo list.
-  command: drush iipeadd --low=130.39.0.0 --high=130.39.255.255 --list=lsu-wired
-  args:
-    chdir: "{{ drupal_core_path }}"
-
-- name: Make a pids list.
-  command: drush islandora-utils-get-pids-for-collection --collection=lsu-hpl:collection --outfile=/tmp/lsu-hpl.pids
-  args:
-    chdir: "{{ drupal_core_path }}"
-
-- name: Set embargo from pids list.
-  command: drush islandora-ip-embargo-set-embargo --pidsfile=/tmp/lsu-hpl.pids --list=lsu-wired
-  args:
-    chdir: "{{ drupal_core_path }}"
+# - name: Create embargo list.
+#   command: drush iipeadd --low=130.39.0.0 --high=130.39.255.255 --list=lsu-wired
+#   args:
+#     chdir: "{{ drupal_core_path }}"
+#
+# - name: Make a pids list.
+#   command: drush islandora-utils-get-pids-for-collection --collection=lsu-hpl:collection --outfile=/tmp/lsu-hpl.pids
+#   args:
+#     chdir: "{{ drupal_core_path }}"
+#
+# - name: Set embargo from pids list.
+#   command: drush islandora-ip-embargo-set-embargo --pidsfile=/tmp/lsu-hpl.pids --list=lsu-wired
+#   args:
+#     chdir: "{{ drupal_core_path }}"
