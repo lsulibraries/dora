@@ -6,7 +6,8 @@ institutions:
   - ldl
 
 environment_type: dev
-tomcat_xmx: "{{ (ansible_memtotal_mb*0.5)|int|abs }}m"
+tomcat_half_available_memory: "{{ (ansible_memtotal_mb*0.5)|int|abs }}"
+tomcat_xmx: "{{ tomcat_half_available_memory }}m"
 fqdn_suffix: dora.dev
 
 # software versions
@@ -111,8 +112,10 @@ drush_version: "e658a9641f498b33c05bb9f66fedcd749e3eeb4f"
 ###############
 ## dev !#######
 ###############
-
-
+vagrant_private_network_ip: 192.168.111.111
+iiif_endpoint: "http://{{ vagrant_private_network_ip }}:8182/iiif/2"
+cantaloupe_Xmx: "{{ ((ansible_memtotal_mb - (tomcat_half_available_memory|int))*0.3)|int|abs }}m"
+cantaloupe_version: 3.3.2
 
 drush_dl: []
 # drush_dl:
@@ -150,7 +153,13 @@ drush_vset_simple:
 - { key: islandora_internet_archive_bookreader_default_page_view, value: '2'}
 - { key: islandora_namespace_restriction_enforced, value: 0 }
 #- { key: islandora_solr_namespace_restriction, value: '' } # see vsets.yml
+- { key: islandora_solr_force_update_index_after_object_purge, value: 1 }
 - { key: islandora_solution_pack_remote_resource_redirection_type, value: goto }
+- { key: 'islandora_openseadragon_tilesource', value: 'iiif' }
+- { key: 'islandora_openseadragon_iiif_url', value: '{{ iiif_endpoint }}' }
+- { key: 'islandora_internet_archive_bookreader_iiif_url', value: '{{ iiif_endpoint }}' }
+- { key: 'islandora_internet_archive_bookreader_pagesource', value: 'iiif' }
+
 # - { key: islandora_basic_collection_admin_page_size, value: 50 }
 # - { key: islandora_collection_search_advanced_search_alter, value: 1 }
 # - { key: islandora_collection_toggle_publish_by_default, value: 0 }
@@ -159,9 +168,6 @@ drush_vset_simple:
 # - { key: site_frontpage, value: browse-collections }
 # - { key: site_name, value: 'Louisiana Digital Library' }
 
-drush_vset_simple_env_specific:
-- { key: 'islandora_openseadragon_tilesource', value: 'djatoka' }
-- { key: 'islandora_openseadragon_iiif_url', value:  '192.168.55.55'}
 
 islandora_core_modules:
 ## islandora and discoverygarden use '7.x-1.*' as their stable branch ##
