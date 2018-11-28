@@ -1,6 +1,3 @@
-# build.yml
----
-- hosts: all
-  become: yes
-  roles: 
-  - dev
+- import_playbook: migration-20181030.yml
+- import_playbook: core.yml
+- import_playbook: migration-20181102.yml

@@ -1,19 +1,10 @@
 # main.yml
 ---
-drush_dis:
-- islandora_bagit
-#- ...
-#- ...
+modules_to_disable: []
 
-drush_dl:
-- admin_views
-# - better_exposed_filters
-# - imce
-# - omega-7.x-3.1
-# - reroute_email
-# - views_bulk_operations
+drush_dl: []
 
-drush_en:
+modules_to_enable:
 - islandora_batch_derivative_trigger
 # - islandora_bulk_delete
 # - islandora_cdm_permalink_redirector

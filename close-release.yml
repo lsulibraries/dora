@@ -4,7 +4,7 @@
 - hosts: all
   become: yes
   vars:
-    # lsulibraries_modules_updated:
+    # lsulibraries_original_modules:
     #   - { dest: "/sites/all/modules/about-ldc/", repo: "lsulibraries/about-ldc" }
     git_actions:
       - git fetch tmp
@@ -37,7 +37,7 @@
       args:
         chdir: "{{ drupal_core_path }}{{ item.dest }}"
       with_items:
-        - "{{ lsulibraries_modules_updated }}"
+        - "{{ lsulibraries_original_modules }}"
       ignore_errors: yes
 
     - name: close release
@@ -45,5 +45,5 @@
       args:
         chdir: "{{ drupal_core_path }}{{ item[0].dest }}"
       with_nested:
-        - "{{ lsulibraries_modules_updated }}"
+        - "{{ lsulibraries_original_modules }}"
         - "{{ git_just_bump }}"

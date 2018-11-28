@@ -1,6 +1,9 @@
 .vagrant/*
 .ignore/*
-*.retry
 *.jar
+*.retry
 *.zip
+*~
+scratch/
 chromedriver
+
