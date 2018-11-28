@@ -1,0 +1,17 @@
+- apt:
+    update_cache: yes
+
+- include_role:
+    name: ansible_cantaloupe
+
+- command: a2dissite cantaloupe-proxy
+
+- name: Restart apache2
+  service:
+    name: apache2
+    state: restarted
+
+- name: start cantaloupe
+  shell: "(sudo -u cantaloupe nohup java -Dcantaloupe.config=/opt/cantaloupe/cantaloupe.properties -Xmx{{ cantaloupe_Xmx }} -jar Cantaloupe-{{ cantaloupe_version }}.war >/dev/null 2>&1 &)"
+  args:
+    chdir: /opt/cantaloupe

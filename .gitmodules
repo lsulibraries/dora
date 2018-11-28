@@ -1,0 +1,3 @@
+[submodule "roles/ansible_cantaloupe"]
+	path = roles/ansible_cantaloupe
+	url = https://github.com/lsulibraries/ansible_cantaloupe
