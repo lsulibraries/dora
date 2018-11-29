@@ -23,9 +23,8 @@
 - name: Symlink exists for Ruby Gems 2.0
   file: src=/usr/bin/gem2.0 dest=/usr/local/bin/gem state=link
 
-- gem:
-    name: sass
-    user_install: no
+- apt:
+    name: ruby-sass
 
 - name: run sass
   raw:  nohup sass --watch /var/www/ldl/sites/all/themes/ldl/css/global.scss:/var/www/ldl/sites/all/themes/ldl/css/global.css  </dev/null >/dev/null 2>&1 & sleep 1
