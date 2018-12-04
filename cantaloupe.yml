@@ -5,6 +5,7 @@
     name: ansible_cantaloupe
 
 - command: a2dissite cantaloupe-proxy
+  ignore_errors: yes
 
 - name: Restart apache2
   service:
@@ -12,6 +13,6 @@
     state: restarted
 
 - name: start cantaloupe
-  shell: "(sudo -u cantaloupe nohup java -Dcantaloupe.config=/opt/cantaloupe/cantaloupe.properties -Xmx{{ cantaloupe_Xmx }} -jar Cantaloupe-{{ cantaloupe_version }}.war >/dev/null 2>&1 &)"
+  shell: "(sudo -u cantaloupe nohup java -Dcantaloupe.config=/opt/cantaloupe/cantaloupe.properties -Xmx{{ cantaloupe_Xmx }} -jar Cantaloupe-{{ cantaloupe_version }}.war &)"
   args:
     chdir: /opt/cantaloupe
