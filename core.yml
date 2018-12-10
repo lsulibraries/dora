@@ -1,0 +1,9 @@
+---
+- hosts: all
+  become: yes
+  tasks:
+    - include_role:
+        name: ldl
+
+    - include_tasks: cantaloupe.yml
+      when: environment_type == 'dev'

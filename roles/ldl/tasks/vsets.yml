@@ -10,13 +10,6 @@
     chdir: "{{ drupal_core_path }}"
   with_items: "{{ drush_vset_simple }}"
 
-- name: Set ENV-specific simple key => val variables.
-  command: drush -u 1 vset {{ item.key }} {{ item.value }}
-  args:
-    chdir: "{{ drupal_core_path }}"
-  with_items: "{{ drush_vset_simple_env_specific }}"
-
-
 #########################################################################
 #### other ways to vset that are less easy to automate in this play. ####
 #########################################################################
@@ -35,7 +28,7 @@
 - name: configure seadragon
   args:
     chdir: "{{ drupal_core_path }}/sites/ldl"
-  command: "drush -u 1 ev \"variable_set(\'islandora_openseadragon_settings\', {{ seadragon_settings }})\""
+  command: "drush -u 1 ev \"variable_set('islandora_openseadragon_settings', {{ seadragon_settings }})\""
 
 - name: configure pdf_viewer default
   args:
@@ -44,5 +37,10 @@
 
 - name: Set Book ingest defaults
   command: php -r 'print json_encode(array("image" => "image", "pdf" => 0, "ocr" => "ocr"));' | drush vset --format=json islandora_book_ingest_derivatives -
+  args:
+    chdir: "{{ drupal_core_path }}"
+
+- name: unset solr namespace restriction
+  command: drush eval "variable_set('islandora_solr_namespace_restriction', NULL);"
   args:
     chdir: "{{ drupal_core_path }}"

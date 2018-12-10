@@ -1,0 +1,47 @@
+---
+- name: mkdir for dr.ext
+  file:
+    path: "{{ drupalextension_home }}"
+    state: directory
+
+- name: get the behat drupal extension
+  copy:
+    src: files/behat-composer.json
+    dest: "{{ drupalextension_home }}/composer.json"
+
+  # The next step is so memory-intense that it will
+  # fail with oom
+- service:
+    name: tomcat7
+    state: stopped
+
+- composer:
+    command: install
+    working_dir: "{{ drupalextension_home }}"
+
+- service:
+    name: tomcat7
+    state: started
+
+- name: symlink behat
+  file:
+    state: link
+    src: "{{ drupalextension_home }}/bin/behat"
+    path: /usr/local/bin/behat
+    mode: 0755
+
+- name: git local tests
+  git:
+    repo: https://github.com/lsulibraries/ldl_behat.git
+    dest: "{{ drupalextension_home }}/ldl_behat"
+
+- name: get selenium
+  get_url:
+    url: https://goo.gl/4g538W
+    dest: /vagrant/
+
+- name: get chromedriver
+  unarchive:
+    src: https://chromedriver.storage.googleapis.com/2.40/chromedriver_linux64.zip
+    dest: /vagrant/
+    remote_src: yes

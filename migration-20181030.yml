@@ -1,0 +1,45 @@
+## removes features nested under islandora-features_ldl_blocks.
+## they will be cloned as standalone features in the core play.
+---
+- hosts: all
+  become: yes
+  vars:
+    modules_to_move:
+    - {
+        gh_name: 'ldl_permissions',
+        drush_name: 'ldl_permissions',
+        old_path: "{{ drupal_core_path }}/sites/all/modules/islandora-features/ldl_permissions",
+      }
+    - {
+        gh_name: 'islandora_feature_solr_settings',
+        drush_name: 'solr_lsu_settings',
+        old_path: "{{ drupal_core_path }}/sites/all/modules/islandora-features/solr_lsu_settings",
+      }
+  tasks:
+  # https://stackoverflow.com/questions/36629599/stat-exists-with-list-of-variables-in-ansible
+  - name: Checking old paths exist
+    stat:
+      path: "{{ item.old_path }}"
+    with_items: "{{ modules_to_move }}"
+    register: old_paths
+
+  - name: disable
+    shell: "drush dis -y {{ item.item.drush_name }}"
+    args:
+      chdir: "{{ drupal_core_path }}"
+    with_items: "{{ old_paths.results }}"
+    when: item.stat.exists
+
+  - name: uninstall
+    shell: "drush pm-uninstall -y {{ item.item.drush_name }}"
+    args:
+      chdir: "{{ drupal_core_path }}"
+    with_items: "{{ old_paths.results }}"
+    when: item.stat.exists
+
+  - name: rm old_path
+    file:
+      path: "{{ item.item.old_path }}"
+      state: absent
+    with_items: "{{ old_paths.results }}"
+    when: item.stat.exists

@@ -9,7 +9,7 @@ tldr*2 If you just want the box with collections, edit 'group_vars/all.yml' so t
 
 ### Box
 
-The box referenced in the Vagrantfile is a custom base box built from the [full ansible play](https://github.com/lsulibraries/islandora_ansible). 
+The box referenced in the Vagrantfile is a custom base box built from the [full ansible play](https://github.com/lsulibraries/islandora_ansible).
 
 ### Role
 
@@ -82,10 +82,13 @@ Installs a prepared set of sample collections. See sample-collections.yml for th
 
 #### Run dev steps
 
-INCOMPLETE - 
+INCOMPLETE -
 
 If you need to attach to this box with a debugger, analyze the app with xhprof, or similar, update the variable `run_dev_steps` to be true/yes. (more features coming soon).
 
-## Creating a <a name='migration'></a> migration
+##### behat
+The [drupalextension](https://github.com/jhedstrom/drupalextension) project will be installed, by default at /opt/drupalextension. LDL tests will be cloned into a subdirectory of the drupalextension location.
 
-Check out a new feature branch from master named following the convention `FB-<name>`. Make changes, commit and push your branch for review and merging into the production playbook.
+In addition, selenium and chrome driver will be downloaded to /vagrant so as to be available on both the host and the guest OS. On the guest (the dora vagrant box), run selenium with `java -jar /vagrant/selenium-server-standalone-3.13.0.jar -role hub` On the host, be sure that chromedriver is in your $PATH, then run `java -jar selenium-server-standalone-3.13.0.jar -role node -hub http://192.168.111.111:4444/grid/register/`.
+
+With that done, you are all set up to run behat tests. From /opt/drupalextension/ldl_behat, run `behat`; you should see the entire test suite begin to run in a chrome browser on your host OS. Use `@tags` to limit the tests that will be run: `behat --tags @islandora_elide_download`.
