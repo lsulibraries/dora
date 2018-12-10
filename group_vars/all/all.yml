@@ -412,7 +412,7 @@ sassy: no
 
 ## git versions
 ldl_release: 0.12.x
-ldl_module_version: release-0.12.x # could also be master, develop
+ldl_module_version: master # could also be master, develop
 islandora_core_version: 7.x-1.11
 update_islandora_core: yes
 update_drupal: yes
