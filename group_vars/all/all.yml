@@ -418,6 +418,6 @@ update_islandora_core: yes
 update_drupal: yes
 update_drupal_db: yes
 update_drupal_backup_first: no
-update_drupal_version: "7.60"
+update_drupal_version: "7.61"
 update_drupal_contrib_modules: yes
 update_drupal_contrib_modules_drush_args: # for example, --security-only
