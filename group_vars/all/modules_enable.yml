@@ -40,7 +40,6 @@ modules_to_enable:
 - islandora_change_namespace
 - islandora_checksum
 - islandora_checksum_checker
-- islandora_collection_landing_pages
 - islandora_collection_search
 - islandora_collection_toggle_publish
 - islandora_compound_batch

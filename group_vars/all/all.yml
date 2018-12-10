@@ -252,11 +252,13 @@ lsulibraries_forks:
 
 other_modules: ## to be pulled by specific version
 - { dest: "/sites/all/libraries/JAIL/", version: "dbe6811f2a06b52a05dc8e40dcbfce8b3f5e8fcb", repo: "https://github.com/sebarmeli/JAIL" }
+- { dest: "/sites/all/libraries/jQuery.prettyTextDiff", version: "4b0f134e7209659d2fcc84af3118f554e926d801", repo: "https://github.com/arnab/jQuery.PrettyTextDiff" }
 - { dest: "/sites/all/libraries/tuque/", version: '1.x', repo: "https://github.com/Islandora/tuque.git" }
 - { dest: "/sites/all/modules/islandora_bulk_delete/", version: "0757f8d93460ac4ba57573ac31bcfcd724cea6c9", repo: "https://github.com/mjordan/islandora_bulk_delete" }
 - { dest: "/sites/all/modules/islandora_compound_batch/", version: "ec2eb7fb9e7e4f4440b78e3975435f06d2b79ac0", repo: "https://github.com/MarcusBarnes/islandora_compound_batch" }
 - { dest: "/sites/all/modules/islandora_datastream_crud/", version: "4a250e96bc0afcc0563263037d5e621a6fe7c217", repo: "https://github.com/mjordan/islandora_datastream_crud" }
 - { dest: "/sites/all/modules/islandora_openseadragon/", version: "064d1282e87b06cddcfd74bc92efa22df7aa5f5f", repo: "https://github.com/Islandora/islandora_openseadragon" }
+- { dest: "/sites/all/modules/islandora_pretty_text_diff" , version: "f779a6b3b1327db6f0865d82b70eac597756c839", repo: "https://github.com/contentmath/islandora_pretty_text_diff" }
 - { dest: "/sites/all/modules/islandora_social_metatags/", version: "65f57718a0934c0cd8c1b550dc5b0f7e44be5153", repo: "https://github.com/Islandora-Labs/islandora_social_metatags" }
 - { dest: "/sites/all/modules/islandora_transcript/", version: "52d2da53a3528d8b3cd7f8c44c517a1b4b86f39b", repo: "https://github.com/yorkulibraries/islandora_transcript" }
 - { dest: "/sites/all/modules/islandora_url_redirector/", version: "142cff8bd3e03b1c3ecbc31d0fbf47b6d5b8ebee", repo: "https://github.com/bondjimbond/islandora_url_redirector" }
@@ -416,6 +418,6 @@ update_islandora_core: yes
 update_drupal: yes
 update_drupal_db: yes
 update_drupal_backup_first: no
-update_drupal_version: "7.60"
+update_drupal_version: "7.61"
 update_drupal_contrib_modules: yes
 update_drupal_contrib_modules_drush_args: # for example, --security-only
