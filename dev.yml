@@ -1,0 +1,17 @@
+- hosts: all
+  become: yes
+  tasks:
+  - name: update theme
+    git:
+      repo: https://github.com/lsulibraries/ldl_theme
+      dest: "{{ drupal_core_path }}/sites/all/themes/ldl"
+      version: develop
+      force: yes
+
+  - name: start cantaloupe
+    shell: "(sudo -u cantaloupe nohup java -Dcantaloupe.config=/opt/cantaloupe/cantaloupe.properties -Xmx{{ cantaloupe_Xmx }} -jar Cantaloupe-{{ cantaloupe_version }}.war &)"
+    args:
+      chdir: /opt/cantaloupe
+
+  - name: configure sassy
+    include_tasks: roles/ldl/tasks/theme-dev.yml
