@@ -11,6 +11,12 @@
 
 # thanks to https://stackoverflow.com/questions/23493984/how-to-install-ruby-2-and-ruby-gems-on-ubuntu-box-with-ansible !!
 
+- name: Purge whatever ruby2 is there
+  apt:
+    pkg: ruby2.0
+    purge: yes
+    state: absent
+
 - name: Latest version of Ruby is installed
   apt:
     pkg: "{{ item }}"
