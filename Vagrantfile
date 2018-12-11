@@ -14,9 +14,9 @@ Vagrant.configure("2") do |config|
   # boxes at https://atlas.hashicorp.com/search.
   config.vm.box = "dora"
   config.vm.box_url = 'https://s3-us-west-2.amazonaws.com/lsulibraries-vagrant-boxes/dora.json'
-  config.vm.box_version = '1.1.0'
+  config.vm.box_version = '1.2.0'
   config.vm.box_download_checksum_type = 'sha256'
-  config.vm.box_download_checksum = '64afbfa1e9133f9d4cc3184ed6ab925c709b76828daaa49a566b426bd7261cbc'
+  config.vm.box_download_checksum = 'c95215efbfc12c886a8285bd88449a131a953b6e3cc017ad2d3072b9a278626a'
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
@@ -81,12 +81,11 @@ Vagrant.configure("2") do |config|
   end
 
   # Use rbconfig to determine if we're on a windows host or not.
-
   require 'rbconfig'
   is_windows = (RbConfig::CONFIG['host_os'] =~ /mswin|mingw|cygwin/)
   if is_windows
     config.vm.provision "ansible_local" do |ansible|
-      ansible.playbook = "build.yml"
+      ansible.playbook = "dev.yml"
       ansible.verbose = 'vv'
       ansible.install = true
       ansible.extra_vars = {
@@ -98,7 +97,7 @@ Vagrant.configure("2") do |config|
     end
   else
     config.vm.provision "ansible" do |ansible|
-      ansible.playbook = "build.yml"
+      ansible.playbook = "dev.yml"
       ansible.verbose = 'vv'
       ansible.extra_vars = {
         mysql_local_installation: "true",
