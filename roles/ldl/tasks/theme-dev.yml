@@ -39,4 +39,4 @@
   command: gem install sass
 
 - name: run sass
-  raw:  nohup sass --watch /var/www/ldl/sites/all/themes/ldl/css/global.scss:/var/www/ldl/sites/all/themes/ldl/css/global.css  </dev/null >/dev/null 2>&1 & sleep 1
+  shell:  (sudo nohup sass --watch /var/www/ldl/sites/all/themes/ldl/css/global.scss:/var/www/ldl/sites/all/themes/ldl/css/global.css  </dev/null >/dev/null 2>&1 & sleep 1)
