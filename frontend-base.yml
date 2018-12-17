@@ -9,11 +9,11 @@
   vars:
     mysql_login_host: "{{ backend_ip }}"
   roles:
-    - ansible-role-git
+    - geerlingguy.git
     - ansible-role-apache
-    - ansible-role-php
+    - geerlingguy.php
     - ansible-role-php-mysql
-    - ansible-role-composer
+    - geerlingguy.composer
     - ansible-role-drush
 
   tasks:

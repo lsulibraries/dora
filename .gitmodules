@@ -5,16 +5,16 @@
 	path = roles/ansible-role-apache
 	url = https://github.com/geerlingguy/ansible-role-apache.git
 [submodule "roles/ansible-role-composer"]
-	path = roles/ansible-role-composer
+	path = roles/geerlingguy.composer
 	url = https://github.com/geerlingguy/ansible-role-composer.git
 [submodule "roles/ansible-role-drush"]
 	path = roles/ansible-role-drush
 	url = https://github.com/geerlingguy/ansible-role-drush.git
 [submodule "roles/ansible-role-git"]
-	path = roles/ansible-role-git
+	path = roles/geerlingguy.git
 	url = https://github.com/geerlingguy/ansible-role-git.git
 [submodule "roles/ansible-role-php"]
-	path = roles/ansible-role-php
+	path = roles/geerlingguy.php
 	url = https://github.com/geerlingguy/ansible-role-php.git
 [submodule "roles/ansible-role-php-mysql"]
 	path = roles/ansible-role-php-mysql
