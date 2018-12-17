@@ -4,9 +4,24 @@
     mysql_login_host: localhost
 
   roles:
-    - ansible-role-mysql
+    # - ansible-role-mysql
 
   tasks:
+
+    - name: setup apt repo for mysql v5.6
+      apt_repository:
+        repo: deb http://archive.ubuntu.com/ubuntu trusty universe
+
+    - name: install old 5.6 mysql
+      apt:
+        name: "{{ item }}"
+        update_cache: yes
+      with_items:
+        - mysql-server-5.6
+        - mysql-client-5.6
+        - python3-pip
+        - python3-mysqldb
+
     - name: Ensure databases exist.
       mysql_db:
         login_host: "{{ mysql_login_host }}"
