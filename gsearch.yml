@@ -129,14 +129,14 @@
       dest: "{{ gsearch_webapps_home }}/WEB-INF/lib/gsearch_extensions-{{ gsearch_extensions_version }}-jar-with-dependencies.jar"
       remote_src: yes
 
-  - namne: link foxml2solr into gsearch index
+  - name: link foxml2solr into gsearch index
     file:
       path: "{{ gsearch_index_home }}/foxmlToSolr.xslt"
       src: /opt/basic-solr-config/foxmlToSolr.xslt
       state: link
       force: yes
 
-  - namne: link islandoraXforms into gsearch index
+  - name: link islandoraXforms into gsearch index
     file:
       path: "{{ gsearch_index_home }}/islandora_transforms"
       src: /opt/basic-solr-config/islandora_transforms
