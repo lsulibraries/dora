@@ -2,8 +2,6 @@
   become: yes
   vars:
     mysql_login_host: localhost
-    mysql_default-character-set: utf8mb4
-    mysql_collation-server: utf8mb4_unicode_ci
 
   roles:
     - ansible-role-mysql

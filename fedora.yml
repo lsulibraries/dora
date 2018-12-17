@@ -158,8 +158,10 @@
       dest: /var/lib/tomcat7/webapps/fedora/WEB-INF/classes
 
   - name: ensure that frontend can use api-m
-    lineinfile: "<AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">{{ frontend_ip }}</AttributeValue>"
-    insertafter: "<AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">0:0:0:0:0:0:0:1</AttributeValue>"
+    lineinfile:
+      line: '<AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">{{ frontend_ip }}</AttributeValue>'
+      insertafter: '<AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">0:0:0:0:0:0:0:1</AttributeValue>'
+      path: "{{ fedora_home }}/data/fedora-xacml-policies/repository-policies/default/deny-apim-if-not-localhost.xml"
 
   - name: Tomcat restart
     service:
