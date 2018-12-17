@@ -8,5 +8,4 @@
     - action: setup # https://stackoverflow.com/a/40790418/3294778
   roles:
     - ansible_cantaloupe
-  tasks:
-    - include_tasks: common.yml
+- include: common.yml

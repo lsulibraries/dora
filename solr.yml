@@ -10,5 +10,4 @@
   roles:
     - ansible-role-solr
 
-  tasks:
-    - include_tasks: common.yml
+- include: common.yml

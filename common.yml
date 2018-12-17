@@ -1,15 +1,18 @@
-- name: install sysadmin packages
-  apt:
-    update_cache: yes
-    name:
-      - monit
-      - sysstat
-      - emacs
-      - tree
-      - htop
+- hosts: all
+  become: yes
+  tasks:
+  - name: install sysadmin packages
+    apt:
+      update_cache: yes
+      name:
+        - monit
+        - sysstat
+        - emacs
+        - tree
+        - htop
 
-- name: configure sysstat
-  replace:
-    regexp: 'ENABLED="false"'
-    replace: 'ENABLED="true"'
-    dest: /etc/default/sysstat
+  - name: configure sysstat
+    replace:
+      regexp: 'ENABLED="false"'
+      replace: 'ENABLED="true"'
+      dest: /etc/default/sysstat
