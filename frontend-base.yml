@@ -1,11 +1,5 @@
 - hosts: all
   become: yes
-
-  gather_facts: false
-  pre_tasks:
-    - name: 'install python2'
-      raw: sudo apt-get -y install python python-simplejson
-    - action: setup # https://stackoverflow.com/a/40790418/3294778
   vars:
     mysql_login_host: "{{ backend_ip }}"
   roles:
