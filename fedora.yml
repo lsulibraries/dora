@@ -124,6 +124,7 @@
       name: tomcat7
       state: restarted
 
+
   - name: get Drupal auth filter from github
     get_url:
       url: "https://github.com/islandora/islandora_drupal_filter/releases/download/7.1.12/fcrepo-drupalauthfilter-{{ auth_filter_fedora_version }}.jar"
@@ -157,11 +158,15 @@
       src: files/logging.properties
       dest: /var/lib/tomcat7/webapps/fedora/WEB-INF/classes
 
+  - wait_for:
+      path: "{{ fedora_home_link_target }}/data/fedora-xacml-policies/repository-policies/default/deny-apim-if-not-localhost.xml"
+      state: present
+
   - name: ensure that frontend can use api-m
     lineinfile:
       line: '<AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">{{ frontend_ip }}</AttributeValue>'
       insertafter: '<AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">0:0:0:0:0:0:0:1</AttributeValue>'
-      path: "{{ fedora_home }}/data/fedora-xacml-policies/repository-policies/default/deny-apim-if-not-localhost.xml"
+      path: "{{ fedora_home_link_target }}/data/fedora-xacml-policies/repository-policies/default/deny-apim-if-not-localhost.xml"
 
   - name: Tomcat restart
     service:
