@@ -9,12 +9,12 @@
   vars:
     mysql_login_host: "{{ backend_ip }}"
   roles:
-    - geerlingguy.git
-    - geerlingguy.apache
-    - geerlingguy.php
-    - geerlingguy.php-mysql
-    - geerlingguy.composer
-    - geerlingguy.drush
+    - ansible-role-git
+    - ansible-role-apache
+    - ansible-role-php
+    - ansible-role-php-mysql
+    - ansible-role-composer
+    - ansible-role-drush
 
   tasks:
     - name: Install apache-php
