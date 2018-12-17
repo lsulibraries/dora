@@ -177,16 +177,16 @@
     file:
       path: /opt/w3c-local-cache
       state: directory
-      
+
   - name: copy local DTDs into place
     copy:
-      src: "{{ item }}"
+      src: "files/w3c-local-cache/{{ item }}"
       dest: "/opt/w3c-local-cache/{{ item }}"
     with_items:
-      - files/w3c-local-cache/xhtml-special.ent
-      - files/w3c-local-cache/xhtml-symbol.ent
-      - files/w3c-local-cache/xhtml-lat1.ent
-      - files/w3c-local-cache/xhtml1-transitional.dtd
+      - xhtml-special.ent
+      - xhtml-symbol.ent
+      - xhtml-lat1.ent
+      - xhtml1-transitional.dtd
 
   - name: copy apache vhost
     copy:
@@ -200,4 +200,3 @@
     service:
       name: apache2
       state: restarted
-
