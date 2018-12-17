@@ -77,12 +77,12 @@
         - ffmpeg
 
     - name: Create fits_home
-      file: 
+      file:
         path: "{{fits_home}}"
         state: directory
 
     - name: Ensure unzip is installed
-      apt: 
+      apt:
         name: unzip
 
     - name: Check if fits source is cached locally
@@ -91,28 +91,28 @@
       register: fits_cached
 
     - name: Fetch fits from cache.
-      unarchive: 
-        src: "{{ cache_dir }}/fits-{{fits_version}}.zip" 
-        dest: "{{fits_home}}" 
+      unarchive:
+        src: "{{ cache_dir }}/fits-{{fits_version}}.zip"
+        dest: "{{fits_home}}"
         creates: "{{fits_home}}/fits-{{fits_version}}"
         copy: no
       when: fits_cached.stat.exists
 
     - name: Download fits # this should only happen when fits is not cached.
-      unarchive: 
-        src: "http://projects.iq.harvard.edu/files/fits/files/fits-{{fits_version}}.zip" 
-        dest: "{{fits_home}}" 
+      unarchive:
+        src: "http://projects.iq.harvard.edu/files/fits/files/fits-{{fits_version}}.zip"
+        dest: "{{fits_home}}"
         creates: "{{fits_home}}/fits-{{fits_version}}"
         copy: no
 
     - name: make fits.sh executable
-      file: 
-        path: "{{fits_home}}/fits-{{fits_version}}/fits.sh" 
+      file:
+        path: "{{fits_home}}/fits-{{fits_version}}/fits.sh"
         mode: 0755
 
     - name: make fits-env.sh executable
-      file: 
-        path: "{{fits_home}}/fits-{{fits_version}}/fits-env.sh" 
+      file:
+        path: "{{fits_home}}/fits-{{fits_version}}/fits-env.sh"
         mode: 0755
 
     - name: link into path

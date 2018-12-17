@@ -52,7 +52,7 @@
 
   - name: Ensure mvn installed
     apt:
-      name: maven2
+      name: maven
 
     # TODO keep an eye out for a mvn module
   - name: Package dgi_gsearch_extensions with maven (shell)

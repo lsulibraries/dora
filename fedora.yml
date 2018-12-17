@@ -11,22 +11,101 @@
   vars:
     auth_filter_fedora_version: 3.8.1
     mysql_login_host: localhost
+    tomcat_user: tomcat7
+    tomcat_extra_opts: ""
 
-  roles:
-    - java8
-    - ansible-tomcat7
-    # - ansible-role-fcrepo
+  # roles:
+  #   - java8
+  #   - ansible-tomcat7
+  #   # - ansible-role-fcrepo
 
   tasks:
   - apt:
       name: "{{ item }}"
     with_items:
+      - default-jdk
       - tomcat7-admin
+      - tomcat7
       - git
 
-  - name: Get mysql python lib
-    apt:
-      name: python-mysqldb
+###################### begin try to skip java8 and dedicated ansible role for tomcat7
+
+  # Installing Packages
+  - name: Install Tomcat7 (Ubuntu)
+    apt: pkg={{ item }} state=latest
+    with_items:
+      - tomcat7
+      - libtcnative-1
+      - libapr1
+    when: ansible_distribution == 'Ubuntu'
+
+  - name: Install Tomcat7 (Debian)
+    apt: pkg={{ item }} state=latest
+    with_items:
+      - tomcat7
+    when: ansible_distribution == 'Debian'
+
+  - name: Install Tomcat7 (Amazon Linux)
+    yum: pkg={{ item }} state=latest
+    with_items:
+      - tomcat7
+      - tomcat-native
+    when: ansible_distribution == 'Amazon'
+
+  # Creating Tomcat Symlinks
+  - name: Symlink to /usr/local/tomcat
+    file: dest=/usr/local/tomcat state=link src=/var/lib/tomcat7
+    when: ansible_distribution == 'Ubuntu' or ansible_distribution == 'Debian'
+
+  - name: Symlink to /usr/local/tomcat
+    file: dest=/usr/local/tomcat state=link src=/usr/share/tomcat7
+    when: ansible_distribution == 'Amazon'
+
+  # Setting Deploy Directory File Permissions
+  - name: Set Tomcat Deployment Directory Permissions
+    file: dest=/usr/local/tomcat/webapps state=directory owner={{ tomcat_user }}  group={{ tomcat_user }}  mode=0775
+    when: ansible_distribution == 'Ubuntu' or ansible_distribution == 'Debian'
+
+  # Creating missing symlinks
+  # https://bugs.launchpad.net/ubuntu/+source/tomcat7/+bug/1232258
+  - name: Create missing symlink
+    file:
+      path: /usr/share/tomcat7/shared
+      src: /var/lib/tomcat7/shared/
+      state: link
+
+  - name: Create missing symlink
+    file:
+      path: /usr/share/tomcat7/server
+      src: /var/lib/tomcat7/server/
+      state: link
+
+  - name: Create missing symlink
+    file:
+      path: /usr/share/tomcat7/common
+      src: /var/lib/tomcat7/common/
+      state: link
+
+  # Creating Service Configuration
+  - name: Configuring Tomcat Service (Ubuntu / Debian)
+    template: src=tomcat7.j2 dest=/etc/default/tomcat7 owner=root group=root mode=0644
+    notify: restart_tomcat
+    when: ansible_distribution == 'Ubuntu' or ansible_distribution == 'Debian'
+
+  - name: Configuring Tomcat Service (Amazon)
+    template: src=tomcat7.conf.j2 dest=/etc/tomcat7/tomcat7.conf owner={{ tomcat_user }}  group={{ tomcat_user }}  mode=644
+    notify: restart_tomcat
+    when: ansible_distribution == 'Amazon'
+
+  - name: Enable Tomcat Service
+    service: name=tomcat7 enabled=yes
+
+##################################### end tomcat role replacement
+
+
+  # - name: Get mysql python lib
+  #   apt:
+  #     name: python-mysqldb
 
   - name: Setup fedora_home_link_target
     file:

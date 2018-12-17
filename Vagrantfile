@@ -45,7 +45,7 @@ Vagrant.configure("2") do |config|
   end
 
   config.vm.define :backend do |backend|
-    backend.vm.box = "ubuntu/trusty64"
+    backend.vm.box = "ubuntu/xenial64"
     backend.vm.network "private_network", ip: "192.168.222.3"
     backend.vm.network "forwarded_port", guest: 8080, host: 8080
     backend.vm.box_check_update = false
@@ -56,6 +56,9 @@ Vagrant.configure("2") do |config|
     backend.vm.provision "ansible" do |ansible|
       ansible.playbook = "backend.yml"
       ansible.verbose = 'vv'
+      ansible.extra_vars = {
+        ansible_python_interpreter: '/usr/bin/python3'
+      }
     end
   end
 
@@ -69,7 +72,7 @@ Vagrant.configure("2") do |config|
       vb.memory = "2000"
       vb.cpus = 1
     end
-    
+
     frontend.vm.provision "ansible" do |ansible|
       ansible.playbook = "frontend.yml"
       ansible.verbose = 'vv'
