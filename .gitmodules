@@ -32,7 +32,7 @@
 	path = roles/ansible-tomcat7
 	url = https://github.com/lsulibraries/ansible-tomcat7.git
 [submodule "roles/ansible-java8"]
-	path = roles/ansible-java8
+	path = roles/java8
 	url = https://github.com/gregwhitaker/ansible-java8.git
 [submodule "roles/ansible-role-islandora-ldl"]
 	path = roles/ansible-role-islandora-ldl
