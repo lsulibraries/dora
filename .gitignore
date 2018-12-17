@@ -1,9 +1,6 @@
-.vagrant/*
-.ignore/*
-*.jar
+*cloudimg-console.log
 *.retry
-*.zip
 *~
-scratch/
-chromedriver
-
+*.zip
+*.tgz
+.vagrant/*

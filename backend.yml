@@ -1,0 +1,4 @@
+- include_tasks: common.yml
+- include: mysql.yml
+- include: fedora.yml
+- include: gsearch.yml

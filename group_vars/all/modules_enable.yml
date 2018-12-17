@@ -89,6 +89,8 @@ modules_to_enable:
 - islandora_videojs
 - islandora_xacml_api
 - islandora_xacml_editor
+- xmlsitemap
+- xmlsitemap_custom
 - islandora_xmlsitemap
 - job_scheduler
 - jquery_update
@@ -128,6 +130,4 @@ modules_to_enable:
 - xml_form_elements
 - xml_forms
 - xml_schema_api
-- xmlsitemap
-- xmlsitemap_custom
 - zip_importer

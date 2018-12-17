@@ -1,0 +1,48 @@
+- hosts: all
+  become: yes
+  vars:
+    mysql_login_host: localhost
+    mysql_default-character-set: utf8mb4
+    mysql_collation-server: utf8mb4_unicode_ci
+
+  roles:
+    - common
+    - ansible-role-mysql
+
+  tasks:
+    - name: Ensure databases exist.
+      mysql_db:
+        login_host: "{{ mysql_login_host }}"
+        login_user: "{{ mysql_login_user }}"
+        login_password: "{{ mysql_login_password }}"
+        state: present
+        encoding: utf8mb4
+        name: "{{ item }}"
+      with_items:
+        - "{{ fedora_database_name }}"
+        - "{{ islandora_database_name }}"
+
+    - name: Ensure fcrepo user exists.
+      mysql_user:
+        login_host: "{{ mysql_login_host }}"
+        login_user: "{{ mysql_login_user }}"
+        login_password: "{{ mysql_login_password }}"
+        state: present
+        name: "{{ fedora_database_user }}"
+        password: "{{ fedora_database_pass }}"
+        priv: "{{ fedora_database_name }}.*:ALL"
+
+
+    - name: Ensure islandora user exists.
+      mysql_user:
+        login_host: "{{ mysql_login_host }}"
+        login_user: "{{ mysql_login_user }}"
+        login_password: "{{ mysql_login_password }}"
+        state: present
+        name: "{{ islandora_database_user }}"
+        password: "{{ islandora_database_pass }}"
+        host: "{{ item }}"
+        priv: "{{ islandora_database_name }}.*:ALL"
+      with_items:
+        - localhost
+        - "{{ frontend_ip }}"

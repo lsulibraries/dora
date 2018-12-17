@@ -1,0 +1,203 @@
+---
+- hosts: all
+  become: yes
+  vars:
+    gsearch_index_home: /usr/local/tomcat/webapps/fedoragsearch/WEB-INF/classes/fgsconfigFinal/index/FgsIndex
+    gsearch_webapps_home: /usr/local/tomcat/webapps/fedoragsearch
+    gsearch_log_location: /usr/local/fedora/server/logs/fedoragsearch.daily.log
+  tasks:
+
+  ## Install gsearch
+
+  - name: Get status of basic-solr-config
+    stat:
+      path: "{{work_dir}}/basic-solr-config"
+    register: solr_conf_present
+
+  - git:
+      repo: https://github.com/discoverygarden/basic-solr-config
+      version: 4.10.x
+      recursive: yes
+      force: yes
+      dest: /opt/basic-solr-config
+
+  - name: set up symlinks to align with DGI transforms
+    file:
+      path: /usr/local/fedora/tomcat
+      src: /usr/local/tomcat
+      state: link
+
+  - name: update tomcat config to follow symlinks
+    replace:
+      regexp: '<Context>'
+      replace: '<Context allowLinking="true">'
+      path: /var/lib/tomcat7/conf/context.xml
+
+  - name: Get status of dgi-gsearch
+    stat:
+      path: "{{work_dir}}/dgi-gsearch_extensions"
+    register: dgi_gsearch_extensions_present
+
+  - name: Clone dgi_gsearch_extensions from DG github
+    git:
+      repo: https://github.com/discoverygarden/dgi_gsearch_extensions.git
+      dest: "{{work_dir}}/dgi_gsearch_extensions"
+      version: "v{{ gsearch_extensions_version }}"
+    when: dgi_gsearch_extensions_present.stat.exists == False
+
+  - name: "Check if we've already built the gsearch extension jars"
+    stat:
+      path: "{{work_dir}}/dgi_gsearch_extensions/target/gsearch_extensions-{{ gsearch_extensions_version }}-jar-with-dependencies.jar"
+    register: gse_jar_present
+
+  - name: Ensure mvn installed
+    apt:
+      name: maven2
+
+    # TODO keep an eye out for a mvn module
+  - name: Package dgi_gsearch_extensions with maven (shell)
+    shell: mvn -q package
+    args:
+      chdir: "{{work_dir}}/dgi_gsearch_extensions"
+    when: gse_jar_present.stat.exists == False
+
+  - name: Get status of gsearch
+    stat:
+      path: "{{work_dir}}/gsearch"
+    register: gsearch_present
+
+  - name: Clone GSearch
+    git:
+      repo: https://github.com/discoverygarden/gsearch.git
+      dest: "{{work_dir}}/gsearch"
+      version: v2.9.0
+    when: gsearch_present.stat.exists == False
+
+  - name: Have we already built GSearch ?
+    stat:
+      path: "{{work_dir}}/gsearch/FgsBuild/fromsource/fedoragsearch.war"
+    register: ant_gsearch_present
+
+  - name: Build with ant (shell)
+    shell: ant buildfromsource
+    args:
+      chdir: "{{work_dir}}/gsearch/FedoraGenericSearch"
+    # when: ant_gsearch_present.stat.exists == False
+
+  - name: Ensure GSearch war ownership is Tomcat
+    file:
+      path: "{{work_dir}}/gsearch/FgsBuild/fromsource/fedoragsearch.war"
+      owner: tomcat7
+      group: tomcat7
+
+  - name: Is gsearch.war already deployed
+    stat:
+      path: /var/lib/tomcat7/webapps/fedoragsearch.war
+    register: gsearch_war_present
+
+    # TODO create a $TOMCAT_HOME
+  - name: Deploy GSearch to Tomcat
+    command: "cp {{work_dir}}/gsearch/FgsBuild/fromsource/fedoragsearch.war /var/lib/tomcat7/webapps/"
+    when: gsearch_war_present.stat.exists == False
+
+  - name: wait for gsearch deployment
+    wait_for:
+      path: "{{ gsearch_webapps_home }}/WEB-INF/classes"
+      state: present
+
+  - name: build fgsconfigfinal
+    command: ant -f fgsconfig-basic.xml -Dlocal.FEDORA_HOME="$FEDORA_HOME" -DgsearchUser=fedoraAdmin -DgsearchPass=fedoraAdmin -DfinalConfigPath=/var/lib/tomcat7/webapps/fedoragsearch/WEB-INF/classes -DlogFilePath="$FEDORA_HOME"/var/log/tomcat7/ -DfedoraUser=fedoraAdmin -DfedoraPass=fedoraAdmin -DobjectStoreBase="$FEDORA_HOME"/data/objectStore -DindexDir="$SOLR_HOME"/collection1/data/index -DindexingDocXslt=foxmlToSolr -propertyfile fgsconfig-basic-for-islandora.properties
+    args:
+      chdir: "{{ gsearch_webapps_home }}/FgsConfig"
+
+  - name: update index.properties to use solrremote
+    template:
+      src: templates/index.properties
+      dest: "{{ gsearch_index_home }}/index.properties"
+
+  - name: Ensure Tomcat owns everything in working dir
+    file:
+      path: "{{work_dir}}/dgi_gsearch_extensions/"
+      state: directory
+      recurse: yes
+      owner: tomcat7
+      group: tomcat7
+
+  - name: Deploy dgi_gsearch_extensions
+    copy:
+      src: "{{work_dir}}dgi_gsearch_extensions/target/gsearch_extensions-{{ gsearch_extensions_version }}-jar-with-dependencies.jar"
+      dest: "{{ gsearch_webapps_home }}/WEB-INF/lib/gsearch_extensions-{{ gsearch_extensions_version }}-jar-with-dependencies.jar"
+      remote_src: yes
+
+  - namne: link foxml2solr into gsearch index
+    file:
+      path: "{{ gsearch_index_home }}/foxmlToSolr.xslt"
+      src: /opt/basic-solr-config/foxmlToSolr.xslt
+      state: link
+      force: yes
+
+  - namne: link islandoraXforms into gsearch index
+    file:
+      path: "{{ gsearch_index_home }}/islandora_transforms"
+      src: /opt/basic-solr-config/islandora_transforms
+      state: link
+
+  - name: setup logging
+    template:
+      src: templates/gsearch-log4j.xml
+      dest: "{{ gsearch_webapps_home }}/WEB-INF/classes/log4j.xml"
+
+  - name: copy over repository props
+    template:
+      src: templates/repository.properties
+      dest: "{{ gsearch_webapps_home }}/WEB-INF/classes/fgsconfigFinal/repository/FgsRepos/repository.properties"
+
+  - name: copy over custom.properties
+    copy:
+      src: files/custom_parameters.properties
+      dest: "{{ gsearch_index_home }}/"
+
+  # use ansible file module instead...
+  - name: Set ownership to Tomcat
+    command: "chown -hR tomcat7:tomcat7 /var/lib/tomcat7/webapps/fedoragsearch /var/lib/tomcat7/webapps/fedoragsearch.war"
+
+  - name: Restart Tomcat
+    service: name=tomcat7 state=restarted
+
+  - name: install apache for w3 DTDs
+    apt:
+      name: apache2
+
+  - name: set /etc/hosts for local w3 DTDs
+    lineinfile:
+      line: 127.0.0.1 www.w3.org
+      dest: /etc/hosts
+
+  - name: ensure local w3 DTD dir exists
+    file:
+      path: /opt/w3c-local-cache
+      state: directory
+      
+  - name: copy local DTDs into place
+    copy:
+      src: "{{ item }}"
+      dest: "/opt/w3c-local-cache/{{ item }}"
+    with_items:
+      - files/w3c-local-cache/xhtml-special.ent
+      - files/w3c-local-cache/xhtml-symbol.ent
+      - files/w3c-local-cache/xhtml-lat1.ent
+      - files/w3c-local-cache/xhtml1-transitional.dtd
+
+  - name: copy apache vhost
+    copy:
+      src: files/w3c-local-cache/w3-local.conf
+      dest: /etc/apache2/sites-enabled/
+
+  - name: disable default site
+    command: a2dissite 000-default
+
+  - name: restart apache
+    service:
+      name: apache2
+      state: restarted
+

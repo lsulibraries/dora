@@ -1,3 +1,39 @@
 [submodule "roles/ansible_cantaloupe"]
 	path = roles/ansible_cantaloupe
 	url = https://github.com/lsulibraries/ansible_cantaloupe
+[submodule "roles/ansible-role-apache"]
+	path = roles/ansible-role-apache
+	url = https://github.com/geerlingguy/ansible-role-apache.git
+[submodule "roles/ansible-role-composer"]
+	path = roles/ansible-role-composer
+	url = https://github.com/geerlingguy/ansible-role-composer.git
+[submodule "roles/ansible-role-drush"]
+	path = roles/ansible-role-drush
+	url = https://github.com/geerlingguy/ansible-role-drush.git
+[submodule "roles/ansible-role-git"]
+	path = roles/ansible-role-git
+	url = https://github.com/geerlingguy/ansible-role-git.git
+[submodule "roles/ansible-role-php"]
+	path = roles/ansible-role-php
+	url = https://github.com/geerlingguy/ansible-role-php.git
+[submodule "roles/ansible-role-php-mysql"]
+	path = roles/ansible-role-php-mysql
+	url = https://github.com/geerlingguy/ansible-role-php-mysql.git
+[submodule "roles/ansible-role-solr"]
+	path = roles/ansible-role-solr
+	url = https://github.com/lsulibraries/ansible-role-solr.git
+[submodule "roles/ansible-role-mysql"]
+	path = roles/ansible-role-mysql
+	url = https://github.com/geerlingguy/ansible-role-mysql
+[submodule "roles/ansible-role-islandora-build-prep"]
+	path = roles/ansible-role-islandora-build-prep
+	url = https://github.com/lsulibraries/ansible-role-islandora-build-prep
+[submodule "roles/ansible-tomcat7"]
+	path = roles/ansible-tomcat7
+	url = https://github.com/lsulibraries/ansible-tomcat7.git
+[submodule "roles/ansible-java8"]
+	path = roles/ansible-java8
+	url = https://github.com/gregwhitaker/ansible-java8.git
+[submodule "roles/ansible-role-islandora-ldl"]
+	path = roles/ansible-role-islandora-ldl
+	url = https://github.com/lsulibraries/ansible-role-islandora-ldl

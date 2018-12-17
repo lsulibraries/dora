@@ -1,0 +1,129 @@
+- hosts: all
+  become: yes
+
+  gather_facts: false
+  pre_tasks:
+    - name: 'install python2'
+      raw: sudo apt-get -y install python python-simplejson
+    - action: setup # https://stackoverflow.com/a/40790418/3294778
+  vars:
+    mysql_login_host: "{{ backend_ip }}"
+  roles:
+    - common
+    - geerlingguy.git
+    - geerlingguy.apache
+    - geerlingguy.php
+    - geerlingguy.php-mysql
+    - geerlingguy.composer
+    - geerlingguy.drush
+
+  tasks:
+    - name: Install apache-php
+      apt:
+        name: libapache2-mod-php5
+
+    - name: Install mysql-client when needed
+      apt:
+        name: mysql-client
+      when: not mysql_local_installation
+
+
+    - name: Ensure Drupal link target exists
+      file:
+        state: directory
+        path: "{{ drupal_home_link_target }}"
+
+    - name: Ensure Drupal symlink exists
+      file:
+        path: "{{ drupal_core_path }}"
+        state: link
+        src: "{{ drupal_home_link_target }}"
+
+
+    - name: Check out Drupal Core to the default location.
+      git:
+        repo: "{{ drupal_repo_url }}"
+        version: "{{ drupal_core_version }}"
+        update: "{{ drupal_keep_updated }}"
+        dest: "{{ drupal_core_path }}"
+
+    # TODO - since this uses mysql root creds to create dbs if needed
+    #        don't create them in databases.yml
+    - name: Install Drupal for all sites.
+      command: >
+        drush si {{ drupal_install_profile }} -y
+        --site-name="Louisiana Digital Library"
+        --account-name={{ drupal_admin_name }}
+        --account-pass={{ drupal_admin_password }}
+        --db-url=mysql://islandora:islandora@{{ mysql_login_host }}/islandora
+        --db-su={{ mysql_login_user }}
+        --db-su-pw={{ mysql_login_password }}
+        chdir={{ drupal_core_path }}
+        creates={{ drupal_core_path }}/sites/default/settings.php
+
+    - name: add the ffmpeg ppa for trusty
+      apt_repository:
+        repo: "ppa:mc3man/trusty-media"
+
+    - name: apt-get update
+      apt:
+        update_cache: yes
+        cache_valid_time: 86400
+
+    - name: Install islandora server side utilities
+      apt:
+        name: "{{item}}"
+      with_items:
+        - imagemagick
+        - lame
+        - poppler-utils
+        - bibutils
+        - tesseract-ocr
+        - tesseract-ocr-eng
+        - tesseract-ocr-fra
+        - ffmpeg
+
+    - name: Create fits_home
+      file: 
+        path: "{{fits_home}}"
+        state: directory
+
+    - name: Ensure unzip is installed
+      apt: 
+        name: unzip
+
+    - name: Check if fits source is cached locally
+      stat:
+        path: "{{ cache_dir }}/fits-{{fits_version}}.zip"
+      register: fits_cached
+
+    - name: Fetch fits from cache.
+      unarchive: 
+        src: "{{ cache_dir }}/fits-{{fits_version}}.zip" 
+        dest: "{{fits_home}}" 
+        creates: "{{fits_home}}/fits-{{fits_version}}"
+        copy: no
+      when: fits_cached.stat.exists
+
+    - name: Download fits # this should only happen when fits is not cached.
+      unarchive: 
+        src: "http://projects.iq.harvard.edu/files/fits/files/fits-{{fits_version}}.zip" 
+        dest: "{{fits_home}}" 
+        creates: "{{fits_home}}/fits-{{fits_version}}"
+        copy: no
+
+    - name: make fits.sh executable
+      file: 
+        path: "{{fits_home}}/fits-{{fits_version}}/fits.sh" 
+        mode: 0755
+
+    - name: make fits-env.sh executable
+      file: 
+        path: "{{fits_home}}/fits-{{fits_version}}/fits-env.sh" 
+        mode: 0755
+
+    - name: link into path
+      file:
+        path: /usr/local/bin/fits
+        src: "{{ fits_home }}/fits-{{ fits_version }}/fits.sh"
+        state: link

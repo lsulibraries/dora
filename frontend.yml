@@ -1,0 +1,4 @@
+---
+- include_tasks: common.yml
+- include: frontend-base.yml
+- include: islandora.yml
