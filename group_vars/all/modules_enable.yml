@@ -51,7 +51,7 @@ modules_to_enable:
 - islandora_find_replace
 - islandora_fits
 - islandora_form_fieldpanel
-- islandora_gsearcher
+# - islandora_gsearcher
 - islandora_importer
 - islandora_internet_archive_bookreader
 - islandora_ip_embargo
