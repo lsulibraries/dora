@@ -112,7 +112,7 @@ drush_version: "e658a9641f498b33c05bb9f66fedcd749e3eeb4f"
 ## dev !#######
 ###############
 vagrant_private_network_ip: 192.168.111.111
-iiif_endpoint: "http://{{ vagrant_private_network_ip }}:8182/iiif/2"
+iiif_endpoint: "http://192.168.222.4:8182/iiif/2"
 cantaloupe_Xmx: "{{ ((ansible_memtotal_mb - (tomcat_half_available_memory|int))*0.3)|int|abs }}m"
 cantaloupe_version: 4.0.2
 
