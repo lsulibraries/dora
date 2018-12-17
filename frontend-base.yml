@@ -9,7 +9,6 @@
   vars:
     mysql_login_host: "{{ backend_ip }}"
   roles:
-    - common
     - geerlingguy.git
     - geerlingguy.apache
     - geerlingguy.php

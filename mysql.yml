@@ -6,7 +6,6 @@
     mysql_collation-server: utf8mb4_unicode_ci
 
   roles:
-    - common
     - ansible-role-mysql
 
   tasks:
